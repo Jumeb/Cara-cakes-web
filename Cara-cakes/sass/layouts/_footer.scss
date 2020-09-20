@@ -1,0 +1,161 @@
+.footer {
+    font-size: 1.4rem;
+
+    &__logo {
+        width: 26rem;
+        height: auto;
+
+        &-box{
+           text-align: center;
+            margin-bottom: 6rem;
+            margin-top: -9rem;
+        }
+    }
+    &__list {
+        list-style: none;
+        padding: 1.7rem;
+
+        @include respon(tp) {
+            padding: 1.6rem;
+        }
+    }
+
+    &__item {
+        margin: .2rem 0;
+
+        
+    }
+
+    &__link {
+        &:link,
+        &:visited {
+            padding: .3rem;
+            text-decoration: none;
+            display: inline-block;
+            color: $light-grey;
+            font-size: 1.5rem;
+            transition: all .4s ease;
+
+            &s {
+                width: 100%;
+                @include clrfix;
+            }
+        }
+
+
+        &:hover {
+            box-shadow: 0 1rem 3rem rgba($black, .7);
+            color: $primary-dark;
+            transform: scale(1.2) rotateZ(12deg);
+        }
+        
+    }
+
+    &__creator {
+        width: 80%;
+        margin: auto;
+        // height: 20rem;
+        // margin: auto;
+        // background-image:linear-gradient(to right, rgba($dark-grey, .4), rgba($dark-grey, .6)), url(../img/jbInc.png);
+        // background-size: cover;
+        // background-position: center;
+        
+        // @include respon (ph) {
+        //     width: 75%;
+        //     height: 19rem;
+        //     margin: -7rem auto 2rem auto;
+        // }
+
+        &--box {
+            width: 80%;
+            height: 80%;
+            margin: auto;
+        }
+
+        @include respon(ph) {
+            width: 30%;
+            height: 30%;
+            margin: -7rem auto 2rem auto;
+        }
+    }
+
+    &__image {
+        width: 100%;
+        margin: auto;
+        background-size: cover;
+        background-position: top;
+    }
+
+    &__dev {
+        &:link,
+        &:visited {
+            display: inline-block;
+            padding: .3rem;
+            padding-right: -3rem;
+            text-decoration: none;
+            color: $light-grey;
+            font-size: 1.5rem;
+            transition: all .4s ease;
+        }
+
+        &:hover {
+            background-color: $dark-grey;
+            box-shadow: 0 1rem 3rem rgba($black, .7);
+            color: $light-grey-1;
+            transform: scale(1.5) rotateZ(-12deg);
+        }
+    }
+
+    &__contacts {
+        width: 40%;
+        margin: auto;
+        font-size: 2.5rem;
+
+        @include respon(tp) {
+            width: 70%;
+        }
+
+        @include respon(ph) {
+            font-size: 1.8rem;
+        }
+
+        @include respon(sp) {
+            margin: auto 0;
+            width: 90%;
+            font-size: 1.8rem;
+        }
+        
+        &--round {
+            
+            margin: auto 1.5rem;
+            
+
+            & a:link, a:visited {
+                text-decoration: none;
+                color: $light-grey;  
+                padding: 1.4rem;  
+                border: 2px solid $white;
+                border-radius: 50%;    
+                transition: all .4s ease-in-out;        
+            }
+
+            &  a:hover,a:active {
+                color: $dark-grey;
+                background-color: $light-grey-1;
+            }
+        }
+    }
+
+    &__left {
+        width: 50%;
+        margin: 2rem auto;
+        float: left;
+    }
+
+    &__right {
+        width: 50%;
+        margin: 2rem auto;
+        float: right;
+    }
+
+}

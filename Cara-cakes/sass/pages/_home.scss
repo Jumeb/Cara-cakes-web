@@ -1,0 +1,82 @@
+.sec-abt {
+    background-color: $white;
+    padding: 18rem 0 7rem 0;
+    margin-top: -21.5vh;
+
+    @include respon(tl) {
+        margin-top: -12rem;
+        padding-bottom: 6rem;
+    }
+
+    @include respon(tp) {
+        margin-top: -11rem;
+        padding-bottom: 5rem;
+    }
+
+    @include respon(ph) {
+        margin-top: -10rem;
+        padding-bottom: 4rem;
+    }
+
+    @include respon(sp) {
+        margin-top: -9rem;
+    }
+}
+
+.sec-sample{
+    background-color: transparent;
+    padding: 18rem 0 12rem 0;
+    margin-top: -21.5vh;
+
+    @include respon(ph) {
+        margin-top: -10rem;
+        padding: 20rem 0 12rem 0;
+    }
+
+    @include respon(sp) {
+        margin-top: -8rem;
+        padding: 20rem 0 12rem 0;
+    }
+}
+
+.sec-description {
+    background-color: $white;
+    padding: 18rem 0 12rem 0;
+    margin-top: 0;
+
+    @include respon(ph) {
+        padding: 20rem 0 12rem 0;
+    }
+}
+
+.sec-contact {
+    background-color: transparent;
+    padding: 18rem 0 12rem 0;
+    margin-top: -21.5vh;
+
+    @include respon(ph) {
+        padding: 20rem 6rem 12rem 6rem;
+    }
+
+    @include respon(sp) {
+        margin-top: -13rem;
+    }
+}
+
+.sec-login {
+    background-image: linear-gradient(to right, rgba($primary-dark, .95), rgba($secondary-light, .95));
+    padding: 12rem 0;
+}
+
+.sec-footer {
+    background-color: $dark-grey;
+    padding: 18rem 0 4rem 0;
+
+    @include respon(sp) {
+        padding: 20rem 8rem 4rem 6rem;
+    }
+}
+
+.sec-auth {
+    padding: 10rem 0;
+}

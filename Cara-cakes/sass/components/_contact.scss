@@ -1,0 +1,76 @@
+.contact {
+    background-color: rgba($white, .8);
+    padding: 1.7rem;
+    margin: 2rem auto;
+    width: 80%;
+    @include clrfix;
+
+    &-1 {
+        transform: skewX(15deg);
+    }
+
+    &-2 {
+        transform: skewX(-15deg);
+    }
+
+    &__icon {
+        // transform: skewX(-15deg);
+        font-size: 6rem;
+        margin: 0 5rem;
+        float: left;
+
+        @include respon(tp) {
+            font-size: 5rem;
+        }
+
+        @include respon(sp) {
+            font-size: 4rem;
+            margin: 0 2rem;
+        }
+    }
+
+    &__list {
+        
+
+        &-1 {
+            transform: skewX(-15deg);
+        }
+
+        &-2 {
+            transform: skewX(15deg);
+        }
+
+        
+    }
+
+    &__number {
+        font-size: 1.9rem;
+        letter-spacing: .7rem;
+        display: block;
+        width: 50%;
+        margin-left: 15rem;
+
+        @include respon(tl) {
+            font-size: 1.8rem;
+            letter-spacing: .4rem;
+        }
+
+        @include respon(ph) {
+            letter-spacing: .7rem;
+        }
+
+        @include respon(sp) {
+            font-size: 1.5rem;
+            letter-spacing: .2rem;
+            margin-left: 8rem;
+        }
+
+        &-1{
+            border-bottom: 2px solid rgba($primary-light, .7);
+        }
+
+        &-2 {
+            border-bottom: 2px solid rgba($secondary-light, .7);
+        }
+    }
+}

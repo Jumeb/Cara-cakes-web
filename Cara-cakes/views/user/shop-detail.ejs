@@ -1,0 +1,12 @@
+<%- include('../partials/general-partials/head.ejs') %>
+</head>
+
+<body>
+    <%- include('../partials/user-partials/user-header.ejs') %>
+    <section class="shop">
+            <% if (shop) { %>
+                <%- include('../partials/shop-partials/shop-header.ejs') %> 
+            <% } %>            
+            <%- include('../partials/shop-partials/shop-details.ejs') %>
+    </section>
+    <%- include('../partials/general-partials/end.ejs') %>

@@ -1,0 +1,25 @@
+<header class="header__user">
+    <div class="logo__box">
+        <img src="/img/caracakes5.png" alt="Logo" class="logo__img">
+    </div>
+    <div class="search">
+        <form action="#" class="search__form">
+            <input type="text" placeholder="Search user" class="search__input">
+            <span class="search__icon fas fa-search"></span>
+        </form>
+    </div>
+    <nav class="adminc">
+        <ul class="adminc__list">
+            <li class="adminc__item adminc__log">
+                <form action="/admin/logout" method="post">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button type="sumbit" class="adminc__btn">Logout <span class="adminc__icon fas fa-power-off"></span></button>
+                </form>
+            </li>
+            <li class="adminc__item adminc__admin">
+                <img src="/img/vals-1.jpg" alt="Admin" class="adminc__img">
+                <span class="adminc__name">Jume Brice</span>
+            </li>
+        </ul>
+    </nav>
+</header>

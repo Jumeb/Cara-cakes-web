@@ -1,0 +1,15 @@
+<div class="events__confirm" id="confirm">
+    <div class="events__confirm-box">
+        <p class="events__confirm-msg">Do you want to delete ?</p>
+        <p class="events__confirm-msg">Event: <%= event.name %></p>
+        <p class="events__confirm-msg">Purpose: <%= event.purpose %></p>
+        <div class="events__confirm-choice">
+            <form action="/user/delete-event" method="post">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <input type="hidden" name="eventId" value="<%= event._id %>">
+                <button class="btn-flat events__confirm-yes" type="submit">Yes</button>
+                <a href="/user" class="btn-flat events__confirm-no">No</a>
+            </form>
+        </div>
+    </div>
+</div>

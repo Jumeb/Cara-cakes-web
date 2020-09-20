@@ -1,0 +1,460 @@
+<div class="panel__event">
+    <section class="sheet user">
+        <div class="sheet__event">Event</div>
+        <div class="sheet__form user__form">
+            <form action="/user/<% if (editing) { %>edit-event <% } else { %>add-event <% } %>" class="sheet__signup" method="POST" enctype="multipart/form-data">
+                <div class="sheet__group">
+                    <input type="text" name="name" class="sheet__input" id="Name" placeholder="For: Name" value="<% if (editing || hasError) { %><%= event.name %><% } %>" required>
+                    <label for="Name" class="sheet__label">Name</label>
+                </div>
+                <div class="sheet__group">
+                    <input type="text" name="purpose" class="sheet__input" id="Purpose" placeholder="Message on cake" value="<% if (editing || hasError) { %><%= event.purpose %><% } %>" required>
+                    <label for="Purpose" class="sheet__label">Message</label>
+                </div>
+                <div class="sheet__group">
+                    <input type="file" name="image" class="sheet__input" id="Image">
+                    <label for="Image" class="sheet__label">Image</label>
+                </div>
+                <div class="sheet__Date">
+                    <input type="hidden" name="location" id="locale" value="<% if (editing || hasError) { %><%= event.location %><% } %>">
+                    <div class="sheet__date-box sheet__location">
+                        <div class="sheet__date locations">
+                            <div class="sheet__date-option Locations">
+                                <input type="radio" class="sheet__date-radio" name="location">
+                                <label for="Malingo">Malingo</label>
+                            </div>
+                            <div class="sheet__date-option Locations">
+                                <input type="radio" class="sheet__date-radio" name="location">
+                                <label for="St. Claire">St. Claire</label>
+                            </div>
+                            <div class="sheet__date-option Locations">
+                                <input type="radio" class="sheet__date-radio" name="location">
+                                <label for="White house">White house</label>
+                            </div>
+                            <div class="sheet__date-option Locations">
+                                <input type="radio" class="sheet__date-radio" name="location">
+                                <label for="Chief street">Chief street</label>
+                            </div>
+                            <div class="sheet__date-option Locations">
+                                <input type="radio" class="sheet__date-radio" name="location">
+                                <label for="GCE Board">GCE Board</label>
+                            </div>
+                            <div class="sheet__date-option Locations">
+                                <input type="radio" class="sheet__date-radio" name="location">
+                                <label for="Active Spaces">Active Spaces</label>
+                            </div>
+                            <div class="sheet__date-option Locations">
+                                <input type="radio" class="sheet__date-radio" name="location">
+                                <label for="Mile 17 park">Mile 17 park</label>
+                            </div>
+                        </div>
+                        <div class="sheet__selected location">
+                            <% if (editing || hasError) { %>
+                                <%= event.location %>
+                                    <% } else {%> Select Delivery Location
+                                        <% } %>
+                                            <span class="sheet__icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="sheet__Date">
+                    <input type="hidden" name="day" id="day" value="<% if (editing || hasError) { %><%= event.day %><% } %>">
+                    <input type="hidden" name="month" id="month" value="<% if (editing || hasError) { %><%= event.month %><% } %>">
+                    <input type="hidden" name="year" id="year" value="<% if (editing || hasError) { %><%= event.year %><% } %>">
+                    <div class="sheet__date-box sheet__day">
+                        <div class="sheet__date days">
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="first" name="days">
+                                <label for="01">01</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="second" name="days">
+                                <label for="02">02</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="third" name="days">
+                                <label for="03">03</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="fourth" name="days">
+                                <label for="04">04</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="fifth" name="days">
+                                <label for="05">05</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="sixth" name="days">
+                                <label for="06">06</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="seventh" name="days">
+                                <label for="07">07</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="eighth" name="days">
+                                <label for="08">08</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="ninth" name="days">
+                                <label for="09">09</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="tenth" name="days">
+                                <label for="10">10</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="eleventh" name="days">
+                                <label for="11">11</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="twelveth" name="days">
+                                <label for="12">12</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="thirteenth" name="days">
+                                <label for="13">13</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="fourteenth" name="days">
+                                <label for="14">14</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="fifteenth" name="days">
+                                <label for="15">15</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="sixteenth" name="days">
+                                <label for="16">16</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="seventeenth" name="days">
+                                <label for="17">17</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="eighteenth" name="days">
+                                <label for="18">18</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="nineteenth" name="days">
+                                <label for="19">19</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="twenty-first" name="days">
+                                <label for="21">21</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="twenty-second" name="days">
+                                <label for="22">22</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="twenty-third" name="days">
+                                <label for="23">23</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="twenty-fourth" name="days">
+                                <label for="24">24</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="twenty-fifth" name="days">
+                                <label for="25">25</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="twenty-sixth" name="days">
+                                <label for="26">26</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="twenty-seventh" name="days">
+                                <label for="27">27</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="twenty-eighth" name="days">
+                                <label for="28">28</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="twenty-ninth" name="days">
+                                <label for="29">29</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="thirtieth" name="days">
+                                <label for="30">30</label>
+                            </div>
+                            <div class="sheet__date-option Days">
+                                <input type="radio" class="sheet__date-radio" id="thirty-first" name="days">
+                                <label for="31">31</label>
+                            </div>
+                        </div>
+                        <div class="sheet__selected day">
+                            <% if (editing || hasError) { %>
+                                <%= event.day %>
+                                    <% } else {%> Day
+                                        <% } %>
+                        </div>
+                    </div>
+                    <div class="sheet__date-box sheet__month">
+                        <div class="sheet__date months">
+                            <div class="sheet__date-option Months">
+                                <input type="radio" class="sheet__date-radio" id="Jan" name="months">
+                                <label for="January">January</label>
+                            </div>
+                            <div class="sheet__date-option Months">
+                                <input type="radio" class="sheet__date-radio" id="Feb" name="months">
+                                <label for="February">February</label>
+                            </div>
+                            <div class="sheet__date-option Months">
+                                <input type="radio" class="sheet__date-radio" id="March" name="months">
+                                <label for="March">March</label>
+                            </div>
+                            <div class="sheet__date-option Months">
+                                <input type="radio" class="sheet__date-radio" id="Apr" name="months">
+                                <label for="April">April</label>
+                            </div>
+                            <div class="sheet__date-option Months">
+                                <input type="radio" class="sheet__date-radio" id="May" name="months">
+                                <label for="May">May</label>
+                            </div>
+                            <div class="sheet__date-option Months">
+                                <input type="radio" class="sheet__date-radio" id="June" name="months">
+                                <label for="June">June</label>
+                            </div>
+                            <div class="sheet__date-option Months">
+                                <input type="radio" class="sheet__date-radio" id="July" name="months">
+                                <label for="July">July</label>
+                            </div>
+                            <div class="sheet__date-option Months">
+                                <input type="radio" class="sheet__date-radio" id="Aug" name="months">
+                                <label for="August">August</label>
+                            </div>
+                            <div class="sheet__date-option Months">
+                                <input type="radio" class="sheet__date-radio" id="Sept" name="months">
+                                <label for="September">September</label>
+                            </div>
+                            <div class="sheet__date-option Months">
+                                <input type="radio" class="sheet__date-radio" id="Oct" name="months">
+                                <label for="October">October</label>
+                            </div>
+                            <div class="sheet__date-option Months">
+                                <input type="radio" class="sheet__date-radio" id="Nov" name="months">
+                                <label for="November">November</label>
+                            </div>
+                            <div class="sheet__date-option Months">
+                                <input type="radio" class="sheet__date-radio" id="Dec" name="months">
+                                <label for="December">December</label>
+                            </div>
+                        </div>
+                        <div class="sheet__selected month">
+                            <% if (editing || hasError) { %>
+                                <%= event.month %>
+                                    <% } else {%> Month
+                                        <% } %>
+                        </div>
+                    </div>
+                    <div class="sheet__date-box sheet__year">
+                        <div class="sheet__date years">
+                            <div class="sheet__date-option Years">
+                                <input type="radio" class="sheet__date-radio" id="twenty" name="years">
+                                <label for="2020">2020</label>
+                            </div>
+                            <div class="sheet__date-option Years">
+                                <input type="radio" class="sheet__date-radio" id="twenty-one" name="years">
+                                <label for="2021">2021</label>
+                            </div>
+                            <div class="sheet__date-option Years">
+                                <input type="radio" class="sheet__date-radio" id="twenty-two" name="years">
+                                <label for="2022">2022</label>
+                            </div>
+                            <div class="sheet__date-option Years">
+                                <input type="radio" class="sheet__date-radio" id="twenty-three" name="years">
+                                <label for="2023">2023</label>
+                            </div>
+                            <div class="sheet__date-option Years">
+                                <input type="radio" class="sheet__date-radio" id="twenty-four" name="years">
+                                <label for="2024">2024</label>
+                            </div>
+                            <div class="sheet__date-option Years">
+                                <input type="radio" class="sheet__date-radio" id="twenty-five" name="years">
+                                <label for="2025">2025</label>
+                            </div>
+                            <div class="sheet__date-option Years">
+                                <input type="radio" class="sheet__date-radio" id="twenty-six" name="years">
+                                <label for="2026">2026</label>
+                            </div>
+                            <div class="sheet__date-option Years">
+                                <input type="radio" class="sheet__date-radio" id="twenty-seven" name="years">
+                                <label for="2027">2027</label>
+                            </div>
+                            <div class="sheet__date-option Years">
+                                <input type="radio" class="sheet__date-radio" id="twenty-eight" name="years">
+                                <label for="2028">2028</label>
+                            </div>
+                            <div class="sheet__date-option Years">
+                                <input type="radio" class="sheet__date-radio" id="twenty-nine" name="years">
+                                <label for="2029">2029</label>
+                            </div>
+                            <div class="sheet__date-option Years">
+                                <input type="radio" class="sheet__date-radio" id="thirty" name="years">
+                                <label for="2030">2030</label>
+                            </div>
+                        </div>
+                        <div class="sheet__selected year">
+                            <% if (editing || hasError) { %>
+                                <%= event.year %>
+                                    <% } else {%> Year
+                                        <% } %>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sheet__Date">
+                    <input type="hidden" name="period" id="per" value="<% if (editing || hasError) { %><%= event.per %><% } %>">
+                    <input type="hidden" name="hour" id="hour" value="<% if (editing || hasError) { %><%= event.hour %><% } %>">
+                    <input type="hidden" name="minute" id="mins" value="<% if (editing || hasError) { %><%= event.mins %><% } %>">
+                    <div class="sheet__date-box sheet__hour">
+                        <div class="sheet__date hours">
+                            <div class="sheet__date-option Hours">
+                                <input type="radio" class="sheet__date-radio" name="hours">
+                                <label for="01">01</label>
+                            </div>
+                            <div class="sheet__date-option Hours">
+                                <input type="radio" class="sheet__date-radio" name="hours">
+                                <label for="02">02</label>
+                            </div>
+                            <div class="sheet__date-option Hours">
+                                <input type="radio" class="sheet__date-radio" name="hours">
+                                <label for="03">03</label>
+                            </div>
+                            <div class="sheet__date-option Hours">
+                                <input type="radio" class="sheet__date-radio" name="hours">
+                                <label for="04">04</label>
+                            </div>
+                            <div class="sheet__date-option Hours">
+                                <input type="radio" class="sheet__date-radio" name="hours">
+                                <label for="05">05</label>
+                            </div>
+                            <div class="sheet__date-option Hours">
+                                <input type="radio" class="sheet__date-radio" name="hours">
+                                <label for="06">06</label>
+                            </div>
+                            <div class="sheet__date-option Hours">
+                                <input type="radio" class="sheet__date-radio" name="hours">
+                                <label for="07">07</label>
+                            </div>
+                            <div class="sheet__date-option Hours">
+                                <input type="radio" class="sheet__date-radio" name="hours">
+                                <label for="08">08</label>
+                            </div>
+                            <div class="sheet__date-option Hours">
+                                <input type="radio" class="sheet__date-radio" name="hours">
+                                <label for="09">09</label>
+                            </div>
+                            <div class="sheet__date-option Hours">
+                                <input type="radio" class="sheet__date-radio" name="hours">
+                                <label for="10">10</label>
+                            </div>
+                            <div class="sheet__date-option Hours">
+                                <input type="radio" class="sheet__date-radio" name="hours">
+                                <label for="11">11</label>
+                            </div>
+                            <div class="sheet__date-option Hours">
+                                <input type="radio" class="sheet__date-radio" name="hours">
+                                <label for="12">12</label>
+                            </div>
+                        </div>
+                        <div class="sheet__selected hour">
+                            <% if (editing || hasError) { %>
+                                <%= event.hour %>
+                                    <% } else {%> HH
+                                        <% } %>
+                        </div>
+                    </div>
+                    <div class="sheet__date-box sheet__minute">
+                        <div class="sheet__date minutes">
+                            <div class="sheet__date-option Minutes">
+                                <input type="radio" class="sheet__date-radio" name="mins">
+                                <label for="00">00</label>
+                            </div>
+                            <div class="sheet__date-option Minutes">
+                                <input type="radio" class="sheet__date-radio" name="mins">
+                                <label for="05">05</label>
+                            </div>
+                            <div class="sheet__date-option Minutes">
+                                <input type="radio" class="sheet__date-radio" name="mins">
+                                <label for="10">10</label>
+                            </div>
+                            <div class="sheet__date-option Minutes">
+                                <input type="radio" class="sheet__date-radio" name="mins">
+                                <label for="15">15</label>
+                            </div>
+                            <div class="sheet__date-option Minutes">
+                                <input type="radio" class="sheet__date-radio" name="mins">
+                                <label for="20">20</label>
+                            </div>
+                            <div class="sheet__date-option Minutes">
+                                <input type="radio" class="sheet__date-radio" name="mins">
+                                <label for="25">25</label>
+                            </div>
+                            <div class="sheet__date-option Minutes">
+                                <input type="radio" class="sheet__date-radio" name="mins">
+                                <label for="30">30</label>
+                            </div>
+                            <div class="sheet__date-option Minutes">
+                                <input type="radio" class="sheet__date-radio" name="mins">
+                                <label for="35">35</label>
+                            </div>
+                            <div class="sheet__date-option Minutes">
+                                <input type="radio" class="sheet__date-radio" name="mins">
+                                <label for="40">40</label>
+                            </div>
+                            <div class="sheet__date-option Minutes">
+                                <input type="radio" class="sheet__date-radio" name="mins">
+                                <label for="45">45</label>
+                            </div>
+                            <div class="sheet__date-option Minutes">
+                                <input type="radio" class="sheet__date-radio" name="mins">
+                                <label for="50">50</label>
+                            </div>
+                            <div class="sheet__date-option Minutes">
+                                <input type="radio" class="sheet__date-radio" name="mins">
+                                <label for="55">55</label>
+                            </div>
+                        </div>
+                        <div class="sheet__selected minute">
+                            <% if (editing || hasError) { %>
+                                <%= event.mins %>
+                                    <% } else {%> MM
+                                        <% } %>
+                        </div>
+                    </div>
+                    <div class="sheet__date-box sheet__period">
+                        <div class="sheet__date periods">
+                            <div class="sheet__date-option Periods">
+                                <input type="radio" class="sheet__date-radio" name="per">
+                                <label for="PM">PM</label>
+                            </div>
+                            <div class="sheet__date-option Periods">
+                                <input type="radio" class="sheet__date-radio" name="per">
+                                <label for="AM">AM</label>
+                            </div>
+                        </div>
+                        <div class="sheet__selected period">
+                            <% if (editing || hasError) { %>
+                                <%= event.per %>
+                                    <% } else {%> Per
+                                        <% } %>
+                        </div>
+                    </div>
+                </div>
+                <% if (editing || hasError) { %>
+                    <input type="hidden" name="eventId" value="<%= event._id %>">
+                    <% } %>
+                        <div class="sheet__btns">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <button type="submit" class="btn-2 btn-deep--pink"><% if (editing) { %>Update
+                        Event<% } else { %>Create Event<% } %></button>
+                            <a href="/user" class="btn-2 btn-deep--pink txt-cnt">Cancel</a>
+                        </div>
+            </form>
+        </div>
+
+    </section>
+</div>

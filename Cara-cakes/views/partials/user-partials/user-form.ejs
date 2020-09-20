@@ -1,0 +1,31 @@
+<div class="panel__event">
+    <section class="sheet user">
+        <div class="sheet__event">Event</div>
+        <div class="sheet__form user__form">
+            <form action="/user/<% if (editing) { %>edit-profile <% } %>" class="sheet__signup" method="POST" enctype="multipart/form-data">
+                <div class="sheet__group">
+                    <input type="text" name="name" class="sheet__input" id="Name" placeholder="Name" value="<% if (editing || hasError) { %><%= user.name %><% } %>" required>
+                    <label for="Name" class="sheet__label">Name</label>
+                </div>
+                <div class="sheet__group">
+                    <input type="number" name="telNo" class="sheet__input" id="Number" placeholder="+237" value="<% if (editing || hasError) { %><%= user.telNo %><% } %>" required>
+                    <label for="Purpose" class="sheet__label">Telephone No</label>
+                </div>
+                <div class="sheet__group">
+                    <input type="file" name="image" class="sheet__input" id="Image">
+                    <label for="Image" class="sheet__label">Image</label>
+                </div>
+
+                <% if (editing || hasError) { %>
+                    <input type="hidden" name="userId" value="<%= user._id %>">
+                    <% } %>
+                        <div class="sheet__btns">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <button type="submit" class="btn-2 btn-deep--pink">Update profile</button>
+                            <a href="/user" class="btn-2 btn-deep--pink txt-cnt">Cancel</a>
+                        </div>
+            </form>
+        </div>
+
+    </section>
+</div>

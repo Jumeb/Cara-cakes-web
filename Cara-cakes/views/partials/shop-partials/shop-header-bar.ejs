@@ -1,0 +1,30 @@
+<header class="header__user">
+        <div class="logo__box">
+            <img src="/img/caracakes5.png" alt="Logo" class="logo__img">
+        </div>
+        <div class="search">
+            <form action="#" class="search__form">
+                <input type="text" placeholder="Search pastry" class="search__input">
+                <span class="search__icon fas fa-search"></span>
+            </form>
+        </div>
+        <nav class="notify">
+            <ul class="notify__list">
+                <li class="notify__item <%= path == '/user' ? 'notify__active' : '' %>">
+                    <a href="/user" class="notify__link">
+                        Events
+                    </a>
+                </li>
+                <li class="notify__item <%= path == '/user/add-event' ? 'notify__active' : '' %>">
+                    <a href="/user/add-event" class="notify__link">
+                        New Event
+                    </a>
+                </li>
+                <li class="notify__item <%= path == '/user/orders' ? 'notify__active' : '' %>">
+                    <a href="/user/orders" class="notify__link">
+                        Orders
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>

@@ -1,0 +1,19 @@
+<header class="header__user">
+    <div class="logo__box">
+        <img src="/img/caracakes5.png" alt="Logo" class="logo__img">
+    </div>
+    <div class="search" style="margin-left: -10rem;">
+        <form action="#" class="search__form">
+            <input type="text" placeholder="Search event" class="search__input">
+            <span class="search__icon fas fa-search"></span>
+        </form>
+    </div>
+    <% if(user) { %> 
+    <nav class="notify">
+         <a href="/user/edit-profile/<%= user._id %>" class="notify__list notify__link">
+            <img src="<% if (!user.image) { %>/img/bds-16.jpg <% } else { %>/<%= user.image %> <% } %>" alt="User image" class="notify__image">
+            <p class="notify__item"><%= user.name %></p>
+         </a>
+    </nav>
+    <% } %>
+</header>

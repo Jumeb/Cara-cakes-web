@@ -1,0 +1,51 @@
+<div class="panel__user">
+    <!-- <div class="panel__user--frame">
+        <img src="<% if (!user.image) { %>/img/cookies-7.jpg <% } else { %>/<%= user.image %> <% } %>" alt="User image" class="panel__user--img">
+    </div>
+    <div class="panel__user--info">
+        <h3 class="panel__user--name">
+            <%= user.name %>
+        </h3>
+    </div>
+    <div class="panel__user--events">
+        <div class="panel__user--association">
+            <span class="type notify__item"><a href="/user/edit-profile/<%= user._id %>" class="edit txt-white">Edit profile</a></span>
+        </div>
+    </div>
+    <div class="txt-cnt panel__logout">
+        <form action="/logout" method="post">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button type="submit" class="btn-2 btn-2__hover-icon">Logout<span
+                    class="btn-2__icon fas fa-power-off"></span></button>
+        </form>
+    </div>
+    <div class="power">
+        Copyrighted &copy;<a href="#" class="dev">JB Inc</a>
+    </div> -->
+        <ul class="panel-side-nav">
+            <li class="panel-side-nav__item  <%= path === '/user' ? 'panel-side-nav__item--active' : '' %>">
+                <a href="/user" class="panel-side-nav__link">
+                    <span><span class="panel-side-nav__icon fas fa-calendar-day"></span>  Events</span>
+                </a>
+            </li>
+            <li class="panel-side-nav__item <%= path === '/user/add-event' ? 'panel-side-nav__item--active' : '' %>">
+                <a href="/user/add-event" class="panel-side-nav__link">
+                   <span><span class="panel-side-nav__icon fas fa-plus"></span>  Add Event</span>
+                </a>
+            </li>
+            <li class="panel-side-nav__item <%= path === '/user/orders' ? 'panel-side-nav__item--active' : '' %>">
+                <a href="/user/orders" class="panel-side-nav__link">
+                    <span><span class="panel-side-nav__icon fas fa-shopping-basket"></span>  Orders</span>
+                </a>
+            </li>
+            <li class="panel-side-nav__item">
+                <form action="/logout" method="post">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button type="submit" class="panel-side-nav__link"><span class="panel-side-nav__icon fas fa-power-off"></span>Logout</button>
+                </form>
+            </li>
+        </ul>
+        <div class="power">
+           <span>Copyrighted &copy;<a href="#" class="dev">JB Inc.</a>All Rights reserved</span> 
+        </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="events__confirm" id="confirm">
+    <div class="events__confirm-box">
+        <p class="events__confirm-msg">Do you want to delete ?</p>
+        <p class="events__confirm-msg">Pastry: <%= pastry.name %></p>
+        <div class="events__confirm-choice">
+            <form action="/admin/delete-pastry" method="POST">
+                <input type="hidden" name="pastryId" value="<%= pastry._id %>">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button class="btn-flat events__confirm-yes" type="submit">Yes</button>
+                <a href="/admin/cakes" class="btn-flat events__confirm-no">No</a>
+            </form>
+        </div>
+    </div>
+</div>

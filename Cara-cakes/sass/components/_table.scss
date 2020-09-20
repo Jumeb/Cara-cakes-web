@@ -1,0 +1,45 @@
+.table {
+    width: 100%;
+    font-size: 1.5rem;
+    border-collapse: collapse;
+    &__info,
+    &__head {
+        border: .2rem solid transparent;
+        padding: .5rem 1rem;
+        &:not(:last-child) {
+            border-bottom: .2rem solid $primary;
+        }
+    }
+    &__info {
+        color: $light-grey;
+    }
+    &__dets {
+        padding: 1rem;
+        word-wrap: wrap;
+        overflow: hidden;
+        &:not(:last-child) {
+            border-right: .2rem solid rgba($black, .03);
+        }
+    }
+    &__det {
+        padding: .5rem;
+        height: 6.5rem;
+        width: 8.5rem;
+        margin: auto;
+        border-right: .2rem solid rgba($black, .03);
+    }
+    &__head {
+        color: $primary-dark !important;
+        font-size: 1.6rem;
+    }
+    &__functions {
+        font-size: 1.2rem;
+        width: 10%;
+    }
+    &__img {
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}

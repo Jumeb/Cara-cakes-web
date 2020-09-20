@@ -1,0 +1,79 @@
+<div class="panel__event">
+    <% if (success) { %>
+        <div class="flash">
+            <div class="flash__message flash__message-success">
+                <%= success %>
+            </div>
+        </div>
+        <% } %>
+            <% if (errorMessage) { %>
+                <div class="flash">
+                    <div class="flash__message flash__message-success">
+                        <%= errorMessage %>
+                    </div>
+                </div>
+                <% } %>
+                <% if (events.length >= 1 ) { %> 
+                    <div class="events__detail events__detail-events">
+                        <h1 class="events__detail-number"><%= noEvents %></h1>
+                        <% if (events.length == 1) { %> <h4>Event</h4> <% } else { %> <h4>Events</h4> <% } %>
+                    </div>
+                    <% for (let event of events) { %>
+                        <div class="events">
+                            <span class="events__delete"><a href="/user/delete-event/<%= event._id %>"
+            class="events__delete-btn">&times;</a></span>
+                            <div class="events__con">
+                                <img src="/<%= event.image %>" alt="<%= event.name %>" class="events__con-img">
+                                <span class="type txt-black"><%= event.name %></span>
+                            </div>
+                            <div class="events__info">
+                                <span class="events__purpose">Purpose : <%= event.purpose %></span>
+                                <span class="events__date">Date: <b class="dayName"></b>, <b
+                class="day"><%= event.day %></b><sup class="pos"></sup> <b
+                class="month"><%= event.month %></b>, <b
+                class="year"><%= event.year %></b></span>
+                                <span class="events__time-dDay">Time: <b class="hour" style="display: none;"><%= event.hour %></b><b class="pre-hour"></b> : <b
+                class="mins"><%= event.mins %></b> : <b><%= event.per %></b>
+    </div>
+    <div class="events__countdown">
+
+        <div class="events__days">
+            <span class="events__number"><b class="events__day"></b></span>
+                                <span class="events__words">days</span>
+                            </div>
+                            <div class="events__HMS">
+                                <span class="events__time"><b class="events__hours"></b> : <b class="events__mins"></b> : <b
+                    class="events__sec"></b></span>
+                                <span class="events__indicators">hours mins secs</span>
+                            </div>
+                        </div>
+                        <div class="events__cost">
+                            <span class="events__total">
+            Total :
+            <% if (event.cart.items.length < 0) { %> 0 frs
+            <% } else { %>
+            <% let total = 0  %>
+            <% event.cart.items.forEach(p => { %>
+            <div style="display: none;"> <%= (total +=  p.pastryId.price * p.quantity) %></div>
+            <% }) %>
+            <%= total %> frs
+            <% } %>
+        </span>
+                            <span class="events__complete-info">
+            <a href="/user/edit-event/<%= event._id %>?edit=true" class="btn-flat btn-inline">Edit</a>
+        </span>
+                            <span class="events__complete-info click">
+            <a href="/user/event-cart/<%= event._id %>" class="btn-flat btn-inline">Cart</a>
+        </span>
+                            <span class="events__complete-info">
+            <a href="/user/cakes/<%= event._id %>" class="btn-flat btn-inline">Shop</a>
+        </span>
+                        </div>
+</div>
+<% } %>
+                <% } else { %> 
+                    <h1 class="title-lil-1 txt-cnt">Please Create your events </h1>
+                    <% } %>
+
+
+</div>

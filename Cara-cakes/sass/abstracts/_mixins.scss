@@ -1,0 +1,63 @@
+@mixin clrfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    
+}
+
+//  Media Query Manager
+/*
+
+ 0 - 412px:     Small phone
+ 412 - 600px:     Phone
+
+ 600 - 900px:   Tablet portrait
+ 900 - 1200px:  Tablet landscape
+ [1200 - 1800px] is where our normal styles apply
+ 1800px +:   Big screens
+
+/*
+$breakpoint argument choices:
+- ph
+- tp
+- tl
+- bs
+1em - 16px
+
+ORDER: base + typography > general layout + grid > page layout > components
+*/
+
+
+
+@mixin respon($change) {
+    @if $change == sp {
+        @media only screen and (max-width: 25.75em) { @content };
+    }
+
+    @if $change == ph {
+        @media only screen and (max-width: 37.5em) { @content };
+    }
+
+    @if $change == tl {
+        @media only screen and (max-width: 75em) { @content };
+    }
+
+    @if $change == stl {
+        @media only screen and (max-width: 67.5em) { @content };
+    }
+
+    @if $change == tp {
+        @media (max-width: 56.25em) { @content };
+    }
+
+    @if $change == stp {
+        @media (max-width: 50em) { @content };
+    }
+
+    @if $change == bs {
+        @media (min-width: 112.5em) { @content };
+    }
+}

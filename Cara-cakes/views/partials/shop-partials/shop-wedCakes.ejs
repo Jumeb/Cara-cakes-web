@@ -1,0 +1,63 @@
+<div class="shop__contents">
+    <% if (pastries.length > 0) { %>
+        <div class="shop__view">
+            <% for (let pastry of pastries) { %>
+                <div class="shop__item txt-cnt">
+                    <h3 class="title-lil-2 pad-8">
+                        <%= pastry.name %>
+                    </h3>
+                    <div class="shop__info">
+                        <img src="/<%= pastry.image %>" alt="pastry" class="shop__img">
+                        <span class="shop__rating">
+                    <b class="fas fa-star"></b>
+                    <b class="fas fa-star"></b>
+                    <b class="fas fa-star"></b>
+                    <b class="fas fa-star"></b>
+                    <b class="fas fa-star"></b>
+                    <b class="fas fa-star"></b>
+                    <b class="shop__reviews">4.8</b>
+                </span>
+                        <span class="shop__details">
+                    <a href="/user/pastry-detail/<%= pastry._id %>" class="btn__func">Details</a>
+                </span>
+                        <span class="shop__price">
+                    <b class="shop__value">Price: <%= pastry.price %>frs</b>
+                </span>
+                    </div>
+                    <div class="shop__control  pad-8">
+                        <span class="shop__decrement shop__centered-dec shop__hide">
+                    <form action="/user/sub-from-event" method="POST">
+                        <button class="shop__button" type="submit">&minus;</button>
+                        <input type="hidden" name="pastryId" value="<%= pastry._id %>">
+                        <input type="hidden" name="eventId" value="<%= eventId %>">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    </form>
+                </span>
+                        <span class="shop__adder shop__add">
+                    <form action="/user/add-to-event" method="POST">
+                        <button class="btn__func" type="submit">Add to Event</button>
+                        <input type="hidden" name="pastryId" value="<%= pastry._id %>">
+                        <input type="hidden" name="eventId" value="<%= eventId %>">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    </form>
+                </span>
+                        <span class="shop__num shop__display shop__hide">1</span>
+                        <span class="shop__increment shop__centered-inc shop__hide">
+                    <form action="/user/add-to-event" method="POST">
+                        <button class="shop__button" type="submit">&plus;</button>
+                        <input type="hidden" name="pastryId" value="<%= pastry._id %>">
+                        <input type="hidden" name="eventId" value="<%= eventId %>">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    </form>
+                </span>
+                    </div>
+                </div>
+                <% } %>
+        </div>
+        <% } else { %>
+            <h1>No pastryding Cakes Available</h1>
+            <% } %>
+                <div class="shop__power txt-black">
+                    Copyrighted &copy;<a href="#" class="dev">JB Inc</a>
+                </div>
+</div>

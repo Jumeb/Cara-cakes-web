@@ -1,0 +1,77 @@
+<% if (errorMessage) { %>
+<div class="flash">
+    <div class="flash__message flash__message-danger">
+        <%= errorMessage %>
+    </div>
+</div>
+<% } %>
+
+<section class="sec-auth" id="login">
+    <div class="row">
+        <div class="login">
+            <div class="login__form-1">
+                <form action="/signup" class="form" method="POST" novalidate>
+                    <div class="form__group-2">
+                        <input 
+                        type="text" 
+                        class="form__input form__length-1" 
+                        name="name" id="Name" 
+                        placeholder="Name"
+                        value="<%= oldInput.name %>" required>
+                        <label for="Name" class="form__label">Name</label>
+                    </div>
+                    <div class="form__group-2">
+                        <input 
+                            class="<%= validationErrors.find(e => e.param === 'email') ? 'form__error form__input form__length-2' : 'form__input form__length-2' %>"
+                            type="email"
+                            name="email" 
+                            id="Email"
+                            placeholder="Email" 
+                            value="<%= oldInput.email %>" required>
+                        <label for="Email" class="form__label">Email</label>
+                    </div>
+                    <div class="form__group-2">
+                        <input
+                            class="<%= validationErrors.find(e => e.param === 'telNo') ? 'form__error form__input form__length-3' : 'form__input form__length-3' %>" 
+                            type="number"
+                            name="telNo" id="Tel"
+                            placeholder="Telephone No" 
+                            value="<%= oldInput.telNo %>" required>
+                        <label for="Tel" class="form__label">Telephone No</label>
+                    </div>
+                    <div class="form__group-2">
+                        <input 
+                            class="<%= validationErrors.find(e => e.param === 'password') ? 'form__error form__input form__length-4' : 'form__input form__length-4' %>"
+                            type="password"
+                            name="password" id="password"
+                            placeholder="Password" 
+                            value="<%= oldInput.password %>" required>
+                        <label for="password" class="form__label">Password</label>
+                        <p class="txt-red pAuth">Password length most be greater than 5</p>
+                    </div>
+                    <div class="form__group-2">
+                        <input 
+                            class="<%= validationErrors.find(e => e.param === 'confirmPassword') ? 'form__error form__input form__length-5' : 'form__input form__length-5' %>"
+                            type="password" 
+                            name="confirmPassword"
+                            id="conPassword"
+                            placeholder="Confirm password" 
+                            value="<%= oldInput.confirmPassword %>" required>
+                        <label for="con" class="form__label">Confirm password</label>
+                        <p class="txt-red pAuth">Password Mismatch</p>
+                    </div>
+                    <div class="form__group-2">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button type="submit" class="btn btn-deep--pink">Get started</button>
+                        <a href="/login" class="btn btn-deep--pink">Login</a>
+                    </div>
+                </form>
+            </div>
+            <div class="login__form-2 txt-cnt">
+                <h2 class="title-lil-1 txt-white-2">
+                    Enter the Gates of Flavours
+                </h2>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,330 @@
+.admin {
+    padding: 0 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: $panel;
+    overflow: hidden;
+
+
+    &__dashboard {
+        background-color: $dark-grey;
+        flex: 0 0 20%;
+
+        height: $panel;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 1rem 2rem;
+        overflow: hidden;
+        border-top-left-radius: .5rem;
+        border-bottom-left-radius: .5rem;
+
+    }
+
+
+    &__data {
+        background-image: linear-gradient(to right bottom, rgba($black, .4), rgba($black, .7)), url('../img/cups-2.jpg');
+        background-size: cover;
+        background-position: top;
+        flex: 0 0 80%;
+        height: $panel;
+        border-top-right-radius: .5rem;
+        border-bottom-right-radius: .5rem;
+        padding: 1rem .5rem;
+        position: relative;
+
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            width: 0 !important;
+        }
+
+    }
+
+    &__navigate {
+        font-size: 1.8rem;
+        font-weight: 100;
+        color: $light-grey-2;
+        cursor: pointer;
+        padding: .2rem .5rem;
+
+
+        &-to {
+            padding: .8rem .5rem;
+        }
+    }
+
+    &__options {
+        padding: .5rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 1;
+        visibility: visible;
+        margin: 0;
+        transition: visibility .5s ease-in-out,
+            height .5s ease-in-out,
+            margin .5s ease-in-out;
+
+        &--hidden {
+            opacity: 0;
+            visibility: hidden;
+            height: 0;
+            margin-top: -2rem;
+            margin-bottom: 1rem;
+            transition: visibility .5s ease-in-out,
+                height .5s ease-in-out,
+                margin .5s ease-in-out;
+
+        }
+    }
+
+    &__link {
+        text-decoration: none;
+        font-size: 1.4rem;
+        padding: .8rem .5rem;
+        color: $light-grey-1;
+    }
+
+    &__goto {
+        list-style: none;
+        font-size: 1.4rem;
+        padding: 1rem .8rem;
+        position: relative;
+
+        &::before,
+        &::after {
+            position: absolute;
+            content: "";
+            width: 0;
+            height: .3rem;
+            background-color: $primary;
+            bottom: .5rem;
+            transition: all .4s ease-in-out;
+        }
+
+        &::before {
+            right: .5rem;
+        }
+
+        &::after {
+            left: .5rem;
+        }
+
+        &:hover::before,
+        &:hover::after {
+            width: 50%;
+        }
+    }
+
+    &__table {
+        flex: 0 0 98%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        border-radius: .4rem;
+        padding: .5rem;
+        border: .2rem solid $primary;
+        background-color: rgba($black, .7);
+        height: 40rem;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            width: .5rem;
+            background-color: $light-grey-1;
+            border-radius: 2rem;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            width: .5rem;
+            background-color: rgba($primary, .8);
+            border-radius: 2rem;
+        }
+
+    }
+
+    &__form {
+        flex: 0 0 50%;
+        padding: 1rem;
+    }
+
+    &__box {
+        flex: 0 0 80%;
+
+        height: 92vh;
+        margin-top: 0;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+
+
+        &-pos {
+
+            width: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    }
+
+    &__left {
+        margin-right: auto;
+        // margin-bottom: 20rem;
+    }
+
+    &__center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    &__signin {
+
+        width: 60%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border: .2rem solid rgba($white, .8);
+
+        padding: 4rem 3rem;
+        background-color: rgba($black, .7);
+        border-radius: 1rem;
+
+        &-sheet {
+            position: relative;
+            width: 100%;
+
+
+
+            &:not(:last-child) {
+                margin-bottom: 3.3rem;
+            }
+        }
+
+    }
+
+    &__logo {
+        width: 30rem;
+        height: 17rem;
+    }
+
+    &__input {
+        background-color: rgba($white, .8);
+        outline: none;
+        border: none;
+        border-bottom: .4rem solid transparent;
+        font-size: 1.9rem;
+        padding: 1.8rem 1rem;
+        border-radius: 1rem;
+        color: $light-grey;
+        width: 100%;
+
+
+        &:focus {
+            border-bottom: .4rem solid $primary;
+
+            &:invalid {
+                border-bottom: .4rem solid $secondary-dark;
+            }
+        }
+    }
+
+    &__label {
+        position: absolute;
+        font-size: 1.6rem;
+        left: 1.2rem;
+        top: -2.8rem;
+        opacity: 1;
+        visibility: visible;
+
+        color: rgba($white, .8);
+
+        transition: all .4s ease-in-out;
+    }
+
+    &__input:placeholder-shown+&__label {
+        left: 1.2rem;
+        top: 1.5rem;
+        opacity: 0;
+        visibility: hidden;
+
+        transition: all .4s ease-in-out;
+    }
+
+    &__btn {
+
+        position: relative;
+        font-weight: bold;
+        z-index: 30;
+        padding: 1rem 3rem;
+        font-size: 1.7rem;
+        color: rgba($white, .8);
+        border: .2rem solid rgba($white, .8);
+        border-radius: 10rem;
+        overflow: hidden;
+        outline: none;
+        background-color: transparent;
+        transition: all .4s ease-in-out;
+
+        &:not(:last-child) {
+            margin-right: 2rem;
+        }
+
+        &:link,
+        &:visited {
+            text-decoration: none;
+        }
+
+        &::before,
+        &::after {
+            position: absolute;
+            z-index: -3;
+            content: "";
+            width: 100%;
+            height: .4rem;
+            background-color: rgba($white, .8);
+            transform: scaleX(0);
+            left: 0;
+            transition: transform .25s ease-in-out,
+                height .4s ease-in-out .25s;
+        }
+
+        &::before {
+            top: 0;
+        }
+
+        &::after {
+            bottom: 0;
+        }
+
+        &:hover {
+            color: rgba($black, .8);
+        }
+
+        &:hover::after,
+        &:hover::before {
+            transform: scaleX(1);
+            height: 50%;
+        }
+
+    }
+
+    &__verify {
+        text-transform: uppercase;
+        font-size: 1.5rem;
+        color: rgba($danger, .8);
+        font-weight: bold;
+    }
+}

@@ -1,0 +1,22 @@
+<div class="admin__box">
+    <h2 class="title-lil-1 txt-white admin__left">Welcome Admin</h2>
+    <div class="admin__box-pos">
+        <img src="../img/jbInc.png" alt="Powered by Jb Inc" class="admin__logo">
+        <% if (errorMessage) { %>
+            <div class="admin__verify"><%= errorMessage %></div>
+            <% } %>
+        <form action="/admin/signIn" class="admin__signin" method="POST">
+            <div class="admin__signin-sheet">
+                <input type="text" class="admin__input" id="user" name="user" placeholder="User Name" required>
+                <label for="user" class="admin__label">UserName</label>
+            </div>
+            <div class="admin__signin-sheet">
+                <input type="password" class="admin__input" id="password" name="password" placeholder="Password"
+                    required>
+                <label for="password" class="admin__label">Password</label>
+            </div>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button class="admin__btn" type="submit">Login</button>
+        </form>
+    </div>
+</div>

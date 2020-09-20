@@ -1,0 +1,31 @@
+<section class="sec-login" id="login">
+    <div class="row">
+        <div class="login">
+            <div class="login__form-1">
+                <form action="/login" class="form" method="POST">
+                    <div class="form__group">
+                        <input type="email" class="form__input form__length-3" name="email" id="Email" placeholder="Email" value="<%= oldInput.email %>" required>
+                        <label for="Email" class="form__label">Email</label>
+                    </div>
+                    <div class="form__group">
+                        <input type="password" class="form__input form__length-4" name="password" id="passWord" placeholder="Password" value="<%= oldInput.password %>" required>
+                        <label for="passWord" class="form__label">Password</label>
+                    </div>
+                    <div class="form__group">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button type="submit" class="btn btn-deep--pink">Login</button>
+                        <a href="/signup" class="btn btn-deep--pink">Sign-up</a>
+                    </div>
+                    <div class="form__group margin-top-small-ve">
+                        <a href="#" class="btn-3">Forgot password</a>
+                    </div>
+                </form>
+            </div>
+            <div class="login__form-2 txt-cnt">
+                <h2 class="title-lil-1 txt-white-2">
+                    Login to flavours
+                </h2>
+            </div>
+        </div>
+    </div>
+</section>

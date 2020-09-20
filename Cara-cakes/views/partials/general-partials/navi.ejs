@@ -1,0 +1,16 @@
+<div class="dynamic-nav">
+    <input type="checkbox" id="navi-toggle" class="navi__checkbox">
+    <label for="navi-toggle" class="navi__button">
+        <span class="navi__icon"></span>
+    </label>
+    <div class="navi__list">
+        <span class="navi__item navi__item--1"><a href="/" title="Home"
+                class="navi__link <%= path === '/' ? 'navi__active' : '' %> fas fa-home"></a></span>
+        <span class="navi__item navi__item--2"><a href="/about" title="About"
+                class="navi__link <%= path === '/about' ? 'navi__active' : '' %> fas fa-user-friends"></a></span>
+        <span class="navi__item navi__item--3"><a href="/gallery" title="Gallery"
+                class="navi__link <%= path === '/gallery' ? 'navi__active' : '' %> fas fa-photo-video"></a></span>
+        <span class="navi__item navi__item--4"><a href="/stories" title="Story"
+                class="navi__link <%= path === '/stories' ? 'navi__active' : '' %> fas fa-history"></a></span>
+    </div>
+</div>

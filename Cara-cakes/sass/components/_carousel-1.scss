@@ -1,0 +1,164 @@
+.carousel {
+    position: relative;
+    overflow: hidden;
+    height: 57rem;
+
+    &__frame {
+        position: absolute;
+        width: 70%;
+        height: 50rem;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 2rem;
+        opacity: 0;
+        visibility: hidden;
+        // box-shadow: 0 1rem 2rem rgba($black, .3);
+        transition: all 1s ease-in-out;
+        z-index: 1;
+
+        &-pic1 {
+            background-image: linear-gradient(to right, rgba($black, .5), rgba($black, .25), rgba($black, .5)), url(../img/bds-4.jpg);
+            background-size: cover;
+            background-position: top;
+        }
+
+        &-pic2 {
+            background-image: linear-gradient(to right, rgba($black, .5), rgba($black, .25), rgba($black, .5)), url(../img/cookies-3.jpg);
+            background-size: cover;
+            background-position: top;
+        }
+
+        &-pic3 {
+            background-image: linear-gradient(to right, rgba($black, .5), rgba($black, .25), rgba($black, .5)), url(../img/chris-3.jpg);
+            background-size: cover;
+            background-position: top;
+        }
+
+        &-pic4 {
+            background-image: linear-gradient(to right, rgba($black, .5), rgba($black, .25), rgba($black, .5)), url(../img/don-7.jpg);
+            background-size: cover;
+            background-position: top;
+        }
+
+        &-pic5 {
+            background-image: linear-gradient(to right, rgba($black, .5), rgba($black, .25), rgba($black, .5)), url(../img/pans-6.jpg);
+            background-size: cover;
+            background-position: top;
+        }
+
+        &-pic6 {
+            background-image: linear-gradient(to right, rgba($black, .5), rgba($black, .25), rgba($black, .5)), url(../img/cookies-9.jpg);
+            background-size: cover;
+            background-position: top;
+        }
+
+        &-pic7 {
+            background-image: linear-gradient(to right, rgba($black, .5), rgba($black, .25), rgba($black, .5)), url(../img/vals-13.jpg);
+            background-size: cover;
+            background-position: top;
+        }
+
+        &-pic8 {
+            background-image: linear-gradient(to right, rgba($black, .5), rgba($black, .25), rgba($black, .5)), url(../img/cups-7.jpg);
+            background-size: cover;
+            background-position: top;
+        }
+
+        &-pic9 {
+            background-image: linear-gradient(to right, rgba($black, .5), rgba($black, .25), rgba($black, .5)), url(../img/pans-4.jpg);
+            background-size: cover;
+            background-position: top;
+        }
+
+        &-pic10 {
+            background-image: linear-gradient(to right, rgba($black, .5), rgba($black, .25), rgba($black, .5)), url(../img/weds-6.jpg);
+            background-size: cover;
+            background-position: top;
+        }
+
+        &-pic11 {
+            background-image: linear-gradient(to right, rgba($black, .5), rgba($black, .25), rgba($black, .5)), url(../img/don-6.jpg);
+            background-size: cover;
+            background-position: top;
+        }
+
+        &-pic12 {
+            background-image: linear-gradient(to right, rgba($black, .5), rgba($black, .25), rgba($black, .5)), url(../img/vals-6.jpg);
+            background-size: cover;
+            background-position: top;
+        }
+    }
+    
+    
+    &__p {
+
+        &revious {
+            transform: translate(-65%, -47%) scale(.9);
+            z-index: 4;
+            opacity: 1;
+            visibility: visible;
+            box-shadow: 0 1rem 2rem rgba($black, .3);
+            transition: all 1s;
+
+            @include respon(tl) {
+                transform: translate(-70%, -47%) scale(.9);
+            }
+        }
+
+        &previous {
+            transform: translate(-80%, -44%) scale(.8);
+            z-index: 2;
+            opacity: 1;
+            visibility: visible;
+
+            @include respon(tl) {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+    }
+
+    &__n {
+
+        &ext {
+            transform: translate(-35%, -47%) scale(.9);
+            z-index: 4;
+            opacity: 1;
+            visibility: visible;
+            box-shadow: 0 1rem 2rem rgba($black, .3);
+
+            @include respon(tl) {
+                transform: translate(-30%, -47%) scale(.9);
+            }
+        }
+
+        &next {
+            transform: translate(-20%, -44%) scale(.8);
+            z-index: 2;
+            opacity: 1;
+            visibility: visible;
+
+            @include respon(tl) {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+    }
+
+    &__current {
+        transform: translate(-50%, -50%) scale(1);
+        z-index: 6;
+        opacity: 1;
+        visibility: visible;
+        box-shadow: 0 1rem 2rem rgba($black, .5);
+    }
+
+    &__left {
+        transform: translate(-90%, -50%) scale(.65);
+    }
+
+    &__right {
+        transform: translate(-10%, -50%) scale(.65);
+    }
+}

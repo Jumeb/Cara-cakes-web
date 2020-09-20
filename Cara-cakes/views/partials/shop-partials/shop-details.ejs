@@ -1,0 +1,39 @@
+<div class="shop__contents">
+        <div class="shop__view">
+            <div class="shop__item txt-cnt">
+                <h3 class="title-lil-2 pad-8"><%= pastry.name %></h3>
+                <div class="shop__info">
+                    <img src="<%= pastry.image %>" alt="<%= pastry.name %>" class="shop__img">
+                    <span class="shop__rating">
+                        <b class="fas fa-star"></b>
+                        <b class="fas fa-star"></b>
+                        <b class="fas fa-star"></b>
+                        <b class="fas fa-star"></b>
+                        <b class="fas fa-star"></b>
+                        <b class="fas fa-star"></b>
+                        <b class="shop__reviews">4.8</b>
+                    </span>
+                    <span class="shop__price">
+                        <b class="shop__value">Price: <%= pastry.price %>frs</b>
+                    </span>
+                </div>
+                <div class="shop__control pad-8">
+                    <span class="shop__decrement shop__centered-dec shop__hide"><b
+                            class="shop__button">&minus;</b></span>
+                    <span class="shop__adder shop__add"><b>Add to Event</b></span>
+                    <span class="shop__num shop__display shop__hide">1</span>
+                    <span class="shop__increment shop__centered-inc shop__hide"><b
+                            class="shop__button">&plus;</b></span>
+                </div>
+            </div>
+            <div class="shop__item txt-cnt">
+                <h3 class="title-lil-2 pad-8">Our: <%= pastry.name %></h3>
+                <p class="events__confirm-msg pad-4">
+                        <%= pastry.description %>
+                </p>
+            </div>
+        </div>
+        <div class="shop__power txt-black">
+            Copyrighted &copy;<a href="#" class="dev">JB Inc</a>
+        </div>
+    </div>

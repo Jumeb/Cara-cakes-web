@@ -1,0 +1,41 @@
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    color: $light-grey;
+
+    position: relative;
+
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: .8rem;
+        background-color: $light-grey-1;
+        border-radius: 2rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        width: .8rem;
+        background-color: rgba($primary, .8);
+        border-radius: 2rem;
+    }
+}
+
+.para {
+    font-size: $font-16;
+    margin-top: 1.2rem;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+
+    &:not(:last-child) {
+        margin-bottom: 6rem;
+    }
+
+    @include respon(ph) {
+        padding:0 3rem;
+    }
+
+    @include respon(sp) {
+        padding: 0 1.8rem;
+    }
+}

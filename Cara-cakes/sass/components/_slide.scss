@@ -1,0 +1,195 @@
+.slide {
+    width: 90%;
+    overflow: hidden;
+    margin: auto; 
+    height: 12rem;
+    position: relative;
+
+    &__frame {
+        width: 15%;
+        height: 12rem;
+        position: absolute;
+        z-index: 1;
+        // top: 0;
+        transition: all .4s;
+        @include respon(ph) {
+            width: 24%;
+        }
+    }
+
+    &__img {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        border-radius: .4rem;
+    }
+}
+
+
+
+.frame {
+    
+    &--1st {
+        z-index: 4;
+        left: 17%;
+
+        &-2nd {
+            z-index: 4;
+            left: 102%;
+        }
+    }
+
+    &--2nd {
+        z-index: 4;
+        left: 34%;
+
+        &-2nd {
+            z-index: 4;
+            left: 85%;
+        }
+    }
+
+    &--3rd {
+        z-index: 4;
+        left: 51%;
+
+        &-2nd {
+            z-index: 4;
+            left: 68%;
+        }
+    }
+
+    &--4th {
+        z-index: 4;
+        left: 68%;
+
+        &-2nd {
+            z-index: 4;
+            left: 51%;
+        }
+    }
+
+    &--5th {
+        z-index: 4;
+        left: 85%;
+
+        &-2nd {
+            z-index: 4;
+            left: 34%;
+        }
+    }
+
+    &--6th {
+        z-index: 4;
+        left: 102%;
+
+        &-2nd {
+            z-index: 4;
+            left: 17%;
+        }
+    }
+
+    &--previous {
+        z-index: 2;
+        left: 0;
+
+        &-2nd {
+            z-index: 2;
+            left: 119%;
+        }
+    }
+
+    &--next {
+        z-index: 2;
+        left: 119%;
+
+        &-2nd {
+            z-index: 2;
+            left: 0;
+        }
+    }
+
+    @include respon(ph) {
+        &--1st {
+            z-index: 4;
+            left: 25%;
+    
+            &-2nd {
+                z-index: 4;
+                left: 150%;
+            }
+        }
+    
+        &--2nd {
+            z-index: 4;
+            left: 50%;
+    
+            &-2nd {
+                z-index: 4;
+                left: 125%;
+            }
+        }
+    
+        &--3rd {
+            z-index: 4;
+            left: 75%;
+    
+            &-2nd {
+                z-index: 4;
+                left: 100%;
+            }
+        }
+    
+        &--4th {
+            z-index: 4;
+            left: 100%;
+    
+            &-2nd {
+                z-index: 4;
+                left: 75%;
+            }
+        }
+    
+        &--5th {
+            z-index: 4;
+            left: 125%;
+    
+            &-2nd {
+                z-index: 4;
+                left: 50%;
+            }
+        }
+    
+        &--6th {
+            z-index: 4;
+            left: 150%;
+    
+            &-2nd {
+                z-index: 4;
+                left: 25%;
+            }
+        }
+    
+        &--previous {
+            z-index: 2;
+            left: 0;
+    
+            &-2nd {
+                z-index: 2;
+                left: 119%;
+            }
+        }
+    
+        &--next {
+            z-index: 2;
+            left: 119%;
+    
+            &-2nd {
+                z-index: 2;
+                left: 0;
+            }
+        }
+
+    }
+}

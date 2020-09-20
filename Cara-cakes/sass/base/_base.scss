@@ -1,0 +1,41 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    //defines what 1 rem is
+    font-size: 62.5%; // 1 rem = 10px; 10/16 * 100 = 62.5%
+
+    @include respon(tl) {
+        font-size: 56.25%; // 1 rem = 9px; 9/16 * 100 = 56.25%
+    }
+
+    @include respon(tp) {
+        font-size: 50%; // 1 rem = 8px; 9/16 * 100 = 50%;
+    }
+
+    @include respon(ph) {
+        font-size: 43.75%; // 1rem = 7px; 7/16 * 100 = 43.75%;
+    }
+
+    @include respon(sp) {
+        font-size: 37.5%; // 1rem = 6px; 6/16 * 100 = 37.5%;
+    }
+
+    @include respon(bs) {
+        font-size: 75%; // 1 rem = 12px; 12/16 * 100 = 75%;
+    }
+}
+
+body {
+    box-sizing: border-box;
+}
+
+::selection {
+    background-color: $primary-dark;
+    color: $white;
+}

@@ -1,0 +1,78 @@
+<div class="panel__event">
+    <h1 class="title-lil-2">Event name:
+        <%= event.name %>
+    </h1>
+    <h1 class="title-lil-2">Event purpose:
+        <%= event.purpose %>
+    </h1>
+    <hr style="width: 90%; margin-bottom: 2rem;">
+    <% if (pastries.length > 0) { %>
+        <% if (success) { %>
+            <div class="flash">
+                <div class="flash__message flash__message-success">
+                    <%= success %>
+                </div>
+            </div>
+            <% } %>
+                <% let total = 0 %>
+                    <% pastries.forEach(p => { %>
+                        <div class="events">
+                            <div class="events__con">
+                                <img src="/<%= p.pastryId.image %>" alt="Event Concern" class="events__con-img">
+                            </div>
+                            <div class="events__info txt-cnt">
+                                <span class="events__purpose">Pastry name : <%= p.pastryId.name %></span>
+                                <span class="events__purpose">Quantity : <%= p.quantity %></span>
+                                <!-- <span class="events__purpose">Unit price: <%= p.pastryId.price %></span> -->
+                                <span class="events__purpose"> Total price : <%= p.quantity * p.pastryId.price %> frs</span>
+                            </div>
+                            <div class="events__countdown margin-auto">
+                                <div class="events__func">
+                                    <!-- <button class="btn__func space">Sub</button>
+                <button class="btn__func space">Add</button> -->
+                                    <form action="/user/cart-delete" method="post">
+                                        <input type="hidden" name="eventId" value="<%= event._id %>">
+                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                        <input type="hidden" name="pastryId" value="<%= p.pastryId._id %>">
+                                        <button class="btn__func space btn__func-delete">Delete</button>
+                                    </form>
+                                    <!-- <form action="/user/sub-from-event" method="POST">
+                    <button class="btn__func space" type="submit">Subtract</button>
+                    <input type="hidden" name="pastryId" value="<%= p.pastryId._id %>">
+                    <input type="hidden" name="eventId" value="<%= event._id%>">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                </form>
+                <form action="/user/add-to-event" method="POST">
+                    <button class="btn__func space" type="submit">Add</button>
+                    <input type="hidden" name="pastryId" value="<%= p.pastryId._id %>">
+                    <input type="hidden" name="eventId" value="<%= event._id %>">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                </form> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div style="display: none;">
+                            <%= total += p.quantity * p.pastryId.price %>
+                        </div>
+                        <% }) %>
+                            <hr style="width: 90%; margin-bottom: 2rem;">
+                            <span class="events__confirm-msg txt-primary">Total: <%= total %> FCFA</span>
+                            <div class="align-right">
+                                <form action="/user/make-order" method="POST">
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                    <input type="hidden" name="totalAmount" value="<%= total %>">
+                                    <button type="submit" class="btn-3 btn-deep--pink txt-white">Order</button>
+                                    <input type="hidden" name="eventId" value="<%= event._id %>">
+                                </form>
+                            </div>
+                            <% } else { %>
+                                <h1 class="title-lil-2">No pastries for this Event!</h1>
+                                <% if (success) { %>
+                                    <div class="flash">
+                                        <div class="flash__message flash__message-success">
+                                            <%= success %>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                        <% } %>
+</div>

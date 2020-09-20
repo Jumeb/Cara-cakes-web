@@ -1,0 +1,241 @@
+.margin- {
+
+    &top- {
+
+        &small-ve {
+            margin-top: -6rem;
+        }
+
+        &medium-ve {
+            margin-top: -8rem;
+        }
+
+        &small {
+            margin-top: 4rem;
+        }
+
+        &medium {
+            margin-top: 8rem;
+        }
+
+        &big {
+            margin-top: 10rem;
+        }
+
+        &huge {
+            margin-top: 13rem;
+        }
+    }
+
+    &bottom- {
+
+        &small {
+            margin-bottom: 4rem;
+
+            &-ve{
+                margin-bottom: -4rem;
+            }
+        }
+
+        &medium {
+            margin-bottom: 8rem;
+        }
+
+        &big {
+            margin-bottom: 10rem;
+        }
+
+        &huge {
+            margin-bottom: 13rem;
+        }
+    }
+}
+
+
+.txt-up {
+    text-transform: uppercase;
+}
+
+.txt-cnt {
+    text-align: center;
+}
+
+.txt-rt {
+    text-align: right;
+}
+
+.txt-lt {
+    text-align: left;
+}
+
+.txt-white {
+    color: $white !important;
+}
+.txt-black {
+    color: rgba($black, .8) !important;
+}
+
+.txt-primary {
+    color: $primary !important;
+}
+
+.txt-red {
+    color: $danger !important;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.txt-black-1 {
+    background-image: linear-gradient(to right, rgba($dark-grey, .8), rgba($dark-grey, .6));
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+
+}
+
+.txt-white-2 {
+    background-image: linear-gradient(to right, rgba($white, .8), rgba($white, .6)) !important;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+
+}
+
+.bg-white {
+    color: $black !important;
+    background-color: $white !important;
+}
+
+.back-home {
+    background-image: linear-gradient(to right, rgba($black, .3), rgba($black, .6)),url(../img/cups-3.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.back-gall {
+    background-image: linear-gradient(to right, rgba($black, .0), rgba($black, .1)),url(../img/don-4.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.back-signup {
+    background-image: linear-gradient(to right bottom, rgba($black, .2), rgba($primary, .5), rgba($primary-dark, .7)),url(../img/pans-6.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.back-page404 {
+    background-image: linear-gradient(to right, rgba($black, .5), rgba($black, .7)),url(../img/pans-3.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.back-abt {
+    background-image: linear-gradient(to right, rgba($black, .5), rgba($black, .8)),url(../img/cookies-3.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+.back-story {
+    background-image: linear-gradient(to right, rgba($black, .5), rgba($black, .8)),url(../img/cups-5.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.back-admin {
+    background-image: linear-gradient(to right, rgba($black, .5), rgba($black, .8)),url(../img/pans-11.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.back-careers {
+    background-image: linear-gradient(to right, rgba($black, .5), rgba($black, .8)),url(../img/pans-5.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.head-home {
+    background-image:linear-gradient(
+        to right bottom, 
+        rgba($primary-light, 0.5),
+        rgba($secondary-light, 0.5)),
+    url(../img/cups-7.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.head-story {
+    background-image:linear-gradient(
+        to right bottom, 
+        rgba($primary-light, 0.5),
+        rgba($secondary-light, 0.5)),
+    url(../img/cookies-8.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.head-story {
+    background-image:linear-gradient(
+        to right bottom, 
+        rgba($primary-light, 0.5),
+        rgba($secondary-light, 0.5)),
+    url(../img/cookies-10.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.head-gall {
+    background-image:linear-gradient(
+        to right bottom, 
+        rgba($primary-light, 0.5),
+        rgba($secondary-light, 0.5)),
+    url(../img/weds-2.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.head-abt {
+    background-image:linear-gradient(
+        to right bottom, 
+        rgba($primary-light, 0.5),
+        rgba($secondary-light, 0.5)),
+    url(../img/don-2.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.pad-8 {
+    padding: 1.5rem 0;
+}
+
+.pad-4 {
+    padding: .5rem 2rem
+}
+
+.margin-auto {
+    margin: auto;
+}
+
+.align-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: .6rem 2rem 0 1.4rem;
+}
+
+.space {
+    margin: .5rem;
+}
+
+.pAuth {
+    display: none;
+}

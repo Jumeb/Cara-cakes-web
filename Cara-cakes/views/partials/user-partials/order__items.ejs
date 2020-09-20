@@ -1,0 +1,39 @@
+<div class="panel__order">
+    <% if(order.length > 0 ) { %>
+        <div class="events__detail events__detail-orders ">
+            <h1 class="events__detail-number"><%= noOrders %></h1>
+            <% if (order.length == 1) { %> <h4>Order</h4> <% } else { %> <h4>Orders</h4> <% } %>
+        </div>
+        <% order.forEach(order => { %>
+            <div class="events__order">
+                <h2 class="events__name">
+                    <%= order.event.name %>
+                </h2>
+                <h3>
+                    <%= order.event.purpose %>
+                </h3>
+                <% let total = 0 %>
+                    <div style="margin: auto;">
+                        <% order.pastries.forEach(p => { %>
+                            <p class="events__confirm-msg">
+                                <%= p.pastry.name %>:
+                                    <%= p.quantity %>
+                            </p>
+                            <div style="display: none;">
+                                <%= total += p.quantity * p.pastry.price %>
+                            </div>
+                            <% }); %>
+                    </div>
+                    <div class="events__budget">
+                        total:
+                        <%= total %> frs
+                    </div>
+                    <div class="align-right">
+                        <a href="/user/orders/<%= order._id %>" class="btn__func">Details</a>
+                    </div>
+            </div>
+            <% }); %>
+                <% } else { %>
+                    <h1 class="title-lil-1 txt-cnt">No orders yet</h1>
+                    <% } %>
+</div>

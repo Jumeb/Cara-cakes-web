@@ -1,0 +1,21 @@
+<div class="shop__item txt-cnt margin-auto">
+    <h3 class="title-lil-2 pad-8">
+        <%= pastry.name %>
+    </h3>
+    <div class="shop__info">
+        <img src="/<%= pastry.image %>" alt="<%= pastry.name %>" class="shop__img">
+        <span class="shop__price">
+            <b class="shop__value">Price: <%= pastry.price %>frs</b>
+        </span>
+    </div>
+    <div class="shop__control pad-8">
+        <a href="/admin/edit-pastry/<%=pastry._id %>?edit=true" class="btn__func">Update</a>
+        <a href="/admin/delete-pastry/<%=pastry._id %>" class="btn__func btn__func-delete">Delete</a>
+    </div>
+</div>
+<div class="shop__item txt-cnt margin-auto">
+    <h3 class="title-lil-2 pad-8">Description</h3>
+    <p class="events__confirm-msg">
+        <%= pastry.description %>
+    </p>
+</div>

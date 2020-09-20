@@ -1,0 +1,122 @@
+.info {
+    width: 100%;
+    box-shadow: 0 1rem 3rem rgba($black, .5);
+    // height: ;
+    padding: 1rem .9rem;
+    -moz-hyphens: auto;
+    border-radius: 4px;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    @include clrfix;
+
+    @include respon(tl) {
+        height: 40rem;
+    }
+
+    @include respon(stl) {
+        padding: .8rem .7rem;
+        height: 47rem;
+    }
+
+    @include respon(tp) {
+        height: 35rem;
+    }
+
+    @include respon(ph) {
+        width: 75%;
+    }
+
+    @include respon(ph) {
+        height: 40rem;
+    }
+
+    & .para abbr {
+        text-decoration: none;
+    }
+
+    &__pic {
+        margin: -5rem 0;
+        padding: 1rem 0;
+        position: relative;
+
+        &--round {
+            width: 8rem;
+            height: 8rem;
+            -webkit-clip-path: circle(50% at 50% 50%);
+            clip-path: circle(50% at 50% 50%);
+
+        }
+    }
+
+    &__img {
+        // position: absolute;
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+        filter: brightness(130%);
+    }
+
+    &__name {
+        width: 50%;
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: $black;
+        opacity: 0;
+        position: absolute;
+        transform: translateY(-250%);
+        transition: all .4s;
+
+        @include respon(stl) {
+            font-size: 1.4rem;
+            margin-left: 1rem;
+        }
+
+        @media only screen and (max-width: 56.25em),
+            only screen and (hover: none) {
+            transform: translate(80%, -190%);
+            opacity: 1;
+        }
+
+        @include respon(ph) {
+            font-size: 1.8rem;
+        }
+
+    }
+
+    &:hover &__name {
+        transform: translateY(-250%) translateX(90%);
+        opacity: 1;
+        @include respon(tl) {
+            transform: translate(80%, -190%);
+        }
+    }
+}
+
+.flash {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+
+    &__message {
+        padding: 1.2rem 1.5rem;
+        flex: 0 0 50%;
+        text-align: center;
+        font-size: 1.8rem;
+        border-radius: .4rem;
+
+        &-success {
+            border: .2rem $green solid;
+            background-color: rgba($green, .4);
+            color: $green;
+        }
+
+        &-danger {
+            border: .2rem #eb1212 solid;
+            background-color: rgba(#eb1212, .4);
+            color: #b60707;
+        }
+        
+    }
+}

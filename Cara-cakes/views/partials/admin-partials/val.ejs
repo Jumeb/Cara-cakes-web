@@ -1,0 +1,59 @@
+<div class="admin__data">
+    <% if (pastries.length > 0) { %>
+        <div style="width: 100%;" class="txt-cnt">
+            <h2 class="title-lil-1 txt-white">Valentine Mysteries</h2>
+        </div>
+        <% if (success) { %>
+            <div class="flash__message flash__message-success">
+                <%= success %>
+            </div>
+            <% } %>
+                <div class="admin__table">
+                    <table class="table">
+                        <tr class="table__head">
+                            <td class="table__dets">Image</td>
+                            <td class="table__dets">Name</td>
+                            <td class="table__dets">Price</td>
+                            <td class="table__dets">Description</td>
+                            <td class="table__dets"></td>
+                            <td class="table__dets"></td>
+                            <td class="table__dets"></td>
+                        </tr>
+                        <% for (let pastry of pastries) { %>
+                            <tr class="table__info table__info-data">
+                                <td class="table__det"><img class="table__img" src="/<%= pastry.image %>" alt="<%= pastry.name %>"></td>
+                                <td class="table__dets">
+                                    <%= pastry.name %>
+                                </td>
+                                <td class="table__dets">
+                                    <%= pastry.price %>
+                                </td>
+                                <td class="table__dets">
+                                    <%= pastry.description %>
+                                </td>
+                                <td class="table__dets table__functions"><a href="/admin/pastry/<%= pastry._id %>" class="btn__func">Details</a></td>
+                                <td class="table__dets table__functions"><a href="/admin/edit-pastry/<%= pastry._id %>?edit=true" class="btn__func">Update</a></td>
+                                <td class="table__dets table__functions">
+                                    <a href="/admin/delete-pastry/<%= pastry._id %>" class="btn__func btn__func-delete">Delete</a>
+                                </td>
+                            </tr>
+                            <% } %>
+                    </table>
+                </div>
+                <div style="width:100%;" class="txt-rt">
+                    <a href="/admin/add-vals" class="btn-3 btn-deep--pink">Add</a>
+                </div>
+                <% } else { %>
+                    <div style="width:100%;" class="txt-cnt">
+                        <h1 class="title-lil-1 txt-white">No Valentine gifts yets!</h1>
+                    </div>
+                    <% if (success) { %>
+                        <div class="flash__message flash__message-success">
+                            <%= success %>
+                        </div>
+                        <% } %>
+                            <div style="width:100%;" class="txt-cnt">
+                                <a href="/admin/add-vals" class="btn-3 btn-deep--pink">Add</a>
+                            </div>
+                            <% } %>
+</div>

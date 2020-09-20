@@ -1,0 +1,36 @@
+<div class="admin__data">
+    <% if (path === '/admin/general') { %>
+    <h2 class="title-lil-1">
+        <% if (success) { %>
+        <div class="flash" style="margin:2rem 20rem"><%= success %></div>
+        <% } %></h2>
+    <br>
+    <%- include('admin-general.ejs') %>
+    <% } else if (path === '/admin/orders') { %>
+    <%- include('admin-table.ejs') %>
+    <% } else if (path === '/admin/client-order') { %>
+    <%- include('admin-user-info.ejs') %>
+    <% } else if (path === '/admin/view-info') { %>
+    <%- include('admin-user-info.ejs') %>
+    <% } else if (path === '/admin/user-orders') { %>
+    <%- include('admin-user-orders.ejs') %>
+    <% } else if (path === '/admin/pastry-detail') { %>
+    <%- include('admin-product-info.ejs') %>
+    <% } else if (path === '/admin/add-bds') { %>
+    <%- include('admin-updateCake.ejs') %>
+    <% } else if (path === '/admin/add-weds') { %>
+    <%- include('admin-updateWedCake.ejs') %>
+    <% } else if (path === '/admin/add-dons') { %>
+    <%- include('admin-updateDon.ejs') %>
+    <% } else if (path === '/admin/add-cookies') { %>
+    <%- include('admin-updateCoki.ejs') %>
+    <% } else if (path === '/admin/add-pans') { %>
+    <%- include('admin-updatePan.ejs') %>
+    <% } else if (path === '/admin/add-vals') { %>
+    <%- include('admin-updateVal.ejs') %>
+    <% } else if (path === '/admin/add-cups') { %>
+    <%- include('admin-updateCup.ejs') %>
+    <% } else { %>
+    <%- include('admin-updatePastry.ejs') %>
+    <% } %>
+</div>

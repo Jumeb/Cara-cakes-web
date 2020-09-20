@@ -1,0 +1,429 @@
+.events {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border-radius: .8rem;
+    margin-bottom: 4rem;
+    position: relative;
+    padding: 2rem .6rem;
+    background-color: rgba($white, .8);
+    box-shadow: 0 .5rem 1rem rgba($black, .6);
+
+    &__client {
+        background-color: transparent;
+        box-shadow: 0 .5rem 1rem transparent;
+        padding: .2rem;
+    }
+
+    &__dets {
+        flex: 0 0 40%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        &-img {
+            height: 12rem;
+            width: 18rem;
+            background-size: cover;
+            background-position: center;
+            border-radius: .4rem;
+            margin-bottom: 1rem;
+
+            @include respon(ph) {
+                height: 12.5rem;
+                width: 18.5rem;
+            }
+        }
+
+    }
+
+    &__con {
+        flex: 0 0 20%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+
+
+        &-img {
+            height: 8rem;
+            width: 8rem;
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+
+            @include respon(ph) {
+                height: 8.5rem;
+                width: 8.5rem;
+            }
+        }
+
+        @include respon(ph) {
+            flex-basis: 27%;
+        }
+    }
+
+    &__info {
+        flex: 0 0 60%;
+        align-self: stretch;
+        font-size: 1.7rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 3rem 1rem;
+        border-left: .3rem solid $primary;
+        border-right: .3rem solid $primary;
+        // align-items: center;
+
+        &-2 {
+            border-right: .3rem solid transparent;
+        }
+        &-3 {
+            border-left: .3rem solid transparent;
+            padding: 1rem;
+        }
+
+        @include respon(ph) {
+            flex-basis: 70%;
+            border: .3rem solid $white;
+        }
+    }
+
+    &__purpose {
+        word-spacing: .4rem;
+
+        @include respon(stp) {
+            word-spacing: .3rem;
+        }
+
+        @include respon(ph) {
+            word-spacing: 0rem;
+        }
+    }
+
+    &__date {
+        font-size: 1.4rem;
+    }
+
+    &__countdown {
+        flex: 0 0 20%;
+        align-self: stretch;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include respon(ph) {
+            flex-basis: 70%;
+            border: .3rem solid $white;
+            flex-direction: row;
+            justify-content: space-around;
+
+        }
+    }
+
+    &__days {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+
+        @include respon(ph) {
+            margin-left: auto;
+            margin-right: 4rem;
+        }
+    }
+
+    &__func {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+
+        @include respon(ph) {
+            flex-direction: row;
+        }
+
+        @include respon(ph) {
+            margin-left: auto;
+            margin-right: 4rem;
+        }
+    }
+
+    &__HMS {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    &__number {
+        font-size: 2rem;
+
+    }
+
+    &__words {
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: .4rem;
+    }
+
+    &__time {
+        font-size: 1.6rem;
+        word-spacing: .6rem;
+
+        &-dDay {
+            font-size: 1.2rem;
+            margin-top: .5rem;
+            margin-bottom: -1rem;
+        }
+    }
+
+    &__indicators {
+        word-spacing: .8rem;
+        text-transform: uppercase;
+        font-size: 1rem;
+    }
+
+    &__cost {
+        flex: 0 0 100%;
+        margin-top: .6rem;
+        padding: .1rem .8rem;
+        font-size: 1.3rem;
+
+        display: flex;
+        align-items: center;
+        // border: 2px solid blue;
+    }
+
+    &__total {
+        margin-right: auto;
+        padding: 1rem .1rem 1rem .1rem;
+        flex: 0 0 19.8%;
+        font-size: 1.4rem;
+        text-align: center;
+        align-self: stretch;
+        border-right: .3rem solid $primary;
+
+        @include respon(ph) {
+            flex-basis: 40%;
+            border: .3rem solid $white;
+        }
+    }
+
+    &__complete-info {
+        align-self: stretch;
+        padding: 1rem 0rem;
+        text-align: center;
+        font-size: 1.4rem;
+        flex: 0 0 9.7%;
+
+
+
+        &:not(:last-child) {
+            border-right: .3rem solid $primary;
+
+            @include respon(ph) {
+                border: .3rem solid $white;
+            }
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        @include respon(ph) {
+            border: .3rem solid $white;
+            flex-basis: 12%;
+        }
+
+    }
+
+    &__view {
+        flex: 0 0 100%;
+
+        margin-top: 0;
+        visibility: visible;
+        opacity: 1;
+        transition: all .5s ease;
+
+        &-display {
+            margin-top: -10rem;
+            margin-bottom: -10rem;
+            visibility: hidden;
+            opacity: 0;
+            transition: all .5s ease;
+        }
+
+        &-list {
+            flex: 0 0 100%;
+
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: center;
+            height: 10rem;
+            margin: auto;
+            overflow: hidden;
+            padding: .6rem 1.1rem;
+
+        }
+
+        &-item {
+            flex: 0 0 20%;
+
+            font-size: 1.3rem;
+            list-style: none;
+            padding: .5rem .8rem;
+            margin: .5rem 2rem;
+            border-bottom: .3rem solid $primary;
+        }
+    }
+
+    &__delete {
+        flex: 0 0 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &-btn {
+            margin-left: auto;
+            margin-right: 1rem;
+            margin-top: -1rem;
+            font-size: 1.7rem;
+            border: .2rem solid $danger;
+            border-radius: 50%;
+            width: 3.5rem;
+            height: 3.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: $danger;
+            transition: all .4s ease-in-out;
+
+            &:link,
+            &:visited {
+                text-decoration: none;
+            }
+
+            &:hover {
+                color: $white;
+                background-color: rgba($danger, .8);
+            }
+        }
+    }
+
+
+    &__confirm {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 100%;
+        width: 100%;
+        transform: translate(-50%, -50%);
+        background-image: linear-gradient(to right bottom, rgba($primary, 1), rgba($secondary-dark, 1));
+        transition: all .4s ease-in-out;
+
+        &:target {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        &-box {
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 1rem 2rem;
+            background-color: $white;
+            border: .2rem solid $primary;
+            border-radius: .4rem;
+            width: 38rem;
+        }
+
+        &-msg {
+            font-size: 1.7rem;
+        }
+
+        &-choice {
+            margin-top: 1rem;
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        &-yes {
+            margin-right: 5rem;
+        }
+    }
+
+    &__order {
+        flex: 0 0 30%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        flex-direction: column;
+        padding: .8rem;
+        margin-bottom: 3rem;
+        height: 30rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        box-shadow: 0 1rem 2rem rgba($black, .3);
+        border-radius: 1rem;
+        overflow-y: auto;
+
+
+        &::-webkit-scrollbar {
+            width: 0 !important;
+        }
+    }
+
+    &__budget {
+        text-transform: uppercase;
+        margin-top: auto;
+        font-size: 1.2rem;
+    }
+
+    &__detail {
+        width: 7rem;
+        height: 7rem;
+        border-radius: 50%;
+        position: fixed;
+        z-index: 50;
+        background-color: $primary;
+        box-shadow: 0 .5rem 1rem rgba($black, .6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: $light-grey-1;
+        
+        &-events {
+            margin-left: -6rem;
+        }
+
+        &-orders {
+            margin-left: -90rem;
+            margin-top: 1rem;
+        }
+        // text-align: center;
+
+        &-number {
+            font-size: 2rem;
+            margin-bottom: -.8rem;
+        }
+    }
+
+
+}

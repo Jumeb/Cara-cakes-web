@@ -1,0 +1,45 @@
+<div class="panel__event2">
+    <div class="events events__client txt-white">
+        <div class="events__dets">
+            <h4 class="title-lil-2">Client's name: <%= order.user.name %></h4>
+            <h4 class="title-lil-2">Event's location: <%= order.event.location %></h4>
+        </div>
+        <div class="events__info events__info-2 events__info-3 txt-cnt">
+            <h4 class="events__confirm-msg">Event for: <%= order.event.name %></h4>
+            <h4 class="events__confirm-msg">Message on cake: <%= order.event.purpose %></h4>
+            <h4 class="events__confirm-msg">Event date: <%= order.event.day %> <%= order.event.month %> <%= order.event.year %>
+            </h4>
+            <h4 class="events__confirm-msg">Event time: <%= order.event.hour %>: <%= order.event.min %> <%= order.event.per %>
+            </h4>
+        </div>
+    </div>
+
+    <hr style="width: 90%; margin: auto; margin-bottom: 2rem;">
+    <% if (order.pastries.length > 0) { %>
+    <% let total = 0 %>
+    <% order.pastries.forEach(p => { %>
+    <div class="events">
+        <div class="events__dets">
+            <img src="<%= p.pastry.image %>" alt="Event Concern" class="events__dets-img">
+        </div>
+        <div class="events__info events__info-2 txt-cnt">
+            <span class="events__purpose">Pastry name : <%= p.pastry.name %></span>
+            <span class="events__purpose">Quantity : <%= p.quantity %></span>
+            <span class="events__purpose"> Total price : <%= p.quantity * p.pastry.price %> frs</span>
+        </div>
+    </div>
+    <% }) %>
+    <hr style="width: 90%; margin: auto; margin-bottom: 2rem; ">
+    <span class="events__confirm-msg txt-white">Total: <%= order.event.totalAmount %> FCFA</span>
+    <div class="align-right">
+        <a href="/admin/orders" class="btn-3 btn-deep--pink txt-white">Orders</a>
+    </div>
+    <% } else { %>
+    <h1 class="title-lil-2">No pastries for this Event!</h1>
+    <% if (success) { %>
+    <div class="flash">
+        <div class="flash__message flash__message-success"><%= success %></div>
+    </div>
+    <% } %>
+    <% } %>
+</div>

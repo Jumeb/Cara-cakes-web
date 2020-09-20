@@ -1,0 +1,50 @@
+{
+  "name": "cara_cakes",
+  "version": "1.0.0",
+  "description": "Online cake orders",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "watch:sass": "node-sass sass/main.scss public/css/style.css -w",
+    "watch:gall": "node-sass sass/gall.scss public/css/gall.css -w",
+    "watch:user": "node-sass sass/user.scss public/css/user.css -w",
+    "watch:shop": "node-sass sass/shop.scss public/css/shop.css -w",
+    "start-css": "npm-run-all --parallel watch:sass watch:gall watch:user watch:shop",
+    "compile:style": "node-sass sass/main.scss public/css/style.comp.css",
+    "compile:gall": "node-sass sass/gall.scss public/css/gall.comp.css",
+    "compile:user": "node-sass sass/user.scss public/css/user.comp.css",
+    "compile:shop": "node-sass sass/shop.scss public/css/shop.comp.css",
+    "concat:css": "concat -o public/css/style.concat.css public/css/style.comp.css public/css/gall.comp.css public/css/user.comp.css public/css/shop.comp.css",
+    "prefix:css": "postcss --use autoprefixer -b \"last 10 versions\" public/css/style.concat.css -o public/css/general.css",
+    "compress:css": "node-sass public/css/general.css -o public/css --output-style compressed",
+    "build:css": "npm-run-all compile:style compile:gall compile:user compile:shop concat:css prefix:css compress:css"
+  },
+  "author": "Just Brilliant Inc",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^9.6.1",
+    "concat": "^1.0.3",
+    "node-sass": "^4.13.1",
+    "nodemon": "^2.0.2",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^7.1.0"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "connect-mongodb-session": "^2.2.0",
+    "csurf": "^1.10.0",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "express-validator": "^6.4.0",
+    "font-awesome": "^4.7.0",
+    "mongodb": "^3.3.3",
+    "mongoose": "^5.7.6",
+    "multer": "^1.4.2",
+    "nodemailer": "^6.3.1",
+    "nodemailer-sendgrid-transport": "^0.2.0",
+    "pdfkit": "^0.11.0"
+  }
+}

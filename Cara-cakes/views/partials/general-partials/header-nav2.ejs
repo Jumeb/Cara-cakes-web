@@ -1,0 +1,11 @@
+<div class="container container__show">
+    <img src="/img/caracakes2.png" alt="CaraCakes" class="container__logo">
+    <nav class="container__nav">
+        <ul class="container__nav--list">
+            <li class="container__nav--item home"><a href="/" class="container__nav--link">Home</a></li>
+            <li class="container__nav--item <%= path === '/login' ? 'container__nav--active' : '' %>"><a href="/login" class="container__nav--link">Login</a></li>
+            <li class="container__nav--item <%= path === '/signup' ? 'container__nav--active' : '' %>"><a href="/signup" class="container__nav--link">Signup</a></li>
+            <li class="container__nav--item"><a href="/admin" class="container__nav--link">Admin index</a></li>
+        </ul>
+    </nav>
+</div>

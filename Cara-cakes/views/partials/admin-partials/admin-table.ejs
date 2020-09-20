@@ -1,0 +1,44 @@
+<% if (orders.length > 0) { %>
+
+    <div class="admin__table">
+        <table class="table">
+            <tr class="table__head">
+                <td class="table__dets">Client Image</td>
+                <td class="table__dets">Name of Client</td>
+                <td class="table__dets">Drop site</td>
+                <td class="table__dets">Date</td>
+                <td class="table__dets">Time</td>
+                <td class="table__dets">Amount</td>
+                <td class="table__dets"></td>
+                <td class="table__dets"></td>
+            </tr>
+            <% for (let order of orders) { %>
+                <tr class="table__info">
+                    <td class="table__dets"><img src="....." alt="Client image"></td>
+                    <td class="table__dets">
+                        <%= order.user.name %>
+                    </td>
+                    <td class="table__dets">
+                        <%= order.event.location %>
+                    </td>
+                    <td class="table__dets">
+                        <%= order.event.day %>
+                            <%= order.event.month %>
+                                <%= order.event.year %>
+                    </td>
+                    <td class="table__dets">
+                        <%= order.event.hour %>:
+                            <%= order.event.min %>
+                                <%= order.event.per %>
+                    </td>
+                    <td class="table__dets">
+                        <%= order.event.totalAmount %> FCFA</td>
+                    <td class="table__dets table__functions"><a href="/admin/orders/<%= order._id %>" class="btn__func">View info</a></td>
+                    <td class="table__dets table__functions">Suspend</td>
+                </tr>
+                <% } %>
+        </table>
+    </div>
+    <% } else { %>
+        <h2>No Orders yet</h2>
+        <% } %>
