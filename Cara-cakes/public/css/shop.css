@@ -69,12 +69,41 @@ ORDER: base + typography > general layout + grid > page layout > components
     height: 100%;
     background-position: center;
     background-size: cover; }
+  .shop__card {
+    perspective: 250rem;
+    -moz-perspective: 250rem;
+    flex: 0 0 29%;
+    height: 42rem;
+    overflow: hidden;
+    position: relative;
+    margin: auto; }
+    .shop__card-checkbox {
+      display: none; }
+    .shop__card-view {
+      height: 38rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      backface-visibility: hidden;
+      overflow: hidden;
+      border-radius: 4px;
+      margin-top: 2rem;
+      transition: all 0.85s cubic-bezier(1, 0, 0, 1); }
+      .shop__card-view--front {
+        background-color: #fff;
+        overflow: hidden;
+        z-index: 1; }
+      .shop__card-view--back {
+        transform: rotateY(180deg);
+        background-color: red; }
   .shop__item {
     background-color: #fff;
     align-self: flex-start;
     overflow: hidden;
     height: auto;
     flex: 0 0 29%;
+    backface-visibility: hidden;
     margin-top: 1rem;
     margin-bottom: 3rem;
     border-radius: 1rem;
@@ -207,6 +236,22 @@ ORDER: base + typography > general layout + grid > page layout > components
     font-size: 1.4rem;
     margin-right: .6rem;
     color: #c71585; }
+
+.shop__card-checkbox:checked ~ .shop__card-view--front {
+  transform: rotateY(-180deg);
+  z-index: -1;
+  left: -.007rem; }
+  @media only screen and (max-width: 56.25rem), only screen and (hover: none) {
+    .shop__card-checkbox:checked ~ .shop__card-view--front {
+      transform: none;
+      z-index: 3;
+      left: 0; } }
+
+.shop__card-checkbox:checked ~ .shop__card-view--back {
+  transform: rotateY(0); }
+
+.shop__card-checkbox:checked ~ .shop__details {
+  border: 2px solid red; }
 
 .nav {
   padding: 1rem 2rem;

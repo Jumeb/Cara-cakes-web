@@ -518,10 +518,11 @@ body {
   perspective: 250rem;
   -moz-perspective: 250rem;
   width: 90%;
-  height: 52rem;
+  height: 54rem;
   overflow: hidden;
   position: relative;
-  margin: auto; }
+  margin: auto;
+  border: 2px solid red; }
   .card__view {
     height: 50rem;
     position: absolute;
@@ -531,13 +532,14 @@ body {
     backface-visibility: hidden;
     overflow: hidden;
     border-radius: 4px;
-    transition: all .9s ease; }
+    margin-top: 2rem;
+    transition: all .95s ease; }
     .card__view--front {
       background-color: #fff;
       overflow: hidden;
       z-index: 1; }
     .card__view--back {
-      transform: rotateX(180deg) rotateY(180deg); }
+      transform: rotateY(180deg); }
       .card__view--back-1 {
         background-image: linear-gradient(to right bottom, #ff1493, #c71585); }
       .card__view--back-2 {
@@ -694,7 +696,7 @@ body {
           background-clip: text;
           color: transparent; } }
   .card:hover .card__view--front {
-    transform: rotateX(-180deg) rotateY(180deg);
+    transform: rotateY(-180deg);
     z-index: -1;
     left: -.007rem; }
     @media only screen and (max-width: 56.25rem), only screen and (hover: none) {
@@ -703,7 +705,7 @@ body {
         z-index: 3;
         left: 0; } }
   .card:hover .card__view--back {
-    transform: rotateX(0) rotateY(0); }
+    transform: rotateY(0); }
 
 .contact {
   background-color: rgba(255, 255, 255, 0.8);

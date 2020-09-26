@@ -2,10 +2,11 @@
     perspective: 250rem;
     -moz-perspective: 250rem;
     width: 90%;
-    height: 52rem;
+    height: 54rem;
     overflow: hidden;
     position: relative;
     margin: auto;
+    border: 2px solid red;
     
     &__view {
         height: 50rem;        
@@ -16,7 +17,8 @@
         backface-visibility: hidden;
         overflow: hidden;
         border-radius: 4px;
-        transition: all .9s ease;
+        margin-top: 2rem;
+        transition: all .95s ease;
 
 
 
@@ -27,7 +29,7 @@
         }
 
         &--back {
-            transform: rotateX(180deg) rotateY(180deg);
+            transform: rotateY(180deg);
 
             &-1 {
                 background-image: linear-gradient(to right bottom, $primary, $primary-dark);
@@ -270,7 +272,7 @@
     }
 
     &:hover &__view--front {
-        transform: rotateX(-180deg) rotateY(180deg);
+        transform: rotateY(-180deg);
         z-index: -1;
         left: -.007rem;
 
@@ -283,6 +285,6 @@
     }
 
     &:hover &__view--back {
-        transform: rotateX(0) rotateY(0);
+        transform: rotateY(0);
     }
 }

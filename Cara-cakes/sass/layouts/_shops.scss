@@ -72,16 +72,75 @@
 
     }
 
+    &__card {
+
+        perspective: 250rem;
+        -moz-perspective: 250rem;
+        flex: 0 0 29%;
+        height: 42rem;
+        overflow: hidden;
+        position: relative;
+        margin: auto;
+
+        &-checkbox {
+            display: none;
+        }
+
+        &-view {
+            height: 38rem;        
+            position: absolute;
+            top:0;
+            left: 0;
+            width: 100%;
+            backface-visibility: hidden;
+            overflow: hidden;
+            border-radius: 4px;
+            margin-top: 2rem;
+            transition: all .85s cubic-bezier(1,0,0,1) ;
+
+            &--front {
+                background-color: $white;
+                overflow: hidden;
+                z-index: 1;
+            }
+
+            &--back {
+                transform: rotateY(180deg);
+                background-color: red;
+            }
+        }
+
+        // &:hover &-view--front {
+        //     transform: rotateY(-180deg);
+        //     z-index: -1;
+        //     left: -.007rem;
+    
+        //     @media only screen and (max-width: 56.25rem),
+        //         only screen and (hover:none) {
+        //         transform: none;
+        //         z-index: 3;
+        //         left: 0;
+        //     }
+        // }
+    
+        // &:hover &-view--back {
+        //     transform: rotateY(0);
+        // }
+    }
+   
+
     &__item {
         background-color: $white;
         align-self: flex-start;
         overflow: hidden;
         height: auto;
         flex: 0 0 29%;
+        backface-visibility: hidden;
         margin-top: 1rem;
         margin-bottom: 3rem;
         border-radius: 1rem;
         box-shadow: 0 .5rem 1rem rgba($black, .4);
+
         @include respon(tp) {
             flex-basis: 38%
         }
@@ -263,4 +322,42 @@
         color: $primary-dark;
     }
 
+}
+
+// .shop__card:hover + .shop__card-view--front {
+//     transform: rotateY(-180deg);
+//     z-index: -1;
+//     left: -.007rem;
+
+//     @media only screen and (max-width: 56.25rem),
+//         only screen and (hover:none) {
+//         transform: none;
+//         z-index: 3;
+//         left: 0;
+//     }
+// }
+
+// .shop__card:hover + .shop__card-view--back {
+//     transform: rotateY(0);
+// }
+
+.shop__card-checkbox:checked ~ .shop__card-view--front {
+    transform: rotateY(-180deg);
+    z-index: -1;
+    left: -.007rem;
+
+    @media only screen and (max-width: 56.25rem),
+        only screen and (hover:none) {
+        transform: none;
+        z-index: 3;
+        left: 0;
+    }
+}
+
+.shop__card-checkbox:checked ~ .shop__card-view--back {
+    transform: rotateY(0);
+}
+
+.shop__card-checkbox:checked ~ .shop__details {
+    border: 2px solid red;
 }
