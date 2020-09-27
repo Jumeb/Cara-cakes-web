@@ -58,19 +58,21 @@
         display: flex;
         justify-content: center;
         align-items: baseline;
-        flex:0 0 90%;
+        flex:0 0 100%;
         justify-content: flex-start;
         overflow-x: auto;
 
         &::-webkit-scrollbar {
             margin-top: 2rem;
-            height: .5rem;
+            height: .2rem;
+            width: 40rem !important;
             background-color: $light-grey-1;
             border-radius: 2rem;
         }
 
         &::-webkit-scrollbar-thumb {
-            height: .5rem;
+            height: .2rem;
+            width: 40rem !important;
             background-color: rgba($primary, .8);
             border-radius: 2rem;
         }

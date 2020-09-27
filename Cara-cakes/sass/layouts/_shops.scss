@@ -34,15 +34,13 @@
         overflow-y: auto;
 
         &::-webkit-scrollbar {
-            width: .5rem !important;
+            width: .2rem !important;
             background-color: $light-grey-1;
-            border-radius: 2rem;
         }
 
         &::-webkit-scrollbar-thumb {
-            width: .5rem;
+            width: .2rem;
             background-color: rgba($primary, .8);
-            border-radius: 2rem;
         }
 
         @include respon(stl) {

@@ -45,13 +45,11 @@ ORDER: base + typography > general layout + grid > page layout > components
     justify-content: space-around;
     overflow-y: auto; }
     .shop__view::-webkit-scrollbar {
-      width: .5rem !important;
-      background-color: #f1eeee;
-      border-radius: 2rem; }
+      width: .2rem !important;
+      background-color: #f1eeee; }
     .shop__view::-webkit-scrollbar-thumb {
-      width: .5rem;
-      background-color: rgba(255, 20, 147, 0.8);
-      border-radius: 2rem; }
+      width: .2rem;
+      background-color: rgba(255, 20, 147, 0.8); }
     @media only screen and (max-width: 67.5em) {
       .shop__view {
         flex-basis: 93%; } }
@@ -291,15 +289,17 @@ ORDER: base + typography > general layout + grid > page layout > components
     display: flex;
     justify-content: center;
     align-items: baseline;
-    flex: 0 0 90%;
+    flex: 0 0 100%;
     justify-content: flex-start;
     overflow-x: auto; }
     .nav__elements::-webkit-scrollbar {
       margin-top: 2rem;
-      height: .5rem;
+      height: .2rem;
+      width: 40rem !important;
       background-color: #f1eeee;
       border-radius: 2rem; }
     .nav__elements::-webkit-scrollbar-thumb {
-      height: .5rem;
+      height: .2rem;
+      width: 40rem !important;
       background-color: rgba(255, 20, 147, 0.8);
       border-radius: 2rem; }
