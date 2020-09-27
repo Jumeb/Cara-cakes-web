@@ -71,14 +71,14 @@
     }
 
     &__card {
-
         perspective: 250rem;
         -moz-perspective: 250rem;
-        flex: 0 0 29%;
+        flex: 0 0 31%;
         height: 42rem;
         overflow: hidden;
         position: relative;
         margin: auto;
+        align-self: flex-start;
 
         &-checkbox {
             display: none;
@@ -89,12 +89,15 @@
             position: absolute;
             top:0;
             left: 0;
-            width: 100%;
+            width: 95%;
+            margin: auto;
             backface-visibility: hidden;
             overflow: hidden;
             border-radius: 4px;
             margin-top: 2rem;
-            transition: all .85s cubic-bezier(1,0,0,1) ;
+            margin-left: 1rem;
+            box-shadow: 0 .2rem .4rem rgba($black, .4);
+            transition: all .85s cubic-bezier(0.1,0.07,0.09,0.6);
 
             &--front {
                 background-color: $white;
@@ -104,51 +107,8 @@
 
             &--back {
                 transform: rotateY(180deg);
-                background-color: red;
+                background-color: $white;
             }
-        }
-
-        // &:hover &-view--front {
-        //     transform: rotateY(-180deg);
-        //     z-index: -1;
-        //     left: -.007rem;
-    
-        //     @media only screen and (max-width: 56.25rem),
-        //         only screen and (hover:none) {
-        //         transform: none;
-        //         z-index: 3;
-        //         left: 0;
-        //     }
-        // }
-    
-        // &:hover &-view--back {
-        //     transform: rotateY(0);
-        // }
-    }
-   
-
-    &__item {
-        background-color: $white;
-        align-self: flex-start;
-        overflow: hidden;
-        height: auto;
-        flex: 0 0 29%;
-        backface-visibility: hidden;
-        margin-top: 1rem;
-        margin-bottom: 3rem;
-        border-radius: 1rem;
-        box-shadow: 0 .5rem 1rem rgba($black, .4);
-
-        @include respon(tp) {
-            flex-basis: 38%
-        }
-
-        @include respon(ph) {
-            flex-basis: 70%;
-        }
-
-        @include respon(sp) {
-            flex-basis: 60%;
         }
     }
 
@@ -199,6 +159,7 @@
     &__details {
         position: absolute;
         bottom: 1rem;
+        border: .15rem solid $primary;
         left: 1rem;
         color: $primary;
         background-color: $white;

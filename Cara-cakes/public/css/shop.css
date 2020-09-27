@@ -70,11 +70,12 @@ ORDER: base + typography > general layout + grid > page layout > components
   .shop__card {
     perspective: 250rem;
     -moz-perspective: 250rem;
-    flex: 0 0 29%;
+    flex: 0 0 31%;
     height: 42rem;
     overflow: hidden;
     position: relative;
-    margin: auto; }
+    margin: auto;
+    align-self: flex-start; }
     .shop__card-checkbox {
       display: none; }
     .shop__card-view {
@@ -82,39 +83,22 @@ ORDER: base + typography > general layout + grid > page layout > components
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
+      width: 95%;
+      margin: auto;
       backface-visibility: hidden;
       overflow: hidden;
       border-radius: 4px;
       margin-top: 2rem;
-      transition: all 0.85s cubic-bezier(1, 0, 0, 1); }
+      margin-left: 1rem;
+      box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.4);
+      transition: all 0.85s cubic-bezier(0.1, 0.07, 0.09, 0.6); }
       .shop__card-view--front {
         background-color: #fff;
         overflow: hidden;
         z-index: 1; }
       .shop__card-view--back {
         transform: rotateY(180deg);
-        background-color: red; }
-  .shop__item {
-    background-color: #fff;
-    align-self: flex-start;
-    overflow: hidden;
-    height: auto;
-    flex: 0 0 29%;
-    backface-visibility: hidden;
-    margin-top: 1rem;
-    margin-bottom: 3rem;
-    border-radius: 1rem;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4); }
-    @media (max-width: 56.25em) {
-      .shop__item {
-        flex-basis: 38%; } }
-    @media only screen and (max-width: 37.5em) {
-      .shop__item {
-        flex-basis: 70%; } }
-    @media only screen and (max-width: 25.75em) {
-      .shop__item {
-        flex-basis: 60%; } }
+        background-color: #fff; }
   .shop__info {
     width: 100%;
     height: 25rem;
@@ -150,6 +134,7 @@ ORDER: base + typography > general layout + grid > page layout > components
   .shop__details {
     position: absolute;
     bottom: 1rem;
+    border: 0.15rem solid #ff1493;
     left: 1rem;
     color: #ff1493;
     background-color: #fff;
