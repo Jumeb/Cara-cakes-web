@@ -28,7 +28,7 @@
                                 <td class="table__dets">
                                     <%= pastry.price %> frs</td>
                                 <td class="table__dets">
-                                    <%= pastry.description %>
+                                    <%= pastry.description.substring(0, 100) %>...
                                 </td>
                                 <td class="table__dets table__functions"><a href="/admin/pastry/<%= pastry._id %>" class="btn__func">Details</a></td>
                                 <td class="table__dets table__functions"><a href="/admin/edit-pastry/<%= pastry._id %>?edit=true" class="btn__func">Update</a></td>
