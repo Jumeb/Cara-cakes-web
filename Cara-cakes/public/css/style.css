@@ -521,8 +521,7 @@ body {
   height: 54rem;
   overflow: hidden;
   position: relative;
-  margin: auto;
-  border: 2px solid red; }
+  margin: auto; }
   .card__view {
     height: 50rem;
     position: absolute;
