@@ -6,6 +6,8 @@ const { check, body } = require('express-validator');
 router.get('/', getAdminRoutes.getIndex);
 router.get('/general', getAdminRoutes.getGeneral);
 // // router.get('/bamenda', getAdminRoutes.getBdaClients);
+router.get('/create', getAdminRoutes.getCreateAdmin);
+
 router.get('/cakes', getAdminRoutes.getBds);
 
 router.get('/cookies', getAdminRoutes.getCookie);
@@ -70,6 +72,8 @@ router.get('/edit-pastry/:pastryId', getAdminRoutes.getEditPastry);
 router.get('/delete-pastry/:pastryId', getAdminRoutes.getDeletePastry);
 
 router.post('/delete-pastry', getAdminRoutes.postDeletePastry);
+
+router.post('/create', getAdminRoutes.postCreateAdmin);
 
 router.post('/signIn', getAdminRoutes.postSignIn);
 router.post('/logout', getAdminRoutes.postLogout);

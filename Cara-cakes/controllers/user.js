@@ -384,7 +384,7 @@ exports.postAddEvent = (req, res, next) => {
             errorMessage: 'File is not an image (png,jpg,jpeg)'
         });
     }
-    const event = new Event({
+    const event =({
         name: name,
         image: image.path,
         purpose: purpose,

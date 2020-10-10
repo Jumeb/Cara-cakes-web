@@ -157,16 +157,6 @@ mongoose.connect(MONGODB_URI, {
         useNewUrlParser: true
     })
     .then(result => {
-        Admin.findOne().then(admin => {
-            if (!admin) {
-                const admin = new Admin({
-                    name: 'Tuijah Chr',
-                    email: 'tuijah@gmail.com'
-                })
-                admin.save();
-            }
-        })
-
         app.listen(4000);
     })
     .catch(err => {

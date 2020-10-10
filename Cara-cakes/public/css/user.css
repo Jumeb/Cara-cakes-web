@@ -541,7 +541,8 @@ ORDER: base + typography > general layout + grid > page layout > components
   justify-content: center;
   align-items: center;
   height: 87vh;
-  overflow: hidden; }
+  overflow: hidden;
+  border: 1px solid orange; }
   .admin__dashboard {
     background-color: #181717;
     flex: 0 0 20%;
@@ -751,6 +752,45 @@ ORDER: base + typography > general layout + grid > page layout > components
     font-size: 1.5rem;
     color: rgba(221, 17, 17, 0.8);
     font-weight: bold; }
+
+.create {
+  display: flex;
+  flex: 0 0 70%;
+  justify-content: center;
+  margin-top: 3rem;
+  margin-bottom: 3rem; }
+  .create__form {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: .6rem;
+    flex: 0 0 90%;
+    padding: 1rem;
+    flex-direction: column;
+    border: 0.1rem solid rgba(255, 20, 147, 0.8); }
+    .create__form-container {
+      display: flex;
+      flex-direction: column;
+      flex: 0 0 90%; }
+      .create__form-container:not(:last-child) {
+        margin-bottom: 1rem; }
+    .create__form-label {
+      font-size: 1.6rem;
+      color: #ff1493; }
+    .create__form-input {
+      border: none;
+      outline: none;
+      flex: 0 0 80%;
+      border-bottom: 0.2rem solid rgba(255, 255, 255, 0.7);
+      background-color: transparent;
+      padding: .5rem 1rem;
+      color: #777;
+      font-size: 1.4rem; }
+      .create__form-input:focus {
+        border-bottom: 0.2rem solid #ff1493; }
+        .create__form-input:focus:invalid {
+          border-bottom: 0.2rem solid #8b4513; }
+      .create__form-input::-webkit-input-placeholder {
+        color: rgba(119, 119, 119, 0.4); }
 
 .panel {
   display: flex;

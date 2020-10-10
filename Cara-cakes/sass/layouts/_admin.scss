@@ -5,6 +5,7 @@
     align-items: center;
     height: $panel;
     overflow: hidden;
+    border: 1px solid orange;
 
 
     &__dashboard {
@@ -124,6 +125,8 @@
         }
     }
 
+   
+
     &__table {
         flex: 0 0 98%;
         display: flex;
@@ -154,6 +157,7 @@
         flex: 0 0 50%;
         padding: 1rem;
     }
+
 
     &__box {
         flex: 0 0 80%;
@@ -326,5 +330,65 @@
         font-size: 1.5rem;
         color: rgba($danger, .8);
         font-weight: bold;
+    }
+}
+
+
+.create {
+    display: flex;
+    flex: 0 0 70%;
+    justify-content: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+
+    &__form {
+        display: flex;
+        background-color: rgba($white, .5);
+        border-radius: .6rem;
+        flex: 0 0 90%;
+        padding: 1rem;
+        flex-direction: column;
+        border: .1rem solid rgba($primary, .8);
+
+        &-container {
+            display: flex;
+            flex-direction: column;
+            flex: 0 0 90%;
+
+            &:not(:last-child) {
+                margin-bottom: 1rem;
+            }
+        }
+
+        &-label {
+            font-size: $font-16;
+            color: $secondary;
+
+        }
+
+        &-input {
+            border: none;
+            outline: none;
+            flex: 0 0 80%;
+            border-bottom: .2rem solid rgba($white, .7);
+            background-color: transparent;
+            padding: .5rem 1rem;
+            color: $light-grey;
+            font-size: $sec-font-1;
+
+            &:focus {
+                border-bottom: .2rem solid $primary;
+    
+                &:invalid {
+                    border-bottom: .2rem solid $secondary-dark;
+                }
+            }
+    
+            &::-webkit-input-placeholder {
+                color: rgba($light-grey, .4);
+            }
+        }
+
+
     }
 }

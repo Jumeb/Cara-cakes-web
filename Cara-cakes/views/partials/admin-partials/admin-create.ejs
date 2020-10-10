@@ -1,0 +1,31 @@
+<div class="create">
+    <form action="" class="create__form" action="/admin/create" method="POST" enctype="multipart/form-data">
+        <div class="create__form-container">
+            <label for="name" class="create__form-label">Company Name</label>
+            <input type="text" class="create__form-input" id="name" name="name" />
+        </div>
+        <div class="create__form-container">
+            <label for="name" class="create__form-label">CEO Name</label>
+            <input type="text" class="create__form-input" id="name" name="user_name" />
+        </div>
+        <div class="create__form-container">
+            <label for="name" class="create__form-label">Company Image</label>
+            <input type="file" class="create__form-input" id="name" name="image"/>
+        </div>
+        <div class="create__form-container">
+            <label for="name" class="create__form-label">Password</label>
+            <input type="password" class="create__form-input" id="name" name="password" />
+        </div>
+        <div class="create__form-container">
+            <label for="name" class="create__form-label">Confirm Password</label>
+            <input type="password" class="create__form-input" id="name" name="conPassword" />
+        </div>
+            <input type="hidden" class="create__form-input" id="name" value="admin" />
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+            <div class="create__form-btns">
+                <button class="btn-3 btn-deep--pink" type="submit">Add</button>
+                <a href="/admin/cakes" class="btn-3 btn-deep--pink">View</a>
+            </div>
+    </form>
+</div>

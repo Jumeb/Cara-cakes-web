@@ -1,9 +1,10 @@
+const { validationResult } = require('express-validator');
+const bcrypt = require('bcryptjs');
+
 const Cake = require('../models/product');
 const Admin = require('../models/admin');
 const Orders = require('../models/orders');
-
 const fileHelper = require('../util/file');
-const { validationResult } = require('express-validator');
 
 
 
@@ -23,21 +24,99 @@ exports.getIndex = (req, res, next) => {
     });
 }
 
+exports.getCreateAdmin = (req, res, next) => {
+    let message = req.flash('error');
+    if(message.length > 0) {
+        message = message[0];
+    } else {
+        message = null;
+    }
+
+    res.render('admin/admin-create', {
+        pageTitle: "Create New Admin",
+        path: 'admin/create',
+        authenticated: false,
+        errorMessage: message,
+        validationErrors: [],
+        oldInput: {
+            name: "",
+            user_name: "",
+            password: "",
+            conPassword: "",
+        }
+    })
+}
+
+exports.postCreateAdmin = (req, res, next) => {
+    const company_name = req.body.name;
+    const user_name = req.body.user_name;
+    const password = req.body.password;
+    const type = req.body.type;
+    const conPassword = req.body.conPassword;
+    const image = req.file;
+    let imagePath = "";
+
+    console.log('I reached here');
+    
+    if (image) {
+       imagePath = image.path;
+    }
+
+    const errors = validationResult(req);
+    if(!errors.isEmpty()) {
+        console.log(errors.array(), 'ok');
+        return res.status(422).render('admin/admin-create', {
+            pageTitle: 'Create New Admin',
+            path: 'admin/create',
+            authenticated: false,
+            errorMessage: errors.array()[0].msg,
+            validationErrors: errors.array(),
+            oldInput: {
+                name: name,
+                user_name: user_name,
+                password: "",
+                conPassword: "",
+            }
+        })
+    }
+    bcrypt.hash(password, 12)
+        .then(hashedPassword => {
+            const newAdmin = new Admin({
+                name: company_name,
+                password: hashedPassword,
+                user_name: user_name,
+                type: type,
+                image: imagePath,
+            });
+            return newAdmin.save();
+        })
+        .then(result => {
+            return res.redirect('/admin');
+        })
+        .catch(err => {
+            const error = new Error(err);
+            return next(error);
+        })
+   
+}
+
 exports.postSignIn = (req, res, next) => {
-    const userName = req.body.user;
+    const user_name = req.body.user;
     const password = req.body.password;
 
     Admin.findOne({
-            name: userName
+            user_name: user_name
         })
         .then(admin => {
             if (!admin) {
                 req.flash('error', 'Invalid credentials, Please try again.');
                 return res.redirect('/admin');
-            } else {
+            }
+        bcrypt.compare(password, admin.password)
+            .then(doMatch => {
                 let name = admin.name;
                 let message = 'Welcome, Mr ' + name;
-                if (password.toString() === admin.password.toString()) {
+                if (doMatch) {
                     req.session.signedIn = true;
                     req.session.admin = admin;
                     return req.session.save(err => {
@@ -48,14 +127,14 @@ exports.postSignIn = (req, res, next) => {
                 }
                 req.flash('error', 'Invalid credentials, please try again.');
                 res.redirect('/admin');
-            }
-        })
-        .catch(err => {
+            })
+            .catch(err => {
             console.log("One");
             const error = new Error(err);
             error.httpStatusCode = 500;
             return next(error);
         })
+})
 }
 
 exports.postLogout = (req, res, next) => {
