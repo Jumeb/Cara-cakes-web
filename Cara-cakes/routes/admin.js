@@ -40,6 +40,14 @@ router.get('/add-vals', getAdminRoutes.getAddVal);
 
 router.get('/orders', getAdminRoutes.getOrders);
 
+router.get('/users', getAdminRoutes.getAllUsers);
+
+router.get('/users', getAdminRoutes.getAllUsers);
+
+router.get('/admins', getAdminRoutes.getAllAdmins);
+
+router.get('/all-orders', getAdminRoutes.getAllOrders);
+
 router.get('/orders/:orderId', getAdminRoutes.getClientOrder);
 
 router.post('/add-pastry', [

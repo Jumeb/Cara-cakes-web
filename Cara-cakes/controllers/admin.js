@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const Cake = require('../models/product');
 const Admin = require('../models/admin');
 const Orders = require('../models/orders');
+const Users = require('../models/user');
 const fileHelper = require('../util/file');
 
 
@@ -32,6 +33,10 @@ exports.getCreateAdmin = (req, res, next) => {
         message = null;
     }
 
+    Admin.findOne({
+        name: req.session.admin.name
+    }).then(admin => {
+
     res.render('admin/admin-create', {
         pageTitle: "Create New Admin",
         path: 'admin/create',
@@ -43,7 +48,9 @@ exports.getCreateAdmin = (req, res, next) => {
             user_name: "",
             password: "",
             conPassword: "",
-        }
+        },
+        admin:admin,
+    })
     })
 }
 
@@ -156,6 +163,7 @@ exports.getGeneral = (req, res, next) => {
         })
         .then(admin => {
             let title = 'Welcome ' + admin.name;
+            console.log(admin)
             res.render('admin/general', {
                 pageTitle: title,
                 path: '/admin/general',
@@ -179,6 +187,9 @@ exports.getBds = (req, res, next) => {
     } else {
         message = null;
     }
+    Admin.findOne({
+        name: req.session.admin.name
+    }).then(admin => {
     Cake.find({
             genre: 'Birthday-cake'
         })
@@ -187,8 +198,10 @@ exports.getBds = (req, res, next) => {
                 pageTitle: 'Your Birthday cakes',
                 path: '/admin/cakes',
                 pastries: cakes,
-                success: message
+                success: message,
+                admin: admin
             });
+        })
         })
         .catch(err => {
             console.log("three");
@@ -205,6 +218,9 @@ exports.getWeds = (req, res, next) => {
     } else {
         message = null;
     }
+    Admin.findOne({
+        name: req.session.admin.name
+    }).then(admin => {
     Cake.find({
             genre: 'Wedding-cake'
         })
@@ -216,6 +232,7 @@ exports.getWeds = (req, res, next) => {
                 success: message
             });
         })
+    })
         .catch(err => {
             console.log("Four");
             const error = new Error(err);
@@ -231,6 +248,9 @@ exports.getCookie = (req, res, next) => {
     } else {
         message = null;
     }
+    Admin.findOne({
+        name: req.session.admin.name
+    }).then(admin => {
     Cake.find({
             genre: 'Cookie'
         })
@@ -242,6 +262,7 @@ exports.getCookie = (req, res, next) => {
                 success: message
             });
         })
+    })
         .catch(err => {
             console.log("Five");
             const error = new Error(err);
@@ -257,6 +278,9 @@ exports.getPans = (req, res, next) => {
     } else {
         message = null;
     }
+    Admin.findOne({
+        name: req.session.admin.name
+    }).then(admin => {
     Cake.find({
             genre: 'Pancake'
         })
@@ -268,6 +292,7 @@ exports.getPans = (req, res, next) => {
                 success: message
             });
         })
+    })
         .catch(err => {
             console.log("Six");
             const error = new Error(err);
@@ -283,6 +308,9 @@ exports.getDons = (req, res, next) => {
     } else {
         message = null;
     }
+    Admin.findOne({
+        name: req.session.admin.name
+    }).then(admin => {
     Cake.find({
             genre: 'Doughnuts'
         })
@@ -294,6 +322,7 @@ exports.getDons = (req, res, next) => {
                 success: message
             });
         })
+    })
         .catch(err => {
             console.log("seven");
             const error = new Error(err);
@@ -309,6 +338,9 @@ exports.getCups = (req, res, next) => {
     } else {
         message = null;
     }
+    Admin.findOne({
+        name: req.session.admin.name
+    }).then(admin => {
     Cake.find({
             genre: 'Cupcake'
         })
@@ -320,6 +352,7 @@ exports.getCups = (req, res, next) => {
                 success: message
             });
         })
+    })
         .catch(err => {
             console.log("Eigth");
             const error = new Error(err);
@@ -335,6 +368,9 @@ exports.getVal = (req, res, next) => {
     } else {
         message = null;
     }
+    Admin.findOne({
+        name: req.session.admin.name
+    }).then(admin => {
     Cake.find({
             genre: 'Valentine'
         })
@@ -346,6 +382,7 @@ exports.getVal = (req, res, next) => {
                 success: message
             });
         })
+    })
         .catch(err => {
             console.log("nine");
             const error = new Error(err);
@@ -357,6 +394,10 @@ exports.getVal = (req, res, next) => {
 
 exports.getCake = (req, res, next) => {
     const pastryId = req.params.pastryId;
+    
+    Admin.findOne({
+        name: req.session.admin.name
+    }).then(admin => {
     Cake.findById(pastryId)
         .then(cake => {
             console.log(cake)
@@ -364,9 +405,11 @@ exports.getCake = (req, res, next) => {
                 pageTitle: cake.name,
                 path: '/admin/pastry',
                 pastry: cake,
-                editing: false
+                editing: false,
+                admin: admin,
             });
         })
+    })
         .catch(err => {
             console.log("Ten")
             const error = new Error(err);
@@ -757,19 +800,47 @@ exports.postDeletePastry = (req, res, next) => {
 
 
 exports.getOrders = (req, res, next) => {
-    Orders.find()
-        .then(orders => {
-            res.render('admin/orders', {
-                pageTitle: 'All Orders',
-                path: '/admin/orders',
-                editing: false,
-                orders: orders
+    
+    Admin.findOne({
+        name: req.session.admin.name
+    }).then(admin => {
+        Orders.find({admin: req.session.admin._id})
+            .then(orders => {
+                console.log(orders);
+                res.render('admin/orders', {
+                    pageTitle: 'All Orders',
+                    path: '/admin/orders',
+                    editing: false,
+                    orders: orders,
+                    admin: admin,
+                })
             })
-        })
+    })
+}
+
+exports.getAllOrders = (req, res, next) => {
+    Admin.findOne({
+        name: req.session.admin.name
+    }).then(admin => {
+        Orders.find()
+            .then(orders => {
+                    console.log(adminOrders);
+                    res.render('admin/orders', {
+                        pageTitle: 'All Orders',
+                        path: '/admin/orders',
+                        editing: false,
+                        orders: orders,
+                        admin: admin,
+                    });
+            })
+    })
 }
 
 exports.getClientOrder = (req, res, next) => {
     const orderId = req.params.orderId;
+    Admin.findOne({
+        name: req.session.admin.name
+    }).then(admin => {
     Orders.findById(orderId)
         .populate('pastries.pastryId')
         .then(order => {
@@ -779,7 +850,50 @@ exports.getClientOrder = (req, res, next) => {
                 pageTitle: name,
                 path: '/admin/client-order',
                 editing: false,
-                order: order
+                order: order,
+                admin: admin
             })
         })
+    })
+}
+
+
+exports.getAllUsers = (req, res, next) => {
+    Admin.findOne({
+        name: req.session.admin.name
+    }).then(admin => {
+    Users.find()
+    .then(users => {
+        console.log(users)
+        res.render('admin/users', {
+            pageTitle: 'All Users',
+            path: 'admin/users',
+            editing: false,
+            users: users,
+            admin: admin,
+            errorMessage: [],
+            hasError: false,
+        })
+    })
+})
+}
+
+exports.getAllAdmins = (req, res, next) => {
+    Admin.findOne({
+        name: req.session.admin.name
+    }).then(admin => {
+    Admin.find()
+    .then(admins => {
+        console.log(admins)
+        res.render('admin/admins', {
+            pageTitle: 'All Users',
+            path: 'admin/admins',
+            editing: false,
+            admins: admins,
+            admin: admin,
+            errorMessage: [],
+            hasError: false,
+        })
+    })
+})
 }

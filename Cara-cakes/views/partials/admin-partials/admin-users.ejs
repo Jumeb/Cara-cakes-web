@@ -1,0 +1,34 @@
+<% if (users.length > 0) { %>
+
+    <div class="admin__table">
+        <table class="table">
+            <tr class="table__head">
+                <td class="table__dets">Client Image</td>
+                <td class="table__dets">Name </td>
+                <td class="table__dets">Email</td>
+                <td class="table__dets">Telephone</td>
+                <td class="table__dets"></td>
+                <td class="table__dets"></td>
+            </tr>
+            <% for (let user of users) { %>
+                <tr class="table__info">
+                    <td class="table__det"><img class="table__img" src="/<%= user.image %>" alt="Client image"></td>
+                    <td class="table__dets">
+                        <%= user.name %>
+                    </td>
+                    <td class="table__dets">
+                        <%= user.email %>
+                    </td>
+                    <td class="table__dets">
+                        <%= user.telNo %>
+                    </td>
+                    <td class="table__dets">
+                    <td class="table__dets table__functions"><a href="/admin/orders/" class="btn__func">View info</a></td>
+                    <td class="table__dets table__functions">Suspend</td>
+                </tr>
+                <% } %>
+        </table>
+    </div>
+    <% } else { %>
+        <h2>No Users</h2>
+<% } %>

@@ -7,6 +7,7 @@ const PDFDocument = require('pdfkit');
 const Event = require('../models/events');
 const Cake = require('../models/product');
 const Order = require('../models/orders');
+const Admin = require('../models/admin');
 const User = require('../models/user');
 const { validationResult } = require('express-validator');
 
@@ -16,7 +17,6 @@ exports.getBds = (req, res, next) => {
             genre: 'Birthday-cake'
         })
         .then(cakes => {
-            console.log(cakes, 'birthday');
             res.render('user/cakes', {
                 pageTitle: 'Add anything',
                 path: '/user/cakes',
@@ -176,7 +176,6 @@ exports.getPastry = (req, res, next) => {
     const pastryId = req.params.cakeId;
     Cake.findById(pastryId)
         .then(cake => {
-            console.log(cake)
             res.render('user/shop-detail', {
                 pageTitle: cake.name,
                 path: '/user/pastry-detail',
@@ -384,7 +383,7 @@ exports.postAddEvent = (req, res, next) => {
             errorMessage: 'File is not an image (png,jpg,jpeg)'
         });
     }
-    const event =({
+    const event =new Event({
         name: name,
         image: image.path,
         purpose: purpose,
@@ -544,7 +543,6 @@ exports.getDeleteEvent = (req, res, next) => {
             if (!event) {
                 res.redirect('/user');
             }
-            console.log(event);
             User.findById(event.userId._id)
             .then(user => {
                 res.render('user/confirm', {
@@ -680,7 +678,6 @@ exports.getOrders = (req, res, next) => {
             if (orders[0] == null) {
                 User.findById(req.user)
                     .then(user => {
-                        console.log(user )
                         res.render('user/userOrder', {
                             path: '/user/orders',
                             pageTitle: 'Your Orders',
@@ -715,10 +712,12 @@ exports.getOrders = (req, res, next) => {
 exports.postOrder = (req, res, next) => {
     const eventId = req.body.eventId;
     const totalAmount = req.body.totalAmount;
+    let admin_id, admin_company;
     Event.findById(eventId)
         .populate('cart.items.pastryId')
         .then(event => {
             const pastries = event.cart.items.map(i => {
+               admin_id = i.pastryId.adminId;
                 return {
                     quantity: i.quantity,
                     pastry: {
@@ -726,6 +725,11 @@ exports.postOrder = (req, res, next) => {
                     }
                 }
             });
+            Admin.find({_id: admin_id})
+                .then(admin => {
+                    console.log(admin)
+                    admin_company = admin.name
+                })
             const order = new Order({
                 user: {
                     name: req.user.name,
@@ -745,7 +749,11 @@ exports.postOrder = (req, res, next) => {
                     totalAmount: totalAmount
 
                 },
-                pastries: pastries
+                pastries: pastries,
+                admin: {
+                    adminId: admin_id,
+                    adminCompany: admin_company
+                },
             });
 
             return order.save();
@@ -758,7 +766,7 @@ exports.postOrder = (req, res, next) => {
             res.redirect('/user/orders');
         })
         .catch(err => {
-            const errror = new Error(err);
+            const error = new Error(err);
             error.httpStatusCode = 500;
             return next(error);
         })
@@ -794,6 +802,7 @@ exports.postEditProfile = (req, res, next) => {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
+        console.log(errors)
         return res.status(422).render('user/edit-profile', {
             path: '/user/edit-profile',
             pageTitle: 'Edit Profile',

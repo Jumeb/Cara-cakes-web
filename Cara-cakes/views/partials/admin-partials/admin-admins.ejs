@@ -1,0 +1,27 @@
+<% if (admins.length > 0) { %>
+
+    <div class="admin__table">
+        <table class="table">
+            <tr class="table__head">
+                <td class="table__dets">Client Image</td>
+                <td class="table__dets">Company Name</td>
+                <td class="table__dets">CEO</td>
+                <td class="table__dets">Category</td>
+                <td class="table__dets"></td>
+                <td class="table__dets"></td>
+            </tr>
+            <% for (let admin of admins) { %>
+                <tr class="table__info">
+                    <td class="table__det"><img class="table__img" src="/<%= admin.image %>" alt="Client image"></td>
+                    <td class="table__dets"><%= admin.name %></td>
+                    <td class="table__dets"><%= admin.user_name %></td>
+                    <td class="table__dets"><%= admin.type %></td>
+                    <td class="table__dets table__functions"><a href="/admin/orders/" class="btn__func">View info</a></td>
+                    <td class="table__dets table__functions">Suspend</td>
+                </tr>
+                <% } %>
+        </table>
+    </div>
+    <% } else { %>
+        <h2>No Orders yet</h2>
+<% } %>

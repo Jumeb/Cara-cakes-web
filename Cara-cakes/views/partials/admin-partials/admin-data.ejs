@@ -7,7 +7,7 @@
     <br>
     <%- include('admin-general.ejs') %>
     <% } else if (path === '/admin/orders') { %>
-    <%- include('admin-table.ejs') %>
+    <%- include('admin-orders.ejs') %>
     <% } else if (path === '/admin/client-order') { %>
     <%- include('admin-user-info.ejs') %>
     <% } else if (path === '/admin/view-info') { %>
@@ -32,6 +32,10 @@
     <%- include('admin-updateCup.ejs') %>
     <% } else if (path === 'admin/create') { %>
     <%- include('admin-create.ejs') %>
+    <% } else if (path === 'admin/users') { %>
+    <%- include('admin-users.ejs') %>
+    <% } else if (path === 'admin/admins') { %>
+    <%- include('admin-admins.ejs') %>
     <% } else { %>
     <%- include('admin-updatePastry.ejs') %>
     <% } %>

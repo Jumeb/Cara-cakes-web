@@ -1,3 +1,4 @@
+<% if (admin.type === "admin") { %>
 <div class="admin__dashboard">
     <span class="admin__navigate"><b class="admin__navigate-to">General</b></span>
     <div class="admin__options admin__options--hidden">
@@ -43,10 +44,39 @@
             <li class="admin__goto"><a href="/admin/add-vals" class="admin__link">Valentine choice</a></li>
         </ul>
     </div>
-    <span class="admin__navigate"><b class="admin__navigate-to">Create</b></span>
-    <div class="admin__options admin__options--hidden">
-        <ul class="admin__list">
-            <li class="admin__goto"><a href="/admin/create" class="admin__link">Create Admin</a></li>
-        </ul>
-    </div>
 </div>
+<% } else { %>
+    <div class="panel__user">
+        <ul class="panel-side-nav">
+            <li class="panel-side-nav__item  <%= path === '/admin/general' ? 'panel-side-nav__item--active' : '' %>">
+                <a href="/admin/create" class="panel-side-nav__link">
+                    <span class="panel-side-nav__icon fas fa-plus"></span>  <span>Create Admin</span>
+                </a>
+            </li>
+            <li class="panel-side-nav__item  <%= path === '/user' ? 'panel-side-nav__item--active' : '' %>">
+                <a href="/admin/admins" class="panel-side-nav__link">
+                    <span class="panel-side-nav__icon fas fa-plus"></span>  <span>Bakers</span>
+                </a>
+            </li>
+            <li class="panel-side-nav__item  <%= path === '/user' ? 'panel-side-nav__item--active' : '' %>">
+                <a href="/admin/users   " class="panel-side-nav__link">
+                    <span class="panel-side-nav__icon fas fa-plus"></span>  <span>Users</span>
+                </a>
+            </li>
+            <li class="panel-side-nav__item  <%= path === '/user' ? 'panel-side-nav__item--active' : '' %>">
+                <a href="/admin/all-orders" class="panel-side-nav__link">
+                    <span class="panel-side-nav__icon fas fa-plus"></span>  <span>Orders</span>
+                </a>
+            </li>
+            <li class="panel-side-nav__item">
+                <form action="/admin/logout" method="post">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button type="submit" class="panel-side-nav__link"><span class="panel-side-nav__icon logout_icon fas fa-power-off"></span>Logout</button>
+                </form>
+            </li>
+        </ul>
+        <div class="power">
+           <span>Copyrighted &copy;<a href="#" class="dev">JB Inc.</a>All Rights reserved</span> 
+        </div>
+</div>
+    <% } %>

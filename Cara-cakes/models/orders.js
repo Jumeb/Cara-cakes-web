@@ -70,7 +70,16 @@ const orderSchema = new Schema({
             type: Number,
             required: true
         }
-    }
+    },
+    admin: {
+        adminId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Admin',
+        },
+        adminCompany: {
+            type: String
+        }
+    },
 });
 
 module.exports = mongoose.model('Order', orderSchema);
