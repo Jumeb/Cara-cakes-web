@@ -725,38 +725,38 @@ exports.postOrder = (req, res, next) => {
                     }
                 }
             });
-            Admin.find({_id: admin_id})
+            Admin.findById(admin_id)
                 .then(admin => {
-                    console.log(admin)
-                    admin_company = admin.name
+                    admin_company = admin.name;
+                    const order = new Order({
+                        user: {
+                            name: req.user.name,
+                            userId: req.user
+                        },
+                        event: {
+                            name: event.name,
+                            eventId: event,
+                            location: event.location,
+                            purpose: event.purpose,
+                            day: event.day,
+                            month: event.month,
+                            min: event.mins,
+                            per: event.per,
+                            hour: event.hour,
+                            year: event.year,
+                            totalAmount: totalAmount
+        
+                        },
+                        pastries: pastries,
+                        admin: {
+                            adminId: admin_id,
+                            adminCompany: admin_company
+                        },
+                    });
+        
+                    return order.save();
                 })
-            const order = new Order({
-                user: {
-                    name: req.user.name,
-                    userId: req.user
-                },
-                event: {
-                    name: event.name,
-                    eventId: event,
-                    location: event.location,
-                    purpose: event.purpose,
-                    day: event.day,
-                    month: event.month,
-                    min: event.mins,
-                    per: event.per,
-                    hour: event.hour,
-                    year: event.year,
-                    totalAmount: totalAmount
-
-                },
-                pastries: pastries,
-                admin: {
-                    adminId: admin_id,
-                    adminCompany: admin_company
-                },
-            });
-
-            return order.save();
+            
         })
         .then(clear => {
             event.clearCart();
@@ -828,6 +828,7 @@ exports.postEditProfile = (req, res, next) => {
                 fileHelper.deleteFile(user.image);
                 user.image = Image.path;
             }
+            console.log('reached');
             return user.save();
         })
         .then(result => {

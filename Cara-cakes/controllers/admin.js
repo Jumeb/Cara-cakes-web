@@ -229,7 +229,8 @@ exports.getWeds = (req, res, next) => {
                 pageTitle: 'Your Wedding cakes',
                 path: '/admin/weds',
                 pastries: cakes,
-                success: message
+                success: message,
+                admin: admin
             });
         })
     })
@@ -259,7 +260,8 @@ exports.getCookie = (req, res, next) => {
                 pageTitle: 'Your Cookies',
                 path: '/admin/cookies',
                 pastries: cakes,
-                success: message
+                success: message,
+                admin: admin
             });
         })
     })
@@ -289,7 +291,8 @@ exports.getPans = (req, res, next) => {
                 pageTitle: 'Your Pancakes',
                 path: '/admin/pans',
                 pastries: cakes,
-                success: message
+                success: message,
+                admin: admin
             });
         })
     })
@@ -319,7 +322,8 @@ exports.getDons = (req, res, next) => {
                 pageTitle: 'Your Doughnuts',
                 path: '/admin/dons',
                 pastries: cakes,
-                success: message
+                success: message,
+                admin: admin
             });
         })
     })
@@ -349,7 +353,8 @@ exports.getCups = (req, res, next) => {
                 pageTitle: 'Your Cupcakes',
                 path: '/admin/cups',
                 pastries: cakes,
-                success: message
+                success: message,
+                admin: admin
             });
         })
     })
@@ -379,7 +384,8 @@ exports.getVal = (req, res, next) => {
                 pageTitle: 'Your Valentine gifts',
                 path: '/admin/vals',
                 pastries: cakes,
-                success: message
+                success: message,
+                admin: admin
             });
         })
     })
@@ -433,6 +439,9 @@ exports.getAddBds = (req, res, next) => {
     } else {
         message = null;
     }
+    Admin.findOne({
+        name: req.session.admin.name
+    }).then(admin => {
     res.render('admin/updates', {
         pageTitle: 'Add Birthday Cake',
         path: '/admin/add-bds',
@@ -447,8 +456,11 @@ exports.getAddBds = (req, res, next) => {
             desc: '',
             type: ''
         },
-        validationErrors: null
+        validationErrors: null,
+        admin: admin
+        
     });
+})
 }
 
 exports.getAddWeds = (req, res, next) => {
@@ -457,7 +469,9 @@ exports.getAddWeds = (req, res, next) => {
         message = message[0];
     } else {
         message = null;
-    }
+    }Admin.findOne({
+        name: req.session.admin.name
+    }).then(admin => {
     res.render('admin/updates', {
         pageTitle: 'Add Wedding Cake',
         path: '/admin/add-weds',
@@ -465,8 +479,10 @@ exports.getAddWeds = (req, res, next) => {
         success: message,
         hasError: false,
         errorMessage: null,
-        validationErrors: null
+        validationErrors: null,
+        admin: admin,
     });
+})
 }
 
 exports.getAddDon = (req, res, next) => {
@@ -476,6 +492,9 @@ exports.getAddDon = (req, res, next) => {
     } else {
         message = null;
     }
+    Admin.findOne({
+        name: req.session.admin.name
+    }).then(admin => {
     res.render('admin/updates', {
         pageTitle: 'Add Doughnuts',
         path: '/admin/add-dons',
@@ -483,8 +502,10 @@ exports.getAddDon = (req, res, next) => {
         success: message,
         hasError: false,
         errorMessage: null,
-        validationErrors: null
+        validationErrors: null,
+        admin: admin,
     });
+})
 }
 
 exports.getAddCookie = (req, res, next) => {
@@ -494,6 +515,9 @@ exports.getAddCookie = (req, res, next) => {
     } else {
         message = null;
     }
+    Admin.findOne({
+        name: req.session.admin.name
+    }).then(admin => {
     res.render('admin/updates', {
         pageTitle: 'Add Cookie',
         path: '/admin/add-cookies',
@@ -501,8 +525,10 @@ exports.getAddCookie = (req, res, next) => {
         success: message,
         hasError: false,
         errorMessage: null,
-        validationErrors: null
+        validationErrors: null,
+        admin: admin,
     });
+})
 }
 
 exports.getAddPan = (req, res, next) => {
@@ -512,6 +538,9 @@ exports.getAddPan = (req, res, next) => {
     } else {
         message = null;
     }
+    Admin.findOne({
+        name: req.session.admin.name
+    }).then(admin => {
     res.render('admin/updates', {
         pageTitle: 'Add Pancake',
         path: '/admin/add-pans',
@@ -519,8 +548,10 @@ exports.getAddPan = (req, res, next) => {
         success: message,
         hasError: false,
         errorMessage: null,
-        validationErrors: null
+        validationErrors: null,
+        admin: admin,
     });
+})
 }
 
 exports.getAddVal = (req, res, next) => {
@@ -530,6 +561,9 @@ exports.getAddVal = (req, res, next) => {
     } else {
         message = null;
     }
+    Admin.findOne({
+        name: req.session.admin.name
+    }).then(admin => {
     res.render('admin/updates', {
         pageTitle: 'Add Valentine Gifts',
         path: '/admin/add-vals',
@@ -537,8 +571,10 @@ exports.getAddVal = (req, res, next) => {
         success: message,
         hasError: false,
         errorMessage: null,
-        validationErrors: null
+        validationErrors: null,
+        admin: admin,
     });
+})
 }
 
 exports.getAddCup = (req, res, next) => {
@@ -548,6 +584,9 @@ exports.getAddCup = (req, res, next) => {
     } else {
         message = null;
     }
+    Admin.findOne({
+        name: req.session.admin.name
+    }).then(admin => {
     res.render('admin/updates', {
         pageTitle: 'Add Cupcake',
         path: '/admin/add-cups',
@@ -555,8 +594,10 @@ exports.getAddCup = (req, res, next) => {
         success: message,
         hasError: false,
         errorMessage: null,
-        validationErrors: null
+        validationErrors: null,
+        admin: admin
     });
+})
 }
 
 exports.postAddPastry = (req, res, next) => {
@@ -606,6 +647,9 @@ exports.postAddPastry = (req, res, next) => {
 
     if (!errors.isEmpty()) {
         console.log("Again");
+        Admin.findOne({
+            name: req.session.admin.name
+        }).then(admin => {
         return res.status(422).render('admin/updates', {
             pageTitle: 'Add Pastry',
             path: path,
@@ -620,8 +664,10 @@ exports.postAddPastry = (req, res, next) => {
                 image: img
             },
             errorMessage: errors.array()[0].msg,
-            validationErrors: errors.array()
+            validationErrors: errors.array(),
+            admin: admin,
         });
+    })
     }
 
 
@@ -657,6 +703,9 @@ exports.getEditPastry = (req, res, next) => {
         res.redirect('/admin');
     }
     const cakeId = req.params.pastryId;
+    Admin.findOne({
+        name: req.session.admin.name
+    }).then(admin => {
     Cake.findById(cakeId)
         .then(cake => {
             if (!cake) {
@@ -669,8 +718,10 @@ exports.getEditPastry = (req, res, next) => {
                 pastry: cake,
                 hasError: false,
                 errorMessage: null,
-                validationErrors: null
+                validationErrors: null,
+                admin: admin,
             });
+        })
         })
 }
 
@@ -689,6 +740,9 @@ exports.postEditPastry = (req, res, next) => {
 
 
     if (!errors.isEmpty()) {
+        Admin.findOne({
+            name: req.session.admin.name
+        }).then(admin => {
         return res.status(422).render('admin/updates', {
             pageTitle: 'Edit Pastry',
             path: '/admin/edit-pastry',
@@ -702,8 +756,10 @@ exports.postEditPastry = (req, res, next) => {
                 _id: pastryId
             },
             errorMessage: errors.array()[0].msg,
-            validationErrors: errors.array()
+            validationErrors: errors.array(),
+            admin: admin,
         });
+    })
     }
 
     if (type == 'Birthday-cake') {
@@ -747,13 +803,18 @@ exports.postEditPastry = (req, res, next) => {
 
 exports.getDeletePastry = (req, res, next) => {
     const pastryId = req.params.pastryId;
+    Admin.findOne({
+        name: req.session.admin.name
+    }).then(admin => {
     Cake.findById(pastryId)
         .then(cake => {
             res.render('admin/admin-delete', {
                 pageTitle: 'Deleting',
                 path: '/admin/delete-pastry',
-                pastry: cake
+                pastry: cake,
+                admin: admin,
             });
+        })
         })
         .catch(err => {
             console.log("Thirteen")
@@ -767,7 +828,7 @@ exports.getDeletePastry = (req, res, next) => {
 
 exports.postDeletePastry = (req, res, next) => {
     const pastryId = req.body.pastryId;
-    console.log(pastryId)
+    console.log(pastryId);
     Cake.findById(pastryId).then(pastry => {
             if (!pastry) {
                 return next(new Error('Pastry not found.'));
@@ -824,7 +885,6 @@ exports.getAllOrders = (req, res, next) => {
     }).then(admin => {
         Orders.find()
             .then(orders => {
-                    console.log(adminOrders);
                     res.render('admin/orders', {
                         pageTitle: 'All Orders',
                         path: '/admin/orders',
