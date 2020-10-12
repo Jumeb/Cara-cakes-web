@@ -188,10 +188,11 @@ exports.getBds = (req, res, next) => {
         message = null;
     }
     Admin.findOne({
-        name: req.session.admin.name
+        name: req.session.admin.name  
     }).then(admin => {
     Cake.find({
-            genre: 'Birthday-cake'
+            genre: 'Birthday-cake',
+            adminId: req.session.admin,
         })
         .then(cakes => {
             res.render('admin/admin-products', {
@@ -222,7 +223,8 @@ exports.getWeds = (req, res, next) => {
         name: req.session.admin.name
     }).then(admin => {
     Cake.find({
-            genre: 'Wedding-cake'
+            genre: 'Wedding-cake',
+            adminId: req.session.admin,
         })
         .then(cakes => {
             res.render('admin/admin-products', {
@@ -253,7 +255,8 @@ exports.getCookie = (req, res, next) => {
         name: req.session.admin.name
     }).then(admin => {
     Cake.find({
-            genre: 'Cookie'
+            genre: 'Cookie',
+            adminId: req.session.admin,
         })
         .then(cakes => {
             res.render('admin/admin-products', {
@@ -284,7 +287,8 @@ exports.getPans = (req, res, next) => {
         name: req.session.admin.name
     }).then(admin => {
     Cake.find({
-            genre: 'Pancake'
+            genre: 'Pancake',
+            adminId: req.session.admin,
         })
         .then(cakes => {
             res.render('admin/admin-products', {
@@ -315,7 +319,8 @@ exports.getDons = (req, res, next) => {
         name: req.session.admin.name
     }).then(admin => {
     Cake.find({
-            genre: 'Doughnuts'
+            genre: 'Doughnuts',
+            adminId: req.session.admin,
         })
         .then(cakes => {
             res.render('admin/admin-products', {
@@ -346,7 +351,8 @@ exports.getCups = (req, res, next) => {
         name: req.session.admin.name
     }).then(admin => {
     Cake.find({
-            genre: 'Cupcake'
+            genre: 'Cupcake',
+            adminId: req.session.admin,
         })
         .then(cakes => {
             res.render('admin/admin-products', {
@@ -377,7 +383,8 @@ exports.getVal = (req, res, next) => {
         name: req.session.admin.name
     }).then(admin => {
     Cake.find({
-            genre: 'Valentine'
+            genre: 'Valentine',
+            adminId: req.session.admin,
         })
         .then(cakes => {
             res.render('admin/admin-products', {
@@ -432,7 +439,7 @@ exports.getBdaClients = (req, res, next) => {
     });
 }
 
-exports.getAddBds = (req, res, next) => {
+exports.getPastry = (req, res, next) => {
     let message = req.flash('success');
     if (message.length > 0) {
         message = message[0];
@@ -607,6 +614,7 @@ exports.postAddPastry = (req, res, next) => {
     const img = req.file;
     const desc = req.body.desc;
     const type = req.body.type;
+    console.log(type);
     const errors = validationResult(req);
 
     if (type == 'Birthday-cake') {
@@ -636,7 +644,7 @@ exports.postAddPastry = (req, res, next) => {
                 name: name,
                 price: price,
                 description: desc,
-                type: type
+                genre: type
             },
             errorMessage: 'Attached file is not an image (png, jpg,jpeg)',
             validationErrors: []
@@ -685,7 +693,7 @@ exports.postAddPastry = (req, res, next) => {
         .save()
         .then(result => {
             req.flash('success', 'Pastry successfully added.')
-            res.redirect(path);
+            res.redirect('/admin/addpastry');
         })
         .catch(err => {
             console.log("eleven");
@@ -720,6 +728,7 @@ exports.getEditPastry = (req, res, next) => {
                 errorMessage: null,
                 validationErrors: null,
                 admin: admin,
+                success: null,
             });
         })
         })
@@ -790,7 +799,7 @@ exports.postEditPastry = (req, res, next) => {
             return cake.save()
         })
         .then(result => {
-            res.redirect(path)
+            res.redirect(path);
         })
         .catch(err => {
             console.log("Twelve")
@@ -870,7 +879,7 @@ exports.getOrders = (req, res, next) => {
                 console.log(orders);
                 res.render('admin/orders', {
                     pageTitle: 'All Orders',
-                    path: '/admin/orders',
+                    path: 'admin/orders',
                     editing: false,
                     orders: orders,
                     admin: admin,
@@ -887,7 +896,7 @@ exports.getAllOrders = (req, res, next) => {
             .then(orders => {
                     res.render('admin/orders', {
                         pageTitle: 'All Orders',
-                        path: '/admin/orders',
+                        path: 'admin/orders',
                         editing: false,
                         orders: orders,
                         admin: admin,

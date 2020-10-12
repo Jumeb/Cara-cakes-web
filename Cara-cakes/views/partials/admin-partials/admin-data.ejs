@@ -6,7 +6,7 @@
         <% } %></h2>
     <br>
     <%- include('admin-general.ejs') %>
-    <% } else if (path === '/admin/orders') { %>
+    <% } else if (path === 'admin/orders') { %>
     <%- include('admin-orders.ejs') %>
     <% } else if (path === '/admin/client-order') { %>
     <%- include('admin-user-info.ejs') %>
@@ -16,20 +16,6 @@
     <%- include('admin-user-orders.ejs') %>
     <% } else if (path === '/admin/pastry-detail') { %>
     <%- include('admin-product-info.ejs') %>
-    <% } else if (path === '/admin/add-bds') { %>
-    <%- include('admin-updateCake.ejs') %>
-    <% } else if (path === '/admin/add-weds') { %>
-    <%- include('admin-updateWedCake.ejs') %>
-    <% } else if (path === '/admin/add-dons') { %>
-    <%- include('admin-updateDon.ejs') %>
-    <% } else if (path === '/admin/add-cookies') { %>
-    <%- include('admin-updateCoki.ejs') %>
-    <% } else if (path === '/admin/add-pans') { %>
-    <%- include('admin-updatePan.ejs') %>
-    <% } else if (path === '/admin/add-vals') { %>
-    <%- include('admin-updateVal.ejs') %>
-    <% } else if (path === '/admin/add-cups') { %>
-    <%- include('admin-updateCup.ejs') %>
     <% } else if (path === 'admin/create') { %>
     <%- include('admin-create.ejs') %>
     <% } else if (path === 'admin/users') { %>

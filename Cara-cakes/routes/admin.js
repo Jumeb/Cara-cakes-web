@@ -24,7 +24,7 @@ router.get('/dons', getAdminRoutes.getDons);
 
 router.get('/pastry/:pastryId', getAdminRoutes.getCake);
 
-router.get('/add-bds', getAdminRoutes.getAddBds);
+router.get('/addpastry', getAdminRoutes.getPastry);
 
 router.get('/add-cookies', getAdminRoutes.getAddCookie);
 

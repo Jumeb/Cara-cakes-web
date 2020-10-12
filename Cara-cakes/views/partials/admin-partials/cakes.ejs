@@ -1,7 +1,7 @@
 <div class="admin__data">
     <% if (pastries.length > 0) { %>
         <div style="width: 100%;" class="txt-cnt">
-            <h2 class="title-lil-1 txt-white">Birthday Cakes</h2>
+            <h2 class="title-lil-1 txt-white"><%= pastries[0].genre %></h2>
         </div>
         <% if (success) { %>
             <div class="flash__message flash__message-success">
@@ -45,7 +45,7 @@
                 </div>
                 <% } else { %>
                     <div style="width:100%;" class="txt-cnt">
-                        <h1 class="title-lil-1 txt-white">No Birthday cakes yets!</h1>
+                        <h1 class="title-lil-1 txt-white">No Pastry for this category yet</h1>
                     </div>
                     <% if (success) { %>
                         <div class="flash__message flash__message-success">
@@ -53,7 +53,7 @@
                         </div>
                         <% } %>
                             <div style="width:100%;" class="txt-cnt">
-                                <a href="/admin/add-bds" class="btn-3 btn-deep--pink">Add</a>
+                                <a href="/admin/addpastry" class="btn-3 btn-deep--pink">Add</a>
                             </div>
                             <% } %>
 </div>

@@ -1,69 +1,64 @@
 <% if (admin.type === "admin") { %>
-<div class="admin__dashboard">
-    <span class="admin__navigate"><b class="admin__navigate-to">General</b></span>
-    <div class="admin__options admin__options--hidden">
-        <ul class="admin__list">
-            <li class="admin__goto"><a href='/admin/general' class="admin__link">Overview</a></li>
-        </ul>
-    </div>
-    <span class="admin__navigate"><b class="admin__navigate-to">Order</b></span>
-    <div class="admin__options admin__options--hidden">
-        <ul class="admin__list">
-            <li class="admin__goto"><a href="#" class="admin__link">Buea</a></li>
-        </ul>
-    </div>
-    <span class="admin__navigate"><b class="admin__navigate-to">Clients</b></span>
-    <div class="admin__options admin__options--hidden">
-        <ul class="admin__list">
-            <li class="admin__goto"><a href="#" class="admin__link">Buea</a></li>
-            <li class="admin__goto"><a href="#" class="admin__link">Bamenda</a></li>
-            <li class="admin__goto"><a href="#" class="admin__link">Limbe</a></li>
-        </ul>
-    </div>
-    <span class="admin__navigate"><b class="admin__navigate-to">View Pantry</b></span>
-    <div class="admin__options admin__options--hidden">
-        <ul class="admin__list">
-            <li class="admin__goto"><a href="/admin/cakes" class="admin__link">Birthday Cakes</a></li>
-            <li class="admin__goto"><a href="/admin/cookies" class="admin__link">Cookies</a></li>
-            <li class="admin__goto"><a href="/admin/pans" class="admin__link">Pancakes</a></li>
-            <li class="admin__goto"><a href="/admin/weds" class="admin__link">Wedding Cakes</a></li>
-            <li class="admin__goto"><a href="/admin/dons" class="admin__link">Dougnuts</a></li>
-            <li class="admin__goto"><a href="/admin/cups" class="admin__link">Cup Cakes</a></li>
-            <li class="admin__goto"><a href="/admin/vals" class="admin__link">Valentine choice</a></li>
-        </ul>
-    </div>
-    <span class="admin__navigate"><b class="admin__navigate-to">Add to Pantry</b></span>
-    <div class="admin__options admin__options--hidden">
-        <ul class="admin__list">
-            <li class="admin__goto"><a href="/admin/add-bds" class="admin__link">Birthday Cakes</a></li>
-            <li class="admin__goto"><a href="/admin/add-cookies" class="admin__link">Cookies</a></li>
-            <li class="admin__goto"><a href="/admin/add-pans" class="admin__link">Pancakes</a></li>
-            <li class="admin__goto"><a href="/admin/add-weds" class="admin__link">Wedding Cakes</a></li>
-            <li class="admin__goto"><a href="/admin/add-dons" class="admin__link">Dougnuts</a></li>
-            <li class="admin__goto"><a href="/admin/add-cups" class="admin__link">Cup Cakes</a></li>
-            <li class="admin__goto"><a href="/admin/add-vals" class="admin__link">Valentine choice</a></li>
-        </ul>
+<div class="panel__user">
+    <ul class="panel-side-nav">
+        <li class="panel-side-nav__item  <%= path === 'admin/admins' ? 'panel-side-nav__item--active' : '' %>">
+            <a href="/admin/general" class="panel-side-nav__link">
+                <span class="panel-side-nav__icon fas fa-tachometer-alt"></span>  <span>Dasboard</span>
+            </a>
+        </li>
+        <li class="panel-side-nav__item  <%= path === 'admin/orders' ? 'panel-side-nav__item--active' : '' %>">
+            <a href="/admin/orders" class="panel-side-nav__link">
+                <span class="panel-side-nav__icon fas fa-stream"></span>  <span>Orders</span>
+            </a>
+        </li>
+        <li class="panel-side-nav__item  <%= path === 'admin/create' ? 'panel-side-nav__item--active' : '' %>">
+            <a href="/admin/addpastry" class="panel-side-nav__link">
+                <span class="panel-side-nav__icon fas fa-plus"></span>  <span>Add Pastry</span>
+            </a>
+        </li>
+        <input type="checkbox" name="pastries" id="pastries" style="display: none;" class="add__category">
+        <li class="panel-side-nav__item">
+            <label for="pastries" class="panel-side-nav__link"><span class="panel-side-nav__icon fas fa-eye"></span>View Pantry</label>
+        </li>
+            <div class="add__category--show">
+                <li class="panel-side-nav__item-2"><a href="/admin/cakes" class="panel-side-nav__link"><span class="panel-side-nav__icon fas fa-birthday-cake"></span> Birthday Cakes</a></li>
+                <li class="panel-side-nav__item-2"><a href="/admin/cookies" class="panel-side-nav__link"><span class="panel-side-nav__icon fas fa-birthday-cake"></span> Cookies</a></li>
+                <li class="panel-side-nav__item-2"><a href="/admin/pans" class="panel-side-nav__link"><span class="panel-side-nav__icon fas fa-birthday-cake"></span> Pancakes</a></li>
+                <li class="panel-side-nav__item-2"><a href="/admin/weds" class="panel-side-nav__link"><span class="panel-side-nav__icon fas fa-birthday-cake"></span> Wedding Cakes</a></li>
+                <li class="panel-side-nav__item-2"><a href="/admin/dons" class="panel-side-nav__link"><span class="panel-side-nav__icon fas fa-birthday-cake"></span> Dougnuts</a></li>
+                <li class="panel-side-nav__item-2"><a href="/admin/cups" class="panel-side-nav__link"><span class="panel-side-nav__icon fas fa-birthday-cake"></span> Cup Cakes</a></li>
+                <li class="panel-side-nav__item-2"><a href="/admin/vals" class="panel-side-nav__link"><span class="panel-side-nav__icon fas fa-birthday-cake"></span> Valentine choice</a></li>
+            </div>
+        <li class="panel-side-nav__item">
+            <form action="/admin/logout" method="post">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button type="submit" class="panel-side-nav__link"><span class="panel-side-nav__icon logout_icon fas fa-power-off"></span>Logout</button>
+            </form>
+        </li>        
+    </ul>
+    <div class="power">
+       <span>Copyrighted &copy;<a href="#" class="dev">JB Inc.</a>All Rights reserved</span> 
     </div>
 </div>
 <% } else { %>
     <div class="panel__user">
         <ul class="panel-side-nav">
-            <li class="panel-side-nav__item  <%= path === '/admin/general' ? 'panel-side-nav__item--active' : '' %>">
+            <li class="panel-side-nav__item  <%= path === 'admin/create' ? 'panel-side-nav__item--active' : '' %>">
                 <a href="/admin/create" class="panel-side-nav__link">
                     <span class="panel-side-nav__icon fas fa-plus"></span>  <span>Create Admin</span>
                 </a>
             </li>
-            <li class="panel-side-nav__item  <%= path === '/user' ? 'panel-side-nav__item--active' : '' %>">
+            <li class="panel-side-nav__item  <%= path === 'admin/admins' ? 'panel-side-nav__item--active' : '' %>">
                 <a href="/admin/admins" class="panel-side-nav__link">
                     <span class="panel-side-nav__icon fas fa-plus"></span>  <span>Bakers</span>
                 </a>
             </li>
-            <li class="panel-side-nav__item  <%= path === '/user' ? 'panel-side-nav__item--active' : '' %>">
+            <li class="panel-side-nav__item  <%= path === 'admin/users' ? 'panel-side-nav__item--active' : '' %>">
                 <a href="/admin/users   " class="panel-side-nav__link">
                     <span class="panel-side-nav__icon fas fa-plus"></span>  <span>Users</span>
                 </a>
             </li>
-            <li class="panel-side-nav__item  <%= path === '/user' ? 'panel-side-nav__item--active' : '' %>">
+            <li class="panel-side-nav__item  <%= path === 'admin/orders' ? 'panel-side-nav__item--active' : '' %>">
                 <a href="/admin/all-orders" class="panel-side-nav__link">
                     <span class="panel-side-nav__icon fas fa-plus"></span>  <span>Orders</span>
                 </a>

@@ -290,3 +290,20 @@ $(function () {
         }
     }
 });
+
+
+function getRadioVal() {
+    let val;
+    let form = document.getElementById('form')
+    let name = 'type';
+    var radios = form.elements[name];
+    for (var i=0, len=radios.length; i<len; i++) {
+        if ( radios[i].checked ) {
+            val = radios[i].value; 
+            break; 
+        }
+    }
+    
+    document.getElementById('choosen').innerHTML = val;
+    document.getElementById('category').checked = false;
+}

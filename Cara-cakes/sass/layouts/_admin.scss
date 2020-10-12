@@ -268,7 +268,6 @@
     }
 
     &__btn {
-
         position: relative;
         font-weight: bold;
         z-index: 30;
@@ -289,6 +288,7 @@
         &:link,
         &:visited {
             text-decoration: none;
+            overflow: hidden;
         }
 
         &::before,
@@ -362,7 +362,7 @@
 
         &-label {
             font-size: $font-16;
-            color: $secondary;
+            color: $secondary-dark;
 
         }
 

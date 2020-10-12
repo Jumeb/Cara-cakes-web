@@ -1,5 +1,55 @@
 .add {
 
+    &__category {
+
+        &--item {
+            font-size: 1.6rem;
+            color: $primary;
+            font-weight: 500;
+            letter-spacing: 1;
+            flex: 0 0 100%;
+            cursor: pointer;
+            
+            &:not(:last-child) {
+                padding-bottom: .4rem;
+                border-bottom: .2rem solid rgba($light-grey, .4);
+            }
+        }
+        &--show {
+            width: 70%;
+            margin-left: 5rem;
+            margin-top: -.3rem;
+        }
+
+        &--list,
+        &--show {
+            height: 0;
+            overflow-y: hidden;
+            transition: all .4s ease-in-out;
+        }
+    }
+
+    &__category:checked ~ &__category--show {
+        height: 30rem;
+        font-size: 1.2rem;
+        width: 70%;
+        margin-left: 5rem;
+        margin-top: -.3rem;
+        border: 2px solid $white;
+        border-radius: 1rem;
+    }
+
+    &__category:checked ~ &__category--list {
+        height: 20rem;
+        margin-top: .4rem;
+        background-color: rgba($white, .9);
+        text-align: left;
+        width: 80%;
+        padding: .6rem 1rem;
+        border-radius: .6rem;
+    }
+
+
     &__form {
         padding: 2rem 1rem;
         border: .1rem solid $primary-dark;
@@ -28,7 +78,7 @@
         border-radius: .4rem;
         color: $light-grey;
         border-bottom: .2rem solid transparent;
-        background-color: rgba($white, .7);
+        background-color: rgba($white, .9);
 
         &:focus {
             border-bottom: .2rem solid $primary;

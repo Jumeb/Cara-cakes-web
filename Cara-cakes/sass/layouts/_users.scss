@@ -63,6 +63,45 @@
            background-color: $primary-light;
        }
 
+       &__item-2 {
+        position: relative;
+
+        &:not(:last-child) {
+            margin-bottom: 0.5rem;
+
+            @include respon(tp) {
+                margin-bottom: 0;
+            }
+        }
+
+        @include respon(tp) {
+            flex: 1;
+        }
+       }
+
+       &__item-2::before {
+           content: "";
+           position: absolute;
+           top: 0;
+           left: 0;
+           height: 100%;
+           width: 3px;
+           background-color: rgba($primary,.7);
+           transform: scaleY(0);
+           transition: transform .2s, width .4s cubic-bezier(1,0,0,1) .2s, backgroud-color .1s;
+       }
+
+       &__item-2:hover::before,
+       &__item--active-2::before {
+           transform: scaleY(1);
+           width: 100%;
+       }
+
+       &__item-2:active::before {
+           background-color: rgba($primary-light, .7);
+       }
+
+
        &__link,
        &__link:link,
        &__link:visited {
@@ -115,6 +154,17 @@
         flex-direction: column;
         justify-content: space-between;
         height: $panel;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            width: .37rem !important;
+            background-color: $light-grey-1;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            width: .37rem;
+            background-color: rgba($primary, .8);
+        }
 
         @include respon(tp) {
             flex-direction: row-reverse;
