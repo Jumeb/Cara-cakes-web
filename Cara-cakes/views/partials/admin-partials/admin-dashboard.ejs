@@ -43,11 +43,6 @@
 <% } else { %>
     <div class="panel__user">
         <ul class="panel-side-nav">
-            <li class="panel-side-nav__item  <%= path === 'admin/create' ? 'panel-side-nav__item--active' : '' %>">
-                <a href="/admin/create" class="panel-side-nav__link">
-                    <span class="panel-side-nav__icon fas fa-plus"></span>  <span>Create Admin</span>
-                </a>
-            </li>
             <li class="panel-side-nav__item  <%= path === 'admin/admins' ? 'panel-side-nav__item--active' : '' %>">
                 <a href="/admin/admins" class="panel-side-nav__link">
                     <span class="panel-side-nav__icon fas fa-plus"></span>  <span>Bakers</span>
@@ -61,6 +56,11 @@
             <li class="panel-side-nav__item  <%= path === 'admin/orders' ? 'panel-side-nav__item--active' : '' %>">
                 <a href="/admin/all-orders" class="panel-side-nav__link">
                     <span class="panel-side-nav__icon fas fa-plus"></span>  <span>Orders</span>
+                </a>
+            </li>
+            <li class="panel-side-nav__item  <%= path === 'admin/create' ? 'panel-side-nav__item--active' : '' %>">
+                <a href="/admin/create" class="panel-side-nav__link">
+                    <span class="panel-side-nav__icon fas fa-plus"></span>  <span>Create Admin</span>
                 </a>
             </li>
             <li class="panel-side-nav__item">

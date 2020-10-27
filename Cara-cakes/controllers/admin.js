@@ -62,8 +62,6 @@ exports.postCreateAdmin = (req, res, next) => {
     const conPassword = req.body.conPassword;
     const image = req.file;
     let imagePath = "";
-
-    console.log('I reached here');
     
     if (image) {
        imagePath = image.path;
@@ -71,7 +69,6 @@ exports.postCreateAdmin = (req, res, next) => {
 
     const errors = validationResult(req);
     if(!errors.isEmpty()) {
-        console.log(errors.array(), 'ok');
         return res.status(422).render('admin/admin-create', {
             pageTitle: 'Create New Admin',
             path: 'admin/create',
@@ -136,7 +133,6 @@ exports.postSignIn = (req, res, next) => {
                 res.redirect('/admin');
             })
             .catch(err => {
-            console.log("One");
             const error = new Error(err);
             error.httpStatusCode = 500;
             return next(error);
@@ -163,7 +159,6 @@ exports.getGeneral = (req, res, next) => {
         })
         .then(admin => {
             let title = 'Welcome ' + admin.name;
-            console.log(admin)
             res.render('admin/general', {
                 pageTitle: title,
                 path: '/admin/general',
@@ -173,7 +168,6 @@ exports.getGeneral = (req, res, next) => {
             });
         })
         .catch(err => {
-            console.log("two");
             const error = new Error(err);
             error.httpStatusCode = 500;
             return next(error);
@@ -205,7 +199,6 @@ exports.getBds = (req, res, next) => {
         })
         })
         .catch(err => {
-            console.log("three");
             const error = new Error(err);
             error.httpStatusCode = 500;
             return next(error);
@@ -237,7 +230,6 @@ exports.getWeds = (req, res, next) => {
         })
     })
         .catch(err => {
-            console.log("Four");
             const error = new Error(err);
             error.httpStatusCode = 500;
             return next(error);
@@ -269,7 +261,6 @@ exports.getCookie = (req, res, next) => {
         })
     })
         .catch(err => {
-            console.log("Five");
             const error = new Error(err);
             error.httpStatusCode = 500;
             return next(error);
@@ -301,7 +292,6 @@ exports.getPans = (req, res, next) => {
         })
     })
         .catch(err => {
-            console.log("Six");
             const error = new Error(err);
             error.httpStatusCode = 500;
             return next(error);
@@ -333,7 +323,6 @@ exports.getDons = (req, res, next) => {
         })
     })
         .catch(err => {
-            console.log("seven");
             const error = new Error(err);
             error.httpStatusCode = 500;
             return next(error);
@@ -365,7 +354,6 @@ exports.getCups = (req, res, next) => {
         })
     })
         .catch(err => {
-            console.log("Eigth");
             const error = new Error(err);
             error.httpStatusCode = 500;
             return next(error);
@@ -397,7 +385,6 @@ exports.getVal = (req, res, next) => {
         })
     })
         .catch(err => {
-            console.log("nine");
             const error = new Error(err);
             error.httpStatusCode = 500;
             return next(error);
@@ -413,7 +400,6 @@ exports.getCake = (req, res, next) => {
     }).then(admin => {
     Cake.findById(pastryId)
         .then(cake => {
-            console.log(cake)
             res.render('admin/admin-detail', {
                 pageTitle: cake.name,
                 path: '/admin/pastry',
@@ -424,7 +410,6 @@ exports.getCake = (req, res, next) => {
         })
     })
         .catch(err => {
-            console.log("Ten")
             const error = new Error(err);
             error.httpStatusCode = 500;
             return next(error);
@@ -614,23 +599,22 @@ exports.postAddPastry = (req, res, next) => {
     const img = req.file;
     const desc = req.body.desc;
     const type = req.body.type;
-    console.log(type);
     const errors = validationResult(req);
 
     if (type == 'Birthday-cake') {
-        path = '/admin/add-bds'
+        path = '/admin/cakes'
     } else if (type == 'Wedding-cake') {
-        path = '/admin/add-weds';
+        path = '/admin/weds';
     } else if (type == 'Doughnuts') {
-        path = '/admin/add-dons';
+        path = '/admin/dons';
     } else if (type == 'Cupcake') {
-        path = '/admin/add-cups';
+        path = '/admin/cups';
     } else if (type == 'Cookie') {
-        path = '/admin/add-cookies';
+        path = '/admin/cookies';
     } else if (type == 'Valentine') {
-        path = '/admin/add-vals';
+        path = '/admin/vals';
     } else if (type == 'Pancake') {
-        path = '/admin/add-pans';
+        path = '/admin/pans';
     }
 
     if (!img) {
@@ -654,7 +638,6 @@ exports.postAddPastry = (req, res, next) => {
     const imagePath = img.path;
 
     if (!errors.isEmpty()) {
-        console.log("Again");
         Admin.findOne({
             name: req.session.admin.name
         }).then(admin => {
@@ -693,12 +676,12 @@ exports.postAddPastry = (req, res, next) => {
         .save()
         .then(result => {
             req.flash('success', 'Pastry successfully added.')
-            res.redirect('/admin/addpastry');
+            res.redirect(path);
         })
         .catch(err => {
-            console.log("eleven");
             const error = new Error(err);
             error.httpStatusCode = 500;
+            console.log(error);
             return next(error);
         })
 
@@ -802,7 +785,6 @@ exports.postEditPastry = (req, res, next) => {
             res.redirect(path);
         })
         .catch(err => {
-            console.log("Twelve")
             const error = new Error(err);
             error.httpStatusCode = 500;
             return next(error);
@@ -826,7 +808,6 @@ exports.getDeletePastry = (req, res, next) => {
         })
         })
         .catch(err => {
-            console.log("Thirteen")
             const error = new Error(err);
             error.httpStatusCode = 500;
             return next(error);
@@ -837,7 +818,6 @@ exports.getDeletePastry = (req, res, next) => {
 
 exports.postDeletePastry = (req, res, next) => {
     const pastryId = req.body.pastryId;
-    console.log(pastryId);
     Cake.findById(pastryId).then(pastry => {
             if (!pastry) {
                 return next(new Error('Pastry not found.'));
@@ -876,7 +856,6 @@ exports.getOrders = (req, res, next) => {
     }).then(admin => {
         Orders.find({admin: req.session.admin._id})
             .then(orders => {
-                console.log(orders);
                 res.render('admin/orders', {
                     pageTitle: 'All Orders',
                     path: 'admin/orders',
@@ -913,7 +892,6 @@ exports.getClientOrder = (req, res, next) => {
     Orders.findById(orderId)
         .populate('pastries.pastryId')
         .then(order => {
-            console.log(order);
             let name = order.user.name + '\'s orders';
             res.render('admin/orders', {
                 pageTitle: name,
@@ -933,7 +911,6 @@ exports.getAllUsers = (req, res, next) => {
     }).then(admin => {
     Users.find()
     .then(users => {
-        console.log(users)
         res.render('admin/users', {
             pageTitle: 'All Users',
             path: 'admin/users',
@@ -953,7 +930,6 @@ exports.getAllAdmins = (req, res, next) => {
     }).then(admin => {
     Admin.find()
     .then(admins => {
-        console.log(admins)
         res.render('admin/admins', {
             pageTitle: 'All Users',
             path: 'admin/admins',

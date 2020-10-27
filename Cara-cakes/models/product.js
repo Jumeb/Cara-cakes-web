@@ -13,7 +13,6 @@ const pastrySchema = new Schema({
     },
     image: {
         type: String,
-        required: true
     },
     price: {
         type: Number,
@@ -21,7 +20,6 @@ const pastrySchema = new Schema({
     },
     genre: {
         type: String,
-        required: true
     },
     adminId: {
         type: Schema.Types.ObjectId,

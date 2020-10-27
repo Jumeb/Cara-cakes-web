@@ -27,7 +27,9 @@
                             <input type="file" class="add__input" id="image" placeholder="Image" name="image">
                             <label for="image" class="add__label">Image</label>
                         </div>
-                        <input type="hidden" name="type" value="<% if (editing || hasError) { %><%= pastry.genre %><% } %>">
+                        <% if (editing || hasError) { %> 
+                            <input type="hidden" name="type" value="<% if (editing || hasError) { %><%= pastry.genre %><% } %>">
+                        <% } %>
                         <% if (!editing) { %>
                         <div class="add__form--sheet">
                            <input type="checkbox" name="category" id="category" style="display: none;" class="add__category">
@@ -58,8 +60,7 @@
                         <% if (editing || hasError) { %>
                             <input type="hidden" value="<%= pastry._id %>" name="pastryId">
                             <% } %>
-                                <button class="admin__btn" type="submit"><% if (editing) { %>Update<% } else { %>Add
-            <% } %></button>
-                                <a href="<%= path %>" class="admin__btn">View</a>
+                                <button class="admin__btn" type="submit"><% if (editing) { %>Update<% } else { %>Add Pastry<% } %></button>
+                                <!-- <a href="<%= path %>" class="admin__btn">View</a> -->
                     </form>
 </div>

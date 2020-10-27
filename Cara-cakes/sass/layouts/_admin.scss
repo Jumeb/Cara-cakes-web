@@ -267,7 +267,9 @@
         transition: all .4s ease-in-out;
     }
 
-    &__btn {
+    &__btn,
+    &__btn:link,
+    &__btn:visited {
         position: relative;
         font-weight: bold;
         z-index: 30;
@@ -275,20 +277,15 @@
         font-size: 1.7rem;
         color: rgba($white, .8);
         border: .2rem solid rgba($white, .8);
-        border-radius: 10rem;
+        border-radius: 1rem;
         overflow: hidden;
         outline: none;
+        text-decoration: none;
         background-color: transparent;
         transition: all .4s ease-in-out;
 
         &:not(:last-child) {
             margin-right: 2rem;
-        }
-
-        &:link,
-        &:visited {
-            text-decoration: none;
-            overflow: hidden;
         }
 
         &::before,

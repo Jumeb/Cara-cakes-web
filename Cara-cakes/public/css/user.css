@@ -750,7 +750,7 @@ ORDER: base + typography > general layout + grid > page layout > components
     opacity: 0;
     visibility: hidden;
     transition: all .4s ease-in-out; }
-  .admin__btn {
+  .admin__btn, .admin__btn:link, .admin__btn:visited {
     position: relative;
     font-weight: bold;
     z-index: 30;
@@ -758,17 +758,15 @@ ORDER: base + typography > general layout + grid > page layout > components
     font-size: 1.7rem;
     color: rgba(255, 255, 255, 0.8);
     border: 0.2rem solid rgba(255, 255, 255, 0.8);
-    border-radius: 10rem;
+    border-radius: 1rem;
     overflow: hidden;
     outline: none;
+    text-decoration: none;
     background-color: transparent;
     transition: all .4s ease-in-out; }
-    .admin__btn:not(:last-child) {
+    .admin__btn:not(:last-child), .admin__btn:link:not(:last-child), .admin__btn:visited:not(:last-child) {
       margin-right: 2rem; }
-    .admin__btn:link, .admin__btn:visited {
-      text-decoration: none;
-      overflow: hidden; }
-    .admin__btn::before, .admin__btn::after {
+    .admin__btn::before, .admin__btn::after, .admin__btn:link::before, .admin__btn:link::after, .admin__btn:visited::before, .admin__btn:visited::after {
       position: absolute;
       z-index: -3;
       content: "";
@@ -778,13 +776,13 @@ ORDER: base + typography > general layout + grid > page layout > components
       transform: scaleX(0);
       left: 0;
       transition: transform .25s ease-in-out, height .4s ease-in-out .25s; }
-    .admin__btn::before {
+    .admin__btn::before, .admin__btn:link::before, .admin__btn:visited::before {
       top: 0; }
-    .admin__btn::after {
+    .admin__btn::after, .admin__btn:link::after, .admin__btn:visited::after {
       bottom: 0; }
-    .admin__btn:hover {
+    .admin__btn:hover, .admin__btn:link:hover, .admin__btn:visited:hover {
       color: rgba(0, 0, 0, 0.8); }
-    .admin__btn:hover::after, .admin__btn:hover::before {
+    .admin__btn:hover::after, .admin__btn:hover::before, .admin__btn:link:hover::after, .admin__btn:link:hover::before, .admin__btn:visited:hover::after, .admin__btn:visited:hover::before {
       transform: scaleX(1);
       height: 50%; }
   .admin__verify {
