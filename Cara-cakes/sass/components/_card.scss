@@ -287,3 +287,285 @@
         transform: rotateY(0);
     }
 }
+
+.baker-card {
+    perspective: 250rem;
+    -moz-perspective: 250rem;
+    flex:0 0 30%;
+    height: 54rem;
+    overflow: hidden;
+    position: relative;
+    margin: auto;
+    
+    &__view {
+        height: 50rem;        
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 100%;
+        backface-visibility: hidden;
+        overflow: hidden;
+        border-radius: 4px;
+        margin-top: 2rem;
+        transition: all .95s ease;
+        border: .2rem solid $primary;
+
+
+
+        &--front {
+            background-color: $white;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        &--back {
+            transform: rotateY(180deg); 
+            &-2 {
+                background-image: linear-gradient(to right bottom, $primary, $primary-dark);
+            }
+        }
+
+
+    }
+
+    &__pic {
+        height: 25rem;
+        background-blend-mode: screen;
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+
+        &-1 {
+            background-image: linear-gradient(to right, rgba($primary, .7), rgba($primary-dark, .8)), url(../img/cups-2.jpg);
+            background-position: top;
+            background-size: cover;
+        }
+
+        &-2 {
+            background-image: linear-gradient(to right, rgba($tertiary-light, .8), rgba($tertiary-dark, .9)), url(../img/chris-1.jpg);
+            background-position: top;
+            background-size: cover;
+        }
+
+        &-3 {
+            background-image: linear-gradient(to right, rgba($secondary-light, .7), rgba($secondary-dark, .8)), url(../img/bds-3.jpg);
+            background-position: top;
+            background-size: cover;
+        }
+    }
+
+
+
+    &__list {
+        width: 75%;
+        list-style: none;
+        font-size: $sec-font-1;
+        margin: 0 auto;
+        color: $black;
+        
+        &-1 li {
+            padding: .5rem;
+
+            &:not(:last-child){
+                border-bottom: 2px solid rgba($primary-dark, .7);
+            }
+        }
+
+        &-2 li {
+            padding: .5rem;
+
+            &:not(:last-child){
+                border-bottom: 2px solid rgba($tertiary-dark, .7);
+            }
+        }
+
+        &-3 li {
+            padding: .5rem;
+
+            &:not(:last-child){
+                border-bottom: 2px solid rgba($secondary-dark, .7);
+            }
+        }
+    }
+
+    &__just {
+        color: $white;
+        font-size: 2rem;
+
+        @include respon(tp) {
+            font-size: .2rem;
+        }
+    }
+
+    &__price {
+        color: $white;
+        font-size: 4rem;
+
+        @include respon(tp) {
+            font-size: 1rem;
+        }
+    }
+
+    
+    &__heading {
+        padding: 2rem 0;
+        font-size: 1.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        
+        &-1 {
+            background-image: linear-gradient(to right, $primary-dark, $primary-light);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        &-2 {
+            background-image: linear-gradient(to right, $tertiary-dark, $tertiary-light);
+            -webkit-background-clip: text;
+            background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        &-3 {
+            background-image: linear-gradient(to right, $secondary-dark, $secondary-light);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+    }
+    
+    // @include respon(tl) {
+        @media only screen and (max-width: 56.25rem),
+            only screen and (hover: none) {
+
+        height: auto;
+
+        @include respon(tp) {
+            width: 105%;
+        }
+
+        @include respon(ph) {
+            width: 70%;
+            margin: auto;
+        }
+
+        @include respon(sp) {
+            width: 75%;
+        }
+
+        &__view {      
+            position: relative;
+            top:0;
+            left: 0;
+            width: 100%;
+            backface-visibility: hidden;
+            overflow: hidden;
+            border-radius: 4px;
+            transition: all .9s ease;
+            
+    
+    
+    
+            &--front {
+                background-color: $white;
+                overflow: hidden;
+                z-index: 1;
+                clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
+            }
+    
+            &--back {
+                margin-top: -26%;
+                height: auto;
+                transform: none;
+
+                @include respon(ph) {
+                    margin-top: -10%;
+                }
+
+                @include respon(sp) {
+                    margin-top: -13%;
+                }
+
+            }
+    
+    
+        }
+    
+    
+    
+        
+        &__just {
+            color: $white;
+            font-size: 2rem;
+
+            @include respon(tp) {
+                font-size: 1.4rem;
+            }
+
+            @include respon(ph) {
+                font-size: 1.8rem;
+            }
+        }
+    
+        &__price {
+            color: $white;
+            font-size: 4rem;
+            margin-bottom: -5rem;
+
+            @include respon(tp) {
+                font-size: 3rem;
+            }
+
+            @include respon(ph) {
+                font-size: 2.9rem;
+            }
+        }
+    
+        
+        &__heading {
+            padding: 2rem 0;
+            font-size: 1.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            
+            &-1 {
+                background-image: linear-gradient(to right, $primary-dark, $primary-light);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+            }
+            &-2 {
+                background-image: linear-gradient(to right, $tertiary-dark, $tertiary-light);
+                -webkit-background-clip: text;
+                background-clip: text;
+                background-clip: text;
+                color: transparent;
+            }
+            
+            &-3 {
+                background-image: linear-gradient(to right, $secondary-dark, $secondary-light);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+            }
+        }
+        
+    }
+
+    &:hover &__view--front {
+        transform: rotateY(-180deg);
+        z-index: -1;
+        left: -.007rem;
+
+        @media only screen and (max-width: 56.25rem),
+            only screen and (hover:none) {
+            transform: none;
+            z-index: 3;
+            left: 0;
+        }
+    }
+
+    &:hover &__view--back {
+        transform: rotateY(0);
+    }
+}

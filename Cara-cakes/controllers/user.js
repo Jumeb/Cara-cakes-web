@@ -11,6 +11,27 @@ const Admin = require('../models/admin');
 const User = require('../models/user');
 const { validationResult } = require('express-validator');
 
+exports.getBakers = (req, res, next) => {
+    const eventId = req.params.eventId;
+    Admin.find({type: 'admin'}).then(admins => { 
+        console.log(admins);
+        res.render('user/bakers', {
+            pageTitle: 'Bakers',
+            path:'/user/bakers',
+            eventId: eventId,
+            admins: admins,
+            authenticated: req.session.loggedIn,
+            csrfToken: req.csrfToken(),
+            shop: true,
+        })
+    })
+    .catch(err => {
+        const error = new Error(err);
+        error.httpStatusCode = 500;
+        return next(error);
+    })
+}
+
 exports.getBds = (req, res, next) => {
     const eventId = req.params.eventId;
     Cake.find({
@@ -28,7 +49,7 @@ exports.getBds = (req, res, next) => {
             });
         })
         .catch(err => {
-            const errror = new Error(err);
+            const error = new Error(err);
             error.httpStatusCode = 500;
             return next(error);
         })

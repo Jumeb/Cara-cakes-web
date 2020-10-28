@@ -1,0 +1,37 @@
+<section class="shop">
+    <div class="shop-contents">
+        
+        <div class="shop__view" style="height: 94vh; margin: 0 2.5rem; padding-bottom:8rem;">
+            <% if (admins) { for(let admin of admins) {%>
+            <div class="baker-card">
+                <div class="baker-card__view baker-card__view--front">
+                    <div class="baker-card__pic baker-card__pic-2">
+                        &nbsp;
+                    </div>
+                    <div class="txt-cnt">
+                        <h5 class="baker-card__heading baker-card__heading-2"><%= admin.name %></h5>
+                        <ul class="baker-card__list baker-card__list-2">
+                            <li>CEO:  <%= admin.user_name %></li>
+                            <li>Vanilla flavour</li>
+                            <li>Strawberry flavour</li>
+                            <li>Custom flavours by the client</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="baker-card__view baker-card__view--back baker-card__view--back-2">
+                    <div class="txt-cnt margin-bottom-medium margin-top-huge">
+                        <p class="baker-card__just">Just</p>
+                        <p class="baker-card__price">
+                            20000FCFA
+                        </p>
+                    </div>
+                    <div class="txt-cnt margin-top-small">
+                        <a href="/signup" class="btn-2 btn-2__hover-icon">Sign-up now! <span
+                                class="btn-2__icon">&#10095</span></a>
+                    </div>
+                </div>
+            </div>
+            <% } } else { %> <h1>NO bkers</h1> <%} %>
+        </div>
+    </div>
+</section>

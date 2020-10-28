@@ -10,6 +10,8 @@ const { body } = require('express-validator');
 
 router.get('/', isAuth, userRoute.getUser);
 
+router.get('/bakers/:eventId', userRoute.getBakers);
+
 router.get('/cakes/:eventId', userRoute.getBds);
 
 router.get('/vals/:eventId', userRoute.getVals);
