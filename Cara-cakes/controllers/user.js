@@ -13,6 +13,7 @@ const { validationResult } = require('express-validator');
 
 exports.getBakers = (req, res, next) => {
     const eventId = req.params.eventId;
+    const baker = req.query.baker;
     Admin.find({type: 'admin'}).then(admins => { 
         console.log(admins);
         res.render('user/bakers', {
@@ -34,15 +35,18 @@ exports.getBakers = (req, res, next) => {
 
 exports.getBds = (req, res, next) => {
     const eventId = req.params.eventId;
+    const baker = req.query.baker;
     Cake.find({
             genre: 'Birthday-cake'
         })
         .then(cakes => {
+            const _pastries = cakes.filter((pastry) => pastry.baker === baker)
             res.render('user/cakes', {
                 pageTitle: 'Add anything',
                 path: '/user/cakes',
-                pastries: cakes,
+                pastries: _pastries,
                 eventId: eventId,
+                baker: baker,
                 authenticated: req.session.loggedIn,
                 csrfToken: req.csrfToken(),
                 shop: true,
@@ -57,6 +61,7 @@ exports.getBds = (req, res, next) => {
 
 exports.getWeds = (req, res, next) => {
     const eventId = req.params.eventId;
+    const baker = req.query.baker;
     Cake.find({
             genre: 'Wedding-cake'
         })
@@ -66,6 +71,7 @@ exports.getWeds = (req, res, next) => {
                 path: '/user/weds',
                 pastries: cakes,
                 eventId: eventId,
+                baker: baker,
                 authenticated: req.session.loggedIn,
                 csrfToken: req.csrfToken(),
                 shop: true,
@@ -80,6 +86,7 @@ exports.getWeds = (req, res, next) => {
 
 exports.getCookies = (req, res, next) => {
     const eventId = req.params.eventId;
+    const baker = req.query.baker;
     Cake.find({
             genre: 'Cookie'
         })
@@ -89,6 +96,7 @@ exports.getCookies = (req, res, next) => {
                 path: '/user/cookies',
                 pastries: cakes,
                 eventId: eventId,
+                baker: baker,
                 authenticated: req.session.loggedIn,
                 csrfToken: req.csrfToken(),
                 shop: true,
@@ -103,6 +111,7 @@ exports.getCookies = (req, res, next) => {
 
 exports.getPans = (req, res, next) => {
     const eventId = req.params.eventId;
+    const baker = req.query.baker;
     Cake.find({
             genre: 'Pancake'
         })
@@ -112,6 +121,7 @@ exports.getPans = (req, res, next) => {
                 path: '/user/pans',
                 pastries: cakes,
                 eventId: eventId,
+                baker: baker,
                 authenticated: req.session.loggedIn,
                 csrfToken: req.csrfToken(),
                 shop: true,
@@ -126,6 +136,7 @@ exports.getPans = (req, res, next) => {
 
 exports.getDons = (req, res, next) => {
     const eventId = req.params.eventId;
+    const baker = req.query.baker;
     Cake.find({
             genre: 'Doughnuts'
         })
@@ -135,6 +146,7 @@ exports.getDons = (req, res, next) => {
                 path: '/user/dons',
                 pastries: cakes,
                 eventId: eventId,
+                baker: baker,
                 authenticated: req.session.loggedIn,
                 csrfToken: req.csrfToken(),
                 shop: true,
@@ -149,6 +161,7 @@ exports.getDons = (req, res, next) => {
 
 exports.getCups = (req, res, next) => {
     const eventId = req.params.eventId;
+    const baker = req.query.baker;
     Cake.find({
             genre: 'Cupcake'
         })
@@ -158,6 +171,7 @@ exports.getCups = (req, res, next) => {
                 path: '/user/cups',
                 pastries: cakes,
                 eventId: eventId,
+                baker: baker,
                 authenticated: req.session.loggedIn,
                 csrfToken: req.csrfToken(),
                 shop: true,
@@ -172,6 +186,7 @@ exports.getCups = (req, res, next) => {
 
 exports.getVals = (req, res, next) => {
     const eventId = req.params.eventId;
+    const baker = req.query.baker;
     Cake.find({
             genre: 'Valentine'
         })
@@ -181,6 +196,7 @@ exports.getVals = (req, res, next) => {
                 path: '/user/vals',
                 pastries: cakes,
                 eventId: eventId,
+                baker: baker,
                 authenticated: req.session.loggedIn,
                 csrfToken: req.csrfToken(),
                 shop: true,
@@ -436,6 +452,7 @@ exports.getEditEvent = (req, res, next) => {
         res.redirect('/user');
     }
     const eventId = req.params.eventId;
+    const baker = req.query.baker;
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
@@ -558,6 +575,7 @@ exports.postEditEvent = (req, res, next) => {
 
 exports.getDeleteEvent = (req, res, next) => {
     const eventId = req.params.eventId;
+    const baker = req.query.baker;
     Event.findById(eventId)
         .populate('userId')
         .then(event => {
@@ -613,6 +631,7 @@ exports.getCart = (req, res, next) => {
         message = null;
     }
     const eventId = req.params.eventId;
+    const baker = req.query.baker;
     Event.findById(eventId)
         .populate('cart.items.pastryId')
         .populate('userId')

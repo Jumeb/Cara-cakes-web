@@ -599,6 +599,7 @@ exports.postAddPastry = (req, res, next) => {
     const img = req.file;
     const desc = req.body.desc;
     const type = req.body.type;
+    const baker = req.body.baker;
     const errors = validationResult(req);
 
     if (type == 'Birthday-cake') {
@@ -628,7 +629,8 @@ exports.postAddPastry = (req, res, next) => {
                 name: name,
                 price: price,
                 description: desc,
-                genre: type
+                genre: type,
+                baker: baker,
             },
             errorMessage: 'Attached file is not an image (png, jpg,jpeg)',
             validationErrors: []
@@ -652,7 +654,8 @@ exports.postAddPastry = (req, res, next) => {
                 price: price,
                 description: desc,
                 genre: type,
-                image: img
+                baker: baker,
+                image: img,
             },
             errorMessage: errors.array()[0].msg,
             validationErrors: errors.array(),
@@ -668,6 +671,7 @@ exports.postAddPastry = (req, res, next) => {
         image: imagePath,
         description: desc,
         genre: type,
+        baker: baker,
         adminId: req.admin
     });
 

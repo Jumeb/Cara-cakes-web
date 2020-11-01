@@ -9,6 +9,7 @@ const mongoDbStore = require('connect-mongodb-session')(session);
 const csrf = require('csurf');
 const flash = require('connect-flash');
 const multer = require('multer');
+const bcrypt = require('bcryptjs');
 
 /////////////////////////////
 const MONGODB_URI = 'mongodb://localhost:27017/CaraCakes';
@@ -157,6 +158,20 @@ mongoose.connect(MONGODB_URI, {
         useNewUrlParser: true
     })
     .then(result => {
+        Admin.findOne().then(admin => {
+            if (!admin) {
+                bcrypt.hash('12345', 12).then(hashPassword => {
+                    const admin = new Admin({
+                        name: 'JBInc',
+                        password: hashPassword,
+                        user_name: 'Jume',
+                        type: 'super_admin',
+                        image: ''
+                    });
+                    admin.save();
+                })
+            }
+        })
         app.listen(4000);
     })
     .catch(err => {

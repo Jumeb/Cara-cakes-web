@@ -15,6 +15,7 @@
                                 <% } %>
                     </h3>
                     <form class="add__form" action="/admin/<% if (editing) { %>edit-pastry<% } else { %>add-pastry<% } %>" method="POST" enctype="multipart/form-data" id="form">
+                        <input type="hidden" name="baker" value='<%= admin.user_name%>'>
                         <div class="add__form--sheet">
                             <input type="text" class="add__input" id="name" placeholder="Name of cake" name="name" value="<% if (editing || hasError) { %><%= pastry.name %> <% } %>" required>
                             <label for="name" class="add__label">Name of cake</label>
@@ -47,7 +48,7 @@
                                     <div class="add__category--item"><label for="pancakes" class="add__category--item">Pancakes</label></div>
                                     <input type="radio" id="valentine" name="type" value="Valentine" style="display: none;" class="category">
                                     <div class="add__category--item"><label for="valentine" class="add__category--item">Valentine</label></div>
-                                    <input type="radio" id="wedding-cakes" name="type" value="Wedding-cake" style="display: none;" class="category">
+                                   <input type="radio" id="wedding-cakes" name="type" value="Wedding-cake" style="display: none;" class="category">
                                     <div class="add__category--item"><label for="wedding-cakes" class="add__category--item">Wedding Cake</label></div>
                                 
                            </div>

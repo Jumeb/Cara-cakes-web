@@ -1,13 +1,14 @@
 <div class="shop__navigation">
     <nav class="nav">
         <ul class="nav__elements">
-            <li class="nav__item <%= path === '/user/cakes' ? 'nav__active' : '' %>"><a href="/user/cakes/<%= eventId %>" class="nav__link">Birthdays</a></li>
-            <li class="nav__item <%= path === '/user/weds' ? 'nav__active' : '' %>"><a href="/user/weds/<%= eventId %>" class="nav__link">Weddings</a></li>
-            <li class="nav__item <%= path === '/user/vals' ? 'nav__active' : '' %>"><a href="/user/vals/<%= eventId %>" class="nav__link">Valentine</a></li>
-            <li class="nav__item <%= path === '/user/cups' ? 'nav__active' : '' %>"><a href="/user/cups/<%= eventId %>" class="nav__link">Cupcakes</a></li>
-            <li class="nav__item <%= path === '/user/pans' ? 'nav__active' : '' %>"><a href="/user/pans/<%= eventId %>" class="nav__link">Pancakes</a></li>
-            <li class="nav__item <%= path === '/user/cookies' ? 'nav__active' : '' %>"><a href="/user/cookies/<%= eventId %>" class="nav__link">Cookies</a></li>
-            <li class="nav__item <%= path === '/user/dons' ? 'nav__active' : '' %>"><a href="/user/dons/<%= eventId %>" class="nav__link">Doughnuts</a></li>
+            <li class="nav__item <%= path === '/user/bakers' ? 'nav__active' : '' %>"><a href="/user/bakers/<%= eventId %>" class="nav__link">Bakers</a></li>
+            <li class="nav__item <%= path === '/user/cakes' ? 'nav__active' : '' %>"><a href="/user/cakes/<%= eventId %>?baker=<%= baker %>" class="nav__link">Birthdays</a></li>
+            <li class="nav__item <%= path === '/user/weds' ? 'nav__active' : '' %>"><a href="/user/weds/<%= eventId %>?baker=<%= baker %>" class="nav__link">Weddings</a></li>
+            <li class="nav__item <%= path === '/user/vals' ? 'nav__active' : '' %>"><a href="/user/vals/<%= eventId %>?baker=<%= baker %>" class="nav__link">Valentine</a></li>
+            <li class="nav__item <%= path === '/user/cups' ? 'nav__active' : '' %>"><a href="/user/cups/<%= eventId %>?baker=<%= baker %>" class="nav__link">Cupcakes</a></li>
+            <li class="nav__item <%= path === '/user/pans' ? 'nav__active' : '' %>"><a href="/user/pans/<%= eventId %>?baker=<%= baker %>" class="nav__link">Pancakes</a></li>
+            <li class="nav__item <%= path === '/user/cookies' ? 'nav__active' : '' %>"><a href="/user/cookies/<%= eventId %>?baker=<%= baker %>" class="nav__link">Cookies</a></li>
+            <li class="nav__item <%= path === '/user/dons' ? 'nav__active' : '' %>"><a href="/user/dons/<%= eventId %>?baker=<%= baker %>" class="nav__link">Doughnuts</a></li>
         </ul>
     </nav>
 </div>
