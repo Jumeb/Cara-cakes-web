@@ -15,7 +15,7 @@ const orderSchema = new Schema({
         }
     },
     pastries: [{
-        pastry: {
+        pastryId: {
             type: Object,
             required: true
         },

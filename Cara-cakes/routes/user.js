@@ -12,19 +12,7 @@ router.get('/', isAuth, userRoute.getUser);
 
 router.get('/bakers/:eventId', userRoute.getBakers);
 
-router.get('/cakes/:eventId', userRoute.getBds);
-
-router.get('/vals/:eventId', userRoute.getVals);
-
-router.get('/pans/:eventId', userRoute.getPans);
-
-router.get('/cups/:eventId', userRoute.getCups);
-
-router.get('/dons/:eventId', userRoute.getDons);
-
-router.get('/weds/:eventId', userRoute.getWeds);
-
-router.get('/cookies/:eventId', userRoute.getCookies);
+router.get('/pastries/:eventId', userRoute.getPastries);
 
 router.get('/add-event', isAuth, userRoute.getAddEvent);
 

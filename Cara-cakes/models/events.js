@@ -63,25 +63,25 @@ const eventSchema = new Schema({
 });
 
 eventSchema.methods.addToCart = function (pastry) {
-    const cartProductIndex = this.cart.items.findIndex(cp => { // this.cart.items... is used to goto the cart, then the specific items using the findindex method
-        return cp.pastryId.toString() === pastry._id.toString(); // if there is a match between the cart item id and the product id, it returns the index of where it was found
+    const cartProductIndex = this.cart.items.findIndex(cp => {
+        return cp.pastryId.toString() === pastry._id.toString(); 
     });
     let newQuantity = 1;
-    const updatedCartItems = [...this.cart.items]; // here you create a new array using the spread operator and store in the variable
+    const updatedCartItems = [...this.cart.items];
 
     if (cartProductIndex >= 0) {
-        newQuantity = this.cart.items[cartProductIndex].quantity + 1; // here I access the index of the cart item using the index i got from the above function and increament its quatity
-        updatedCartItems[cartProductIndex].quantity = newQuantity; //using the new array i created from the spread operator, i access the index of the item and update the item quantity by one
-    } else { //if there was no match for the product in the cart i create the new one and push it to the array
+        newQuantity = this.cart.items[cartProductIndex].quantity + 1; 
+        updatedCartItems[cartProductIndex].quantity = newQuantity; 
+    } else { 
         updatedCartItems.push({
             pastryId: pastry._id,
             quantity: newQuantity
         })
     }
-    const updatedCart = { //here i set the updatedCart after all the operations above have been done
+    const updatedCart = { 
         items: updatedCartItems
     };
-    this.cart = updatedCart; // now i set now the cart afresh to the updatedCart then i save it
+    this.cart = updatedCart; 
     return this.save();
 }
 
@@ -90,7 +90,7 @@ eventSchema.methods.subFromCart = function (pastry) {
         return cp.pastryId.toString() === pastry._id.toString();
     });
     const updatedCartItems = [...this.cart.items];
-    // let quantity = updatedCartItems[cartProductIndex].quantity;
+    
 
     if (cartProductIndex >= 0) {
         if (updatedCartItems[cartProductIndex].quantity > 0) {
@@ -116,8 +116,8 @@ eventSchema.methods.removeFromCart = function(pastryId) {
     return this.save();
 }
 
-eventSchema.methods.clearCart = function() {
-    this.cart = {items: [] };
+eventSchema.methods.clearCart = function(notOrdered) {
+    this.cart.items = notOrdered
     return this.save();
 }
 
