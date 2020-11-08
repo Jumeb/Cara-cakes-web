@@ -15,7 +15,6 @@ exports.getBakers = (req, res, next) => {
     const eventId = req.params.eventId;
     const baker = req.query.baker;
     Admin.find({type: 'admin'}).then(admins => { 
-        console.log(admins);
         res.render('user/bakers', {
             pageTitle: 'Bakers',
             path:'/user/bakers',
@@ -33,17 +32,18 @@ exports.getBakers = (req, res, next) => {
     })
 }
 
-exports.getBds = (req, res, next) => {
+exports.getPastries = (req, res, next) => {
     const eventId = req.params.eventId;
     const baker = req.query.baker;
-    Cake.find({
-            genre: 'Birthday-cake'
-        })
+    const genre = req.query.genre;
+    Cake.find()
         .then(cakes => {
-            const _pastries = cakes.filter((pastry) => pastry.baker === baker)
+            let _pastries = cakes.filter((pastry) => pastry.baker === baker);
+            _pastries = _pastries.filter((pastry) => pastry.genre === genre);
             res.render('user/cakes', {
                 pageTitle: 'Add anything',
-                path: '/user/cakes',
+                genre: genre,
+                path: '/user/pastries',
                 pastries: _pastries,
                 eventId: eventId,
                 baker: baker,
@@ -54,156 +54,6 @@ exports.getBds = (req, res, next) => {
         })
         .catch(err => {
             const error = new Error(err);
-            error.httpStatusCode = 500;
-            return next(error);
-        })
-}
-
-exports.getWeds = (req, res, next) => {
-    const eventId = req.params.eventId;
-    const baker = req.query.baker;
-    Cake.find({
-            genre: 'Wedding-cake'
-        })
-        .then(cakes => {
-            res.render('user/cakes', {
-                pageTitle: 'Add anything',
-                path: '/user/weds',
-                pastries: cakes,
-                eventId: eventId,
-                baker: baker,
-                authenticated: req.session.loggedIn,
-                csrfToken: req.csrfToken(),
-                shop: true,
-            });
-        })
-        .catch(err => {
-            const errror = new Error(err);
-            error.httpStatusCode = 500;
-            return next(error);
-        })
-}
-
-exports.getCookies = (req, res, next) => {
-    const eventId = req.params.eventId;
-    const baker = req.query.baker;
-    Cake.find({
-            genre: 'Cookie'
-        })
-        .then(cakes => {
-            res.render('user/cakes', {
-                pageTitle: 'Add anything',
-                path: '/user/cookies',
-                pastries: cakes,
-                eventId: eventId,
-                baker: baker,
-                authenticated: req.session.loggedIn,
-                csrfToken: req.csrfToken(),
-                shop: true,
-            });
-        })
-        .catch(err => {
-            const errror = new Error(err);
-            error.httpStatusCode = 500;
-            return next(error);
-        })
-}
-
-exports.getPans = (req, res, next) => {
-    const eventId = req.params.eventId;
-    const baker = req.query.baker;
-    Cake.find({
-            genre: 'Pancake'
-        })
-        .then(cakes => {
-            res.render('user/cakes', {
-                pageTitle: 'Add anything',
-                path: '/user/pans',
-                pastries: cakes,
-                eventId: eventId,
-                baker: baker,
-                authenticated: req.session.loggedIn,
-                csrfToken: req.csrfToken(),
-                shop: true,
-            });
-        })
-        .catch(err => {
-            const errror = new Error(err);
-            error.httpStatusCode = 500;
-            return next(error);
-        })
-}
-
-exports.getDons = (req, res, next) => {
-    const eventId = req.params.eventId;
-    const baker = req.query.baker;
-    Cake.find({
-            genre: 'Doughnuts'
-        })
-        .then(cakes => {
-            res.render('user/cakes', {
-                pageTitle: 'Add anything',
-                path: '/user/dons',
-                pastries: cakes,
-                eventId: eventId,
-                baker: baker,
-                authenticated: req.session.loggedIn,
-                csrfToken: req.csrfToken(),
-                shop: true,
-            });
-        })
-        .catch(err => {
-            const errror = new Error(err);
-            error.httpStatusCode = 500;
-            return next(error);
-        })
-}
-
-exports.getCups = (req, res, next) => {
-    const eventId = req.params.eventId;
-    const baker = req.query.baker;
-    Cake.find({
-            genre: 'Cupcake'
-        })
-        .then(cakes => {
-            res.render('user/cakes', {
-                pageTitle: 'Add anything',
-                path: '/user/cups',
-                pastries: cakes,
-                eventId: eventId,
-                baker: baker,
-                authenticated: req.session.loggedIn,
-                csrfToken: req.csrfToken(),
-                shop: true,
-            });
-        })
-        .catch(err => {
-            const errror = new Error(err);
-            error.httpStatusCode = 500;
-            return next(error);
-        })
-}
-
-exports.getVals = (req, res, next) => {
-    const eventId = req.params.eventId;
-    const baker = req.query.baker;
-    Cake.find({
-            genre: 'Valentine'
-        })
-        .then(cakes => {
-            res.render('user/cakes', {
-                pageTitle: 'Add anything',
-                path: '/user/vals',
-                pastries: cakes,
-                eventId: eventId,
-                baker: baker,
-                authenticated: req.session.loggedIn,
-                csrfToken: req.csrfToken(),
-                shop: true,
-            });
-        })
-        .catch(err => {
-            const errror = new Error(err);
             error.httpStatusCode = 500;
             return next(error);
         })
@@ -622,6 +472,18 @@ exports.postDeleteEvent = (req, res, next) => {
         })
 }
 
+const obj = [];
+const data = (cart) => {
+    cart.map((i) => {
+        let _baker = i.pastryId.baker.toString();
+        if(obj[_baker] === undefined) {
+            obj[_baker] = [i];
+            } else {
+                obj[_baker].push(i);  
+            } 
+        });
+    return obj;
+}
 
 exports.getCart = (req, res, next) => {
     let message = req.flash('success');
@@ -637,21 +499,37 @@ exports.getCart = (req, res, next) => {
         .populate('userId')
         // .exec()
         .then(pastries => {
-            event = pastries;
+            let obj = {};
+            let event = pastries;
             pastries = pastries.cart.items;
+            const data = (cart) => {
+                cart.map((i) => {
+                    let _baker = i.pastryId.baker.toString();
+                    if(obj[_baker] === undefined) {
+                        obj[_baker] = [i];
+                        } else {
+                            obj[_baker].push(i);  
+                        } 
+                    });
+                    return obj;
+            }
+            let bakers = data(pastries);
+            return {event, bakers}
+        })
+        .then(resources => {
             res.render('user/eventCart', {
-                pageTitle: event.name,
+                pageTitle: resources.event.name,
                 path: '/user/event-cart',
-                event: event,
-                user: event,
-                pastries: pastries,
+                event: resources.event,
+                user: resources.event,
+                pastries: resources.bakers,
                 success: message,
                 authenticated: req.session.loggedIn,
                 csrfToken: req.csrfToken()
             })
         })
         .catch(err => {
-            const errror = new Error(err);
+            const error = new Error(err);
             error.httpStatusCode = 500;
             return next(error);
         })
@@ -751,20 +629,27 @@ exports.getOrders = (req, res, next) => {
 
 exports.postOrder = (req, res, next) => {
     const eventId = req.body.eventId;
+    const baker = req.body.baker;
     const totalAmount = req.body.totalAmount;
-    let admin_id, admin_company;
+    let _notOrdered;
+    let _pastries;
     Event.findById(eventId)
         .populate('cart.items.pastryId')
         .then(event => {
+            console.log(event.cart.items);
             const pastries = event.cart.items.map(i => {
                admin_id = i.pastryId.adminId;
                 return {
                     quantity: i.quantity,
-                    pastry: {
+                    pastryId: {
                         ...i.pastryId._doc
                     }
                 }
             });
+            console.log(pastries);
+            _pastries = pastries.filter((pastry) => pastry.pastryId.baker === baker);
+             _notOrdered = pastries.filter((pastry) => pastry.pastryId.baker !== baker);
+             console.log('jslkdf', _notOrdered);
             Admin.findById(admin_id)
                 .then(admin => {
                     admin_company = admin.name;
@@ -784,22 +669,21 @@ exports.postOrder = (req, res, next) => {
                             per: event.per,
                             hour: event.hour,
                             year: event.year,
-                            totalAmount: totalAmount
-        
+                            totalAmount: totalAmount,
+                            baker: baker,
                         },
-                        pastries: pastries,
+                        pastries: _pastries,
                         admin: {
                             adminId: admin_id,
                             adminCompany: admin_company
                         },
                     });
-        
                     return order.save();
-                })
-            
-        })
-        .then(clear => {
-            event.clearCart();
+                });
+                return event;
+            })
+        .then(event => {
+            return event.clearCart(_notOrdered);
         })
         .then(result => {
             req.flash('success', 'Order successfully placed.')
@@ -868,7 +752,6 @@ exports.postEditProfile = (req, res, next) => {
                 fileHelper.deleteFile(user.image);
                 user.image = Image.path;
             }
-            console.log('reached');
             return user.save();
         })
         .then(result => {

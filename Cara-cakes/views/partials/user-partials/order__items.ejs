@@ -16,11 +16,11 @@
                     <div style="margin: auto;">
                         <% order.pastries.forEach(p => { %>
                             <p class="events__confirm-msg">
-                                <%= p.pastry.name %>:
+                                <%= p.pastryId.name %>:
                                     <%= p.quantity %>
                             </p>
                             <div style="display: none;">
-                                <%= total += p.quantity * p.pastry.price %>
+                                <%= total += p.quantity * p.pastryId.price %>
                             </div>
                             <% }); %>
                     </div>
@@ -31,6 +31,9 @@
                     <div class="align-right">
                         <a href="/user/orders/<%= order._id %>" class="btn__func">Details</a>
                     </div>
+                    <h3 style="margin-left: auto; font-size: .9rem;">
+                        Baker: <%= order.pastries[0].pastryId.baker %>
+                    </h3>
             </div>
             <% }); %>
                 <% } else { %>

@@ -2,13 +2,13 @@
     <nav class="nav">
         <ul class="nav__elements">
             <li class="nav__item <%= path === '/user/bakers' ? 'nav__active' : '' %>"><a href="/user/bakers/<%= eventId %>" class="nav__link">Bakers</a></li>
-            <li class="nav__item <%= path === '/user/cakes' ? 'nav__active' : '' %>"><a href="/user/cakes/<%= eventId %>?baker=<%= baker %>" class="nav__link">Birthdays</a></li>
-            <li class="nav__item <%= path === '/user/weds' ? 'nav__active' : '' %>"><a href="/user/weds/<%= eventId %>?baker=<%= baker %>" class="nav__link">Weddings</a></li>
-            <li class="nav__item <%= path === '/user/vals' ? 'nav__active' : '' %>"><a href="/user/vals/<%= eventId %>?baker=<%= baker %>" class="nav__link">Valentine</a></li>
-            <li class="nav__item <%= path === '/user/cups' ? 'nav__active' : '' %>"><a href="/user/cups/<%= eventId %>?baker=<%= baker %>" class="nav__link">Cupcakes</a></li>
-            <li class="nav__item <%= path === '/user/pans' ? 'nav__active' : '' %>"><a href="/user/pans/<%= eventId %>?baker=<%= baker %>" class="nav__link">Pancakes</a></li>
-            <li class="nav__item <%= path === '/user/cookies' ? 'nav__active' : '' %>"><a href="/user/cookies/<%= eventId %>?baker=<%= baker %>" class="nav__link">Cookies</a></li>
-            <li class="nav__item <%= path === '/user/dons' ? 'nav__active' : '' %>"><a href="/user/dons/<%= eventId %>?baker=<%= baker %>" class="nav__link">Doughnuts</a></li>
+            <li class="nav__item <%= genre === 'Birthday-cake' ? 'nav__active' : '' %>"><a href="/user/pastries/<%= eventId %>?baker=<%= baker %>&genre=Birthday-cake" class="nav__link">Birthdays</a></li>
+            <li class="nav__item <%= genre === 'Wedding-cake' ? 'nav__active' : '' %>"><a href="/user/pastries/<%= eventId %>?baker=<%= baker %>&genre=Wedding-cake" class="nav__link">Weddings</a></li>
+            <li class="nav__item <%= genre === 'Valentine' ? 'nav__active' : '' %>"><a href="/user/pastries/<%= eventId %>?baker=<%= baker %>&genre=Valentine" class="nav__link">Valentine</a></li>
+            <li class="nav__item <%= genre === 'Cupcake' ? 'nav__active' : '' %>"><a href="/user/pastries/<%= eventId %>?baker=<%= baker %>&genre=Cupcake" class="nav__link">Cupcakes</a></li>
+            <li class="nav__item <%= genre === 'Pancake' ? 'nav__active' : '' %>"><a href="/user/pastries/<%= eventId %>?baker=<%= baker %>&genre=Pancake" class="nav__link">Pancakes</a></li>
+            <li class="nav__item <%= genre === 'Cookie' ? 'nav__active' : '' %>"><a href="/user/pastries/<%= eventId %>?baker=<%= baker %>&genre=Cookie" class="nav__link">Cookies</a></li>
+            <li class="nav__item <%= genre === 'Doughnuts' ? 'nav__active' : '' %>"><a href="/user/pastries/<%= eventId %>?baker=<%= baker %>&genre=Doughnuts" class="nav__link">Doughnuts</a></li>
         </ul>
     </nav>
 </div>
