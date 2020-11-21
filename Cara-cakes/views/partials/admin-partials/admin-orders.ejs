@@ -3,11 +3,11 @@
     <div class="admin__table">
         <table class="table">
             <tr class="table__head">
-                <td class="table__dets">Client Image</td>
-                <% if (admin.type == 'super-admin') { %>
+                <% if (admin.type == 'super_admin') { %>
                 <td class="table__dets">Company</td>
                 <% } %>
-                <td class="table__dets">Name of Client</td>
+                <td class="table__dets">Client's Name</td>
+                <td class="table__dets">Event's for</td>
                 <td class="table__dets">Drop site</td>
                 <td class="table__dets">Date</td>
                 <td class="table__dets">Time</td>
@@ -17,12 +17,14 @@
             </tr>
             <% for (let order of orders) { %>
                 <tr class="table__info">
-                    <td class="table__dets"><img src="....." alt="Client image"></td>
-                    <% if (admin.type == 'super-admin') { %>
+                    <% if (admin.type == 'super_admin') { %>
                         <td class="table__dets"><%= order.admin.adminCompany %></td>
                         <% } %>
                     <td class="table__dets">
                         <%= order.user.name %>
+                    </td>
+                    <td class="table__dets">
+                        <%= order.event.name %>
                     </td>
                     <td class="table__dets">
                         <%= order.event.location %>

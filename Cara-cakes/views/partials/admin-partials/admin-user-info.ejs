@@ -2,6 +2,7 @@
     <div class="events events__client txt-white">
         <div class="events__dets">
             <h4 class="title-lil-2">Client's name: <%= order.user.name %></h4>
+            <h4 class="title-lil-2">Client's Contact: <%= order.user.telNo %></h4>
             <h4 class="title-lil-2">Event's location: <%= order.event.location %></h4>
         </div>
         <div class="events__info events__info-2 events__info-3 txt-cnt">
@@ -20,12 +21,12 @@
     <% order.pastries.forEach(p => { %>
     <div class="events">
         <div class="events__dets">
-            <img src="<%= p.pastry.image %>" alt="Event Concern" class="events__dets-img">
+            <img src="/<%= p.pastryId.image %>" alt="Event Concern" class="events__dets-img">
         </div>
         <div class="events__info events__info-2 txt-cnt">
-            <span class="events__purpose">Pastry name : <%= p.pastry.name %></span>
+            <span class="events__purpose">Pastry name : <%= p.pastryId.name %></span>
             <span class="events__purpose">Quantity : <%= p.quantity %></span>
-            <span class="events__purpose"> Total price : <%= p.quantity * p.pastry.price %> frs</span>
+            <span class="events__purpose"> Total price : <%= p.quantity * p.pastryId.price %> frs</span>
         </div>
     </div>
     <% }) %>

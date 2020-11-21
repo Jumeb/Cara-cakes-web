@@ -8,6 +8,10 @@ const orderSchema = new Schema({
             type: String,
             required: true
         },
+        telNo: {
+            type: Number,
+            required: true,
+        },
         userId: {
             type: Schema.Types.ObjectId,
             ref: 'User',
@@ -72,10 +76,6 @@ const orderSchema = new Schema({
         }
     },
     admin: {
-        adminId: {
-        type: Schema.Types.ObjectId,
-        ref: 'Admin',
-        },
         adminCompany: {
             type: String
         }
