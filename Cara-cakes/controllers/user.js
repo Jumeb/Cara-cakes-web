@@ -553,9 +553,8 @@ exports.postCartDelete = (req, res, next) => {
 
 
 exports.postAddCart = (req, res, next) => {
-    const pastryId = req.body.pastryId;
-    const eventId = req.body.eventId;
-    let path = '/user/cakes/' + eventId.toString();
+    const pastryId = req.query.pastryId;
+    const eventId = req.params.eventId;
     Cake.findById(pastryId)
         .then(pastry => {
             Event.findById(eventId)
@@ -564,15 +563,17 @@ exports.postAddCart = (req, res, next) => {
                 })
         })
         .then(result => {
-            setTimeout(() => {
-                res.redirect(path);
-            }, 3600000)
-        });
+            res.status(200).json({message: 'Success!'})
+        })
+        .catch(err => {
+            res.status(500).json({message: 'Unsuccessful!'})
+        })
 };
 
 exports.postSubCart = (req, res, next) => {
-    const pastryId = req.body.pastryId;
-    const eventId = req.body.eventId;
+    const pastryId = req.query.pastryId;
+    const eventId = req.params.eventId;
+    console.log(eventId, 'Hello', pastryId);
     Cake.findById(pastryId)
         .then(pastry => {
             Event.findById(eventId)
@@ -581,10 +582,11 @@ exports.postSubCart = (req, res, next) => {
                 })
         })
         .then(result => {
-            setTimeout(() => {
-                res.redirect('/user/cakes');
-            }, 3600000)
-        });
+            res.status(200).json({message: 'Success!'})
+        })
+        .catch(err => {
+            res.status(500).json({message: 'Unsuccessful!'})
+        })
 };
 
 exports.getOrders = (req, res, next) => {
@@ -636,7 +638,6 @@ exports.postOrder = (req, res, next) => {
     Event.findById(eventId)
         .populate('cart.items.pastryId')
         .then(event => {
-            console.log(event.cart.items);
             const pastries = event.cart.items.map(i => {
                admin_id = i.pastryId.adminId;
                 return {
@@ -648,14 +649,14 @@ exports.postOrder = (req, res, next) => {
             });
             console.log(pastries);
             _pastries = pastries.filter((pastry) => pastry.pastryId.baker === baker);
-             _notOrdered = pastries.filter((pastry) => pastry.pastryId.baker !== baker);
-             console.log('jslkdf', _notOrdered);
+            _notOrdered = pastries.filter((pastry) => pastry.pastryId.baker !== baker);
             Admin.findById(admin_id)
                 .then(admin => {
                     admin_company = admin.name;
                     const order = new Order({
                         user: {
                             name: req.user.name,
+                            telNo: req.user.telNo,
                             userId: req.user
                         },
                         event: {
@@ -674,8 +675,7 @@ exports.postOrder = (req, res, next) => {
                         },
                         pastries: _pastries,
                         admin: {
-                            adminId: admin_id,
-                            adminCompany: admin_company
+                            adminCompany: baker,
                         },
                     });
                     return order.save();
@@ -748,11 +748,14 @@ exports.postEditProfile = (req, res, next) => {
         .then(user => {
             user.name = name;
             user.telNo = telNo;
-            if (Image) {
+            if (Image &&  user.image) {
                 fileHelper.deleteFile(user.image);
+                user.image = Image.path;
+            } else if (Image) {
                 user.image = Image.path;
             }
             return user.save();
+            
         })
         .then(result => {
             req.flash('success', 'Profile Edited');

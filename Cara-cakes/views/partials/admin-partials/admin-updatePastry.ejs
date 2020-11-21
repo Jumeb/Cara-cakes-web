@@ -15,7 +15,7 @@
                                 <% } %>
                     </h3>
                     <form class="add__form" action="/admin/<% if (editing) { %>edit-pastry<% } else { %>add-pastry<% } %>" method="POST" enctype="multipart/form-data" id="form">
-                        <input type="hidden" name="baker" value='<%= admin.user_name%>'>
+                        <input type="hidden" name="baker" value='<%= admin.name%>'>
                         <div class="add__form--sheet">
                             <input type="text" class="add__input" id="name" placeholder="Name of cake" name="name" value="<% if (editing || hasError) { %><%= pastry.name %> <% } %>" required>
                             <label for="name" class="add__label">Name of cake</label>

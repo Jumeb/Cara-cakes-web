@@ -110,9 +110,9 @@ router.get('/orders', isAuth, userRoute.getOrders);
 
 router.post('/delete-event', isAuth, userRoute.postDeleteEvent);
 
-router.post('/add-to-event', isAuth, userRoute.postAddCart);
+router.post('/add-to-event/:eventId', isAuth, userRoute.postAddCart);
 
-router.post('/sub-from-event', isAuth, userRoute.postSubCart);
+router.post('/sub-from-event/:eventId', isAuth, userRoute.postSubCart);
 
 router.get('/event-cart/:eventId', isAuth, userRoute.getCart);
 

@@ -858,13 +858,15 @@ exports.getOrders = (req, res, next) => {
     Admin.findOne({
         name: req.session.admin.name
     }).then(admin => {
-        Orders.find({admin: req.session.admin._id})
+        Orders.find()
             .then(orders => {
+                const _orders = orders.filter((order) => order.admin.adminCompany === admin.name);
+                console.log(_orders)
                 res.render('admin/orders', {
                     pageTitle: 'All Orders',
                     path: 'admin/orders',
                     editing: false,
-                    orders: orders,
+                    orders: _orders,
                     admin: admin,
                 })
             })
@@ -896,6 +898,7 @@ exports.getClientOrder = (req, res, next) => {
     Orders.findById(orderId)
         .populate('pastries.pastryId')
         .then(order => {
+            console.log(order.pastries)
             let name = order.user.name + '\'s orders';
             res.render('admin/orders', {
                 pageTitle: name,
