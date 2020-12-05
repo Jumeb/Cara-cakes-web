@@ -627,14 +627,14 @@ ORDER: base + typography > general layout + grid > page layout > components
     opacity: 1;
     visibility: visible;
     margin: 0;
-    transition: visibility .5s ease-in-out, height .5s ease-in-out, margin .5s ease-in-out; }
+    transition: visibility .5s ease-in-out, height .5s ease-in-out, margin .5s ease-in-out; }
     .admin__options--hidden {
       opacity: 0;
       visibility: hidden;
       height: 0;
       margin-top: -2rem;
       margin-bottom: 1rem;
-      transition: visibility .5s ease-in-out, height .5s ease-in-out, margin .5s ease-in-out; }
+      transition: visibility .5s ease-in-out, height .5s ease-in-out, margin .5s ease-in-out; }
   .admin__link {
     text-decoration: none;
     font-size: 1.4rem;
@@ -775,7 +775,7 @@ ORDER: base + typography > general layout + grid > page layout > components
       background-color: rgba(255, 255, 255, 0.8);
       transform: scaleX(0);
       left: 0;
-      transition: transform .25s ease-in-out, height .4s ease-in-out .25s; }
+      transition: transform .25s ease-in-out, height .4s ease-in-out .25s; }
     .admin__btn::before, .admin__btn:link::before, .admin__btn:visited::before {
       top: 0; }
     .admin__btn::after, .admin__btn:link::after, .admin__btn:visited::after {

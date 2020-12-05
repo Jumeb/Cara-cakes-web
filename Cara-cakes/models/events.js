@@ -57,9 +57,12 @@ const eventSchema = new Schema({
             quantity: {
                 type: Number,
                 required: true
+            },
+            message: {
+                type: String,
             }
         }]
-    }
+    },
 });
 
 eventSchema.methods.addToCart = function (pastry) {

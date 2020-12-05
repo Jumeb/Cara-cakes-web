@@ -10,7 +10,7 @@
         </div>
         <div class="create__form-container">
             <label for="name" class="create__form-label">Company Image</label>
-            <input type="file" class="create__form-input" id="name" name="image"/>
+            <input type="file" class="create__form-input" id="name" name="image" />
         </div>
         <div class="create__form-container">
             <label for="name" class="create__form-label">Password</label>
@@ -20,12 +20,16 @@
             <label for="name" class="create__form-label">Confirm Password</label>
             <input type="password" class="create__form-input" id="name" name="conPassword" />
         </div>
-            <input type="hidden" class="create__form-input" id="name" value="admin" name="type" />
-            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <div class="create__form-container">
+            <label for="name" class="create__form-label">About</label>
+            <textarea type="text" class="create__form-input" id="name" name="about"></textarea>
+        </div>
+        <input type="hidden" class="create__form-input" id="name" value="admin" name="type" />
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
 
-            <div class="create__form-btns">
-                <button class="btn-3 btn-deep--pink" type="submit">Add</button>
-                <a href="/admin/cakes" class="btn-3 btn-deep--pink">View</a>
-            </div>
+        <div class="create__form-btns">
+            <button class="btn-3 btn-deep--pink" type="submit">Add</button>
+            <a href="/admin/cakes" class="btn-3 btn-deep--pink">View</a>
+        </div>
     </form>
 </div>

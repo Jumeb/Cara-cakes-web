@@ -1110,7 +1110,7 @@ body {
     color: #000;
     opacity: 0;
     position: absolute;
-    transform: translateY(-250%);
+    transform: translate(-90%, -250%);
     transition: all .4s; }
     @media only screen and (max-width: 67.5em) {
       .info__name {
@@ -1118,17 +1118,17 @@ body {
         margin-left: 1rem; } }
     @media only screen and (max-width: 56.25em), only screen and (hover: none) {
       .info__name {
-        transform: translate(80%, -190%);
+        transform: translate(20%, -190%);
         opacity: 1; } }
     @media only screen and (max-width: 37.5em) {
       .info__name {
         font-size: 1.8rem; } }
   .info:hover .info__name {
-    transform: translateY(-250%) translateX(90%);
+    transform: translateY(-250%) translateX(-30%);
     opacity: 1; }
     @media only screen and (max-width: 75em) {
       .info:hover .info__name {
-        transform: translate(80%, -190%); } }
+        transform: translate(20%, -190%); } }
 
 .flash {
   display: flex;

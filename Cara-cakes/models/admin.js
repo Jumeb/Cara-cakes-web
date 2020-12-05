@@ -20,6 +20,10 @@ const adminSchema = new Schema({
     },
     type: {
         type: String,
+    },
+    about: {
+        type: String,
+        required: true,
     }
 })
 

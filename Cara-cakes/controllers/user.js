@@ -573,7 +573,6 @@ exports.postAddCart = (req, res, next) => {
 exports.postSubCart = (req, res, next) => {
     const pastryId = req.query.pastryId;
     const eventId = req.params.eventId;
-    console.log(eventId, 'Hello', pastryId);
     Cake.findById(pastryId)
         .then(pastry => {
             Event.findById(eventId)

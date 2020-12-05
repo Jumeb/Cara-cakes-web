@@ -5,7 +5,10 @@ const {
     validationResult
 } = require('express-validator')
 
-const User = require('../models/user')
+const User = require('../models/user');
+const Admin = require('../models/admin');
+const Cake = require('../models/product')
+
 
 const transporter = nodemailer.createTransport(sendgrid({
     auth: {
@@ -14,16 +17,22 @@ const transporter = nodemailer.createTransport(sendgrid({
 }));
 
 exports.getIndex = (req, res, next) => {
-    res.render('general/index', {
-        pageTitle: 'Resting place for flavours',
-        path: '/',
-        headerType: 'head-home',
-        bodyType: 'back-home body',
-        oldInput: {
-            email: '',
-            password: ''
-        }
-    });
+    Admin.find()
+        .then(admins => {
+        const _admins = admins.filter(admin => admin.type === 'admin');
+        res.render('general/index', {
+            pageTitle: 'Resting place for flavours',
+            path: '/',
+            headerType: 'head-home',
+            bodyType: 'back-home body',
+            bakers: _admins,
+            oldInput: {
+                email: '',
+                password: ''
+            }
+        });
+    })
+        .catch(err => console.log(err))
 }
 
 
@@ -36,6 +45,31 @@ exports.getStories = (req, res, next) => {
     });
 }
 
+exports.getPastries = (req, res, next) => {
+    const baker = req.params.baker;
+    const genre = req.query.genre;
+    Cake.find()
+        .then(cakes => {
+            let _pastries = cakes.filter((pastry) => pastry.baker === baker);
+            _pastries = _pastries.filter((pastry) => pastry.genre === genre);
+            res.render('user/cakes', {
+                pageTitle: 'Add anything',
+                genre: genre,
+                path: '/user/pastries',
+                pastries: _pastries,
+                eventId: 1,
+                baker: baker,
+                authenticated: req.session.loggedIn,
+                csrfToken: req.csrfToken(),
+                shop: true,
+            });
+        })
+        .catch(err => {
+            const error = new Error(err);
+            error.httpStatusCode = 500;
+            return next(error);
+        })
+}
 
 
 ///////////////////////////////////

@@ -59,6 +59,7 @@ exports.postCreateAdmin = (req, res, next) => {
     const user_name = req.body.user_name;
     const password = req.body.password;
     const type = req.body.type;
+    const about = req.body.about;
     const conPassword = req.body.conPassword;
     const image = req.file;
     let imagePath = "";
@@ -78,6 +79,7 @@ exports.postCreateAdmin = (req, res, next) => {
             oldInput: {
                 name: name,
                 user_name: user_name,
+                about: about,
                 password: "",
                 conPassword: "",
             }
@@ -90,6 +92,7 @@ exports.postCreateAdmin = (req, res, next) => {
                 password: hashedPassword,
                 user_name: user_name,
                 type: type,
+                about: about,
                 image: imagePath,
             });
             return newAdmin.save();

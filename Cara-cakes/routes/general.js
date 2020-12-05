@@ -26,6 +26,9 @@ router.post('/login', [
     .isAlphanumeric()
     .trim()
 ], generalRoutes.postLogin);
+
+router.get('/pastries/:baker', generalRoutes.getPastries);
+
 router.post('/logout', generalRoutes.postLogout);
 router.post('/signup', [check('email')
     .isEmail()
